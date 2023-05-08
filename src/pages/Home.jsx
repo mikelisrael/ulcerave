@@ -93,7 +93,7 @@ const Home = () => {
             {/* quote  */}
             <img
               src="/images/image_5.png"
-              className="absolute w-3/4 px-5 py-3 -bottom-[25%] -right-[2%] rounded-3xl scale-90"
+              className="absolute w-3/4 px-5 py-3 -bottom-[25%] -right-[2%] rounded-3xl scale-75"
               data-aos="fade-left"
             />
           </div>
