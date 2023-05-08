@@ -1,10 +1,32 @@
+/* import dm sans google font */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --font: "DM Sans", sans-serif;
+  --primary: #0082e8;
+  --lighter: #e7f4ff;
+  --dark: #1f1f1f;
+  --grey: #808080;
+  --white: #ffffff;
+  --orange: #ff8c00;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   outline-color: none;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--dark);
+}
+
+.universal_x {
+  @apply px-8 md:px-16 lg:px-32 xl:px-48;
 }

@@ -3,8 +3,11 @@ import React, { useContext } from "react";
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-  const name = "Vite + React";
-  return <AppContext.Provider value={{ name }}>{children}</AppContext.Provider>;
+  const isLoggedIn = true;
+
+  return (
+    <AppContext.Provider value={{ isLoggedIn }}>{children}</AppContext.Provider>
+  );
 };
 
 // custom hook
