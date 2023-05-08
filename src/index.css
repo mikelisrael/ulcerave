@@ -7,12 +7,6 @@
 
 :root {
   --font: "DM Sans", sans-serif;
-  --primary: #0082e8;
-  --lighter: #e7f4ff;
-  --dark: #1f1f1f;
-  --grey: #808080;
-  --white: #ffffff;
-  --orange: #ff8c00;
 }
 
 * {
@@ -29,4 +23,8 @@ body {
 
 .universal_x {
   @apply px-8 md:px-16 lg:px-32 xl:px-48;
+}
+
+.universal_x_margin {
+  @apply mx-8 md:mx-16 lg:mx-32 xl:mx-48;
 }
