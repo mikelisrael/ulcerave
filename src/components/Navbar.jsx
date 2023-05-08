@@ -8,14 +8,14 @@ const Navbar = () => {
   return (
     <nav>
       <NavLink to="/">
-        <img src="/ulcerave_logo.svg" alt="logo" />
+        <img src="/logo.svg" alt="logo" />
       </NavLink>
 
       <ul className="capitalize flex items-center gap-8 lg:gap-10 font-medium">
         <li>
           <NavLink
             to="/"
-            className={({ isActive }) => isActive && "active_link"}
+            className={({ isActive }) => isActive && "text-primaryBlue"}
           >
             Home
           </NavLink>

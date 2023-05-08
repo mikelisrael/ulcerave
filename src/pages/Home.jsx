@@ -16,12 +16,11 @@ const Home = () => {
         data-aos="fade-up"
       >
         <h1 className="text-5xl font-bold text-center">
-          Manage your{" "}
-          <span className="text-[var(--orange)]">Gastric Ulcer</span>
+          Manage your <span className="text-orangeColor">Gastric Ulcer</span>
           <br /> with ease
         </h1>
 
-        <p className="mt-5 text-xl text-[var(--grey)] text-center">
+        <p className="mt-5 text-xl text-grey text-center">
           Never miss a dose or meal with our reminders. Ulcerave also provides
           reliable symptom
           <br className="hidden lg:block" /> checker and resources
@@ -36,13 +35,13 @@ const Home = () => {
       </header>
 
       <section className="universal_x intro" data-aos="fade-up">
-        <div className="grid bg-[var(--lighter)] py-12 px-8 items-center justify-center gap-20 rounded-3xl">
+        <div className="grid bg-lightBlue py-12 px-8 items-center justify-center gap-20 rounded-3xl">
           <div className="relative">
             <img src="/images/image_4.png" alt="reminder" />
 
             {/* quote  */}
             <blockquote
-              className="bg-[var(--lighter)] absolute w-3/4 px-5 py-3 shadow-lg top-[35%] -right-[2%] rounded-3xl"
+              className="bg-lightBlue absolute w-3/4 px-5 py-3 shadow-lg top-[35%] -right-[2%] rounded-3xl"
               data-aos="fade-right"
             >
               <img src="/avatars/avatar_1.svg" className="w-14" alt="avatar" />
@@ -75,7 +74,7 @@ const Home = () => {
       <section className="py-28 universal_x">
         <center>
           <h2 className="font-bold text-4xl">Stay Informed and Empowered</h2>
-          <p className="mt-5 text-xl text-[var(--grey)] text-center">
+          <p className="mt-5 text-xl text-grey text-center">
             Access a wealth of information on Gastric Ulcer. Our resource Centre
             helps you <br className="hidden lg:block" /> make informed Decisions
           </p>
@@ -86,14 +85,14 @@ const Home = () => {
       </section>
 
       <section className="universal_x intro" data-aos="fade-up">
-        <div className="grid bg-[var(--lighter)] py-12 px-8 items-center justify-center gap-20 rounded-3xl">
+        <div className="grid bg-lightBlue py-12 px-8 items-center justify-center gap-20 rounded-3xl">
           <div className="relative">
             <img src="/images/image_6.png" alt="man with phone" />
 
             {/* quote  */}
             <img
               src="/images/image_5.png"
-              className="absolute w-3/4 px-5 py-3 -bottom-[25%] -right-[2%] rounded-3xl scale-75"
+              className="absolute w-3/4 px-5 py-3 -bottom-[25%] -right-[2%] rounded-3xl"
               data-aos="fade-left"
             />
           </div>
@@ -109,6 +108,36 @@ const Home = () => {
             <button className="main_btn themed mt-10">Get Started</button>
           </div>
         </div>
+      </section>
+
+      <section className="my-32 universal_x_margin border-t-lightBlue border-t-4 py-14">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="font-bold text-2xl">
+              Transforming gastric ulcer care
+            </h2>
+
+            <img src="/logo.svg" alt="logo" className="w-[80%] -mt-5" />
+          </div>
+
+          <button className="main_btn themed">Get Started</button>
+        </div>
+
+        <p className="mt-10 pl-5 border-l-[6px] border-l-lightBlue max-w-[50%] text-grey">
+          Ulcerave is a comprehensive and intuitive webapp that is designed to
+          help Gastric Ulcer patients manage their symptoms and improve their
+          quality of life. Our Mission is to empower patients to take control of
+          their health by providing personalized tools, insights and supportive
+          resources that cater to their unique needs.
+        </p>
+
+        <p className="mt-10 pl-5 border-l-[6px] border-l-lightBlue max-w-[50%] text-grey">
+          Ulcerave is a comprehensive and intuitive webapp that is designed to
+          help Gastric Ulcer patients manage their symptoms and improve their
+          quality of life. Our Mission is to empower patients to take control of
+          their health by providing personalized tools, insights and supportive
+          resources that cater to their unique needs.
+        </p>
       </section>
     </>
   );

@@ -4,15 +4,7 @@ nav {
 }
 
 nav ul {
-  color: var(--grey);
-}
-
-nav ul li:hover {
-  color: var(--dark);
-}
-
-.active_link {
-  color: var(--primary);
+  @apply text-grey hover:text-dark;
 }
 
 .main_btn {
@@ -21,20 +13,9 @@ nav ul li:hover {
 }
 
 .main_btn.transparent {
-  border: 1px solid var(--primary);
-  color: var(--primary);
-}
-
-.main_btn.transparent:hover {
-  background-color: var(--primary);
-  color: var(--white);
+  @apply text-primaryBlue border border-primaryBlue hover:bg-primaryBlue hover:text-white;
 }
 
 .main_btn.themed {
-  background-color: var(--primary);
-  color: var(--white);
-}
-
-.main_btn.themed:hover {
-  background-color: var(--orange);
+  @apply bg-primaryBlue text-white hover:bg-darkerBlue;
 }
