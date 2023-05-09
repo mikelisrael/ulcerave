@@ -2,12 +2,15 @@ import React from "react";
 import "./css/home.css";
 import { useNavigate } from "react-router-dom";
 import Ellipse from "../assets/ellipse_1.png";
-import Footer from "../components/Footer";
+import GoToDashboard from "../components/GoToDashboard";
 
 const Home = () => {
   const navigate = useNavigate();
+
   return (
     <>
+      <GoToDashboard />
+
       <div className="absolute w-full top-0 left-1/2 -translate-x-1/2 -z-10 select-none">
         <img src={Ellipse} alt="" />
       </div>
@@ -125,14 +128,20 @@ const Home = () => {
         </div>
 
         <div className="flex flex-col gap-20">
-          <p className="mt-10 pl-5 border-l-[6px] border-l-lightBlue max-w-[60%] text-grey self-end">
+          <p
+            className="mt-10 pl-5 border-l-[6px] border-l-lightBlue max-w-[60%] text-grey self-end"
+            data-aos="fade-right"
+          >
             Ulcerave is a comprehensive and intuitive webapp that is designed to
             help Gastric Ulcer patients manage their symptoms and improve their
             quality of life. Our Mission is to empower patients to take control
             of their health by providing personalized tools, insights and
             supportive resources that cater to their unique needs.
           </p>
-          <p className="pl-5 border-l-[6px] border-l-lightBlue max-w-[60%] text-grey">
+          <p
+            className="pl-5 border-l-[6px] border-l-lightBlue max-w-[60%] text-grey"
+            data-aos="fade-left"
+          >
             A Ulcerave, we believe tha managing Gastric ulcer should be a
             seamless and stress-free experience. That is why we are dedicated to
             providing a user-friendly interface that is easy to navigate and

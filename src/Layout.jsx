@@ -1,6 +1,5 @@
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import PrivateRoutes from "./components/PrivateRoutes";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Aos from "aos";
@@ -9,8 +8,15 @@ import { useEffect } from "react";
 import "aos/dist/aos.css";
 import Signup from "./pages/Signup";
 import Footer from "./components/Footer";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Tracker from "./pages/Tracker";
+import GoToDashboard from "./components/GoToDashboard";
+import { useGlobalContext } from "./context";
 
 function App() {
+  const { visited } = useGlobalContext();
+
   useEffect(() => {
     Aos.init({
       once: true,
@@ -33,8 +39,18 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
-
-            <Route element={<PrivateRoutes />}></Route>
+            <Route
+              element={
+                <ProtectedRoute
+                  redirectPath={visited ? "/dashboard" : "/login"}
+                />
+              }
+            >
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
+            <Route element={<ProtectedRoute redirectPath="/login" />}>
+              <Route path="tracker" element={<Tracker />} />
+            </Route>
           </Routes>
         </>
       </Router>
