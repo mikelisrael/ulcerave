@@ -7,6 +7,8 @@ import Aos from "aos";
 import { useEffect } from "react";
 
 import "aos/dist/aos.css";
+import Signup from "./pages/Signup";
+import Footer from "./components/Footer";
 
 function App() {
   useEffect(() => {
@@ -21,7 +23,7 @@ function App() {
       <Router>
         <Navbar />
 
-        <main>
+        <>
           {/* The `<Routes>` component is defining the routes for the application. The first `<Route>`
           element is defining the path for the home page ("/") and rendering the `<Home>` component
           when the path matches. The second `<Route>` element is defining a private route and
@@ -30,11 +32,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
 
             <Route element={<PrivateRoutes />}></Route>
           </Routes>
-        </main>
+        </>
       </Router>
+
+      <Footer />
     </>
   );
 }
