@@ -1,9 +1,14 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./css/navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <nav className="flex justify-between items-center py-10 px-8 md:px-16 lg:px-32 xl:px-48 absolute w-full z-10">
