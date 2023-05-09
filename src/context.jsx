@@ -1,12 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-  const isLoggedIn = true;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [visited, setVisited] = useState(false);
+
+  // on user first visit, cache visited
+  useEffect(() => {
+    const visited = localStorage.getItem("visited");
+    if (!visited) {
+      localStorage.setItem("visited", true);
+      setVisited(true);
+    } else {
+      setVisited(true);
+    }
+  }, []);
 
   return (
-    <AppContext.Provider value={{ isLoggedIn }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, visited }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 
