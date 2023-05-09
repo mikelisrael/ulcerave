@@ -6,7 +6,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav>
+    <nav className="flex justify-between items-center py-10 px-8 md:px-16 lg:px-32 xl:px-48 absolute w-full z-10">
       <NavLink to="/">
         <img src="/logo.svg" alt="logo" />
       </NavLink>
@@ -21,13 +21,13 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="features">Our features</NavLink>
+          <NavLink to="/">Our features</NavLink>
         </li>
         <li>
-          <NavLink to="about">about us</NavLink>
+          <NavLink to="/">about us</NavLink>
         </li>
         <li>
-          <NavLink to="contact">contact</NavLink>
+          <NavLink to="/">contact</NavLink>
         </li>
       </ul>
 

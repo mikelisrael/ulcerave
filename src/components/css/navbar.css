@@ -1,10 +1,9 @@
-/*  style button with tailwind */
-nav {
-  @apply flex justify-between items-center py-10 px-8 md:px-16 lg:px-32 xl:px-48;
+nav ul {
+  @apply text-grey;
 }
 
-nav ul {
-  @apply text-grey hover:text-dark;
+nav ul li {
+  @apply hover:text-dark;
 }
 
 .main_btn {
@@ -13,9 +12,9 @@ nav ul {
 }
 
 .main_btn.transparent {
-  @apply text-primaryBlue border border-primaryBlue hover:bg-primaryBlue hover:text-white;
+  @apply text-primaryBlue border border-primaryBlue hover:bg-primaryBlue hover:text-white focus:bg-primaryBlue focus:text-white;
 }
 
 .main_btn.themed {
-  @apply bg-primaryBlue text-white hover:bg-darkerBlue;
+  @apply bg-primaryBlue text-white hover:bg-darkerBlue focus:bg-darkerBlue;
 }
