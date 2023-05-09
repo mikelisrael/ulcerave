@@ -45,7 +45,7 @@ const Login = () => {
             <button type="submit" className="mt-8 main_btn themed w-full">
               Sign in
             </button>
-            <p className="mt-2">
+            <center className="my-6">
               Don't have an account?{" "}
               <Link
                 to="/signup"
@@ -53,10 +53,10 @@ const Login = () => {
               >
                 Create An account
               </Link>
-            </p>
+            </center>
           </div>
 
-          <div className="mt-8 border-t-lightGrey border-t-2 pt-8">
+          <div className="border-t-lightGrey border-t-2 pt-6">
             <button className="w-full border border-grey px-5 py-3 rounded-full font-semibold flex items-center justify-center gap-3">
               <img src="/icons/google.png" className="w-6" alt="google" />
               <span>Sign in with Google</span>
@@ -81,8 +81,6 @@ const Login = () => {
           </div>
         </form>
       </div>
-
-      <Footer />
     </main>
   );
 };
