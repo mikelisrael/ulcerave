@@ -2,6 +2,7 @@ import React from "react";
 import "./css/home.css";
 import { useNavigate } from "react-router-dom";
 import Ellipse from "../assets/ellipse_1.png";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Home = () => {
       </div>
 
       <header
-        className="universal_x py-32 flex items-center justify-center flex-col"
+        className="universal_x pt-56 pb-32 flex items-center justify-center flex-col"
         data-aos="fade-up"
       >
         <h1 className="text-5xl font-bold text-center">
@@ -23,7 +24,7 @@ const Home = () => {
         <p className="mt-5 text-xl text-grey text-center">
           Never miss a dose or meal with our reminders. Ulcerave also provides
           reliable symptom
-          <br className="hidden lg:block" /> checker and resources
+          <br className="hidden xl:block" /> checker and resources
         </p>
 
         <button
@@ -123,22 +124,26 @@ const Home = () => {
           <button className="main_btn themed">Get Started</button>
         </div>
 
-        <p className="mt-10 pl-5 border-l-[6px] border-l-lightBlue max-w-[50%] text-grey">
-          Ulcerave is a comprehensive and intuitive webapp that is designed to
-          help Gastric Ulcer patients manage their symptoms and improve their
-          quality of life. Our Mission is to empower patients to take control of
-          their health by providing personalized tools, insights and supportive
-          resources that cater to their unique needs.
-        </p>
-
-        <p className="mt-10 pl-5 border-l-[6px] border-l-lightBlue max-w-[50%] text-grey">
-          Ulcerave is a comprehensive and intuitive webapp that is designed to
-          help Gastric Ulcer patients manage their symptoms and improve their
-          quality of life. Our Mission is to empower patients to take control of
-          their health by providing personalized tools, insights and supportive
-          resources that cater to their unique needs.
-        </p>
+        <div className="flex flex-col gap-20">
+          <p className="mt-10 pl-5 border-l-[6px] border-l-lightBlue max-w-[60%] text-grey self-end">
+            Ulcerave is a comprehensive and intuitive webapp that is designed to
+            help Gastric Ulcer patients manage their symptoms and improve their
+            quality of life. Our Mission is to empower patients to take control
+            of their health by providing personalized tools, insights and
+            supportive resources that cater to their unique needs.
+          </p>
+          <p className="pl-5 border-l-[6px] border-l-lightBlue max-w-[60%] text-grey">
+            A Ulcerave, we believe tha managing Gastric ulcer should be a
+            seamless and stress-free experience. That is why we are dedicated to
+            providing a user-friendly interface that is easy to navigate and
+            understand. Our team of experienced professionals works tirelessly
+            to ensure that our app is always up-to-date and optimized for the
+            best possible user experience.
+          </p>
+        </div>
       </section>
+
+      <Footer />
     </>
   );
 };
