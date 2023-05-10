@@ -6,15 +6,3 @@ nav ul li {
   @apply hover:text-dark;
 }
 
-.main_btn {
-  @apply px-5 py-2 rounded-full text-white font-semibold;
-  transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.main_btn.transparent {
-  @apply text-primaryBlue border border-primaryBlue hover:bg-primaryBlue hover:text-white focus:bg-primaryBlue focus:text-white;
-}
-
-.main_btn.themed {
-  @apply bg-primaryBlue text-white hover:bg-darkerBlue focus:bg-darkerBlue;
-}

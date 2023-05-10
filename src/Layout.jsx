@@ -4,15 +4,16 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Aos from "aos";
 import { useEffect } from "react";
-
 import "aos/dist/aos.css";
 import Signup from "./pages/Signup";
 import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Tracker from "./pages/Tracker";
-import GoToDashboard from "./components/GoToDashboard";
 import { useGlobalContext } from "./context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Onboarding from "./pages/Onboarding";
 
 function App() {
   const { visited } = useGlobalContext();
@@ -47,6 +48,7 @@ function App() {
               }
             >
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/onboarding" element={<Onboarding />} />
             </Route>
             <Route element={<ProtectedRoute redirectPath="/login" />}>
               <Route path="tracker" element={<Tracker />} />
@@ -56,6 +58,18 @@ function App() {
       </Router>
 
       <Footer />
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="colored"
+      />
     </>
   );
 }
