@@ -53,6 +53,9 @@ function App() {
             <Route element={<ProtectedRoute redirectPath="/login" />}>
               <Route path="tracker" element={<Tracker />} />
             </Route>
+
+            {/* error page */}
+            <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
         </>
       </Router>
