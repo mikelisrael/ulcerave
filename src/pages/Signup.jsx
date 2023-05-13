@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, db, provider } from "../utils/firebase";
 import { toast } from "react-toastify";
@@ -16,6 +16,7 @@ const SignUp = () => {
     password: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
   // if all fields are filled and is not submitting
   const isEnabled =
@@ -35,6 +36,7 @@ const SignUp = () => {
     setUser({ ...user, [name]: value });
   };
 
+  //
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -47,14 +49,24 @@ const SignUp = () => {
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
-          password: user.password,
           uid: uid,
         };
 
         // add user to Firestore
         try {
           await addDoc(collection(db, "users"), newUser);
-          // toast.success("Signed up successfully");
+          // fetch the user's document from the Firestore database
+          const docRef = doc(db, "users", uid);
+          const docSnap = await getDoc(docRef);
+          const userData = docSnap.exists();
+
+          if (!userData.avatar) {
+            // navigate to onboarding page if user doesn't have an avatar
+            navigate("/onboarding", { replace: true });
+          } else {
+            // navigate to dashboard page if user has an avatar
+            navigate("/dashboard", { replace: true });
+          }
         } catch (e) {
           // error adding user to Firestore database
           toast.error(e.message);
@@ -64,6 +76,7 @@ const SignUp = () => {
         if (error.code === "auth/email-already-in-use") {
           return toast.error("Email already in use");
         }
+
         toast.error(error.message);
       })
       .finally(() => {
@@ -71,8 +84,10 @@ const SignUp = () => {
       });
   };
 
-  //sign up with google
+  // handle sign up with Google popup
   const handleGoogleSignUp = () => {
+    setIsSubmitting(true);
+
     signInWithPopup(auth, provider)
       .then(async (result) => {
         // The signed-in user info.
@@ -83,7 +98,14 @@ const SignUp = () => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          console.log("user exists");
+          const userData = docSnap.data();
+          if (userData.avatar) {
+            // navigate to dashboard if user has an avatar
+            navigate("/dashboard", { replace: true });
+          } else {
+            // navigate to onboarding if user doesn't have an avatar
+            navigate("/onboarding", { replace: true });
+          }
         } else {
           // add the new user to the database
           const newUser = {
@@ -93,6 +115,7 @@ const SignUp = () => {
             email: user.email,
           };
           await addDoc(collection(db, "users"), newUser);
+          navigate("/onboarding", { replace: true });
         }
       })
       .catch((error) => {

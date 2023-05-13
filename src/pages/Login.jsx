@@ -63,8 +63,7 @@ const Login = () => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          console.log("user exists");
-          return;
+          // console.log("user exists");
         } else {
           // add the new user to the database
           const newUser = {
@@ -75,12 +74,12 @@ const Login = () => {
           };
           await addDoc(collection(db, "users"), newUser);
         }
+
+        setIsSubmitting(false);
       })
       .catch((error) => {
         // Handle Errors here.
         toast.error(error.message);
-      })
-      .finally(() => {
         setIsSubmitting(false);
       });
   };
@@ -171,6 +170,7 @@ const Login = () => {
                 type="button"
                 onClick={handleGoogleLogin}
                 className="w-full border border-grey px-5 py-3 rounded-full font-semibold flex items-center justify-center gap-3"
+                disabled={isSubmitting}
               >
                 <img src="/icons/google.png" className="w-6" alt="google" />
                 <span>Sign in with Google</span>
