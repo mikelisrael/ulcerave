@@ -1,5 +1,5 @@
 import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../context";
 import { db } from "../utils/firebase";
 import Ellipse from "../assets/ellipse_1.png";
@@ -13,11 +13,7 @@ const Onboarding = () => {
   // get user
   const { user, setUser } = useGlobalContext();
   const navigate = useNavigate();
-
-  // if (user?.avatar) {
-  //   navigate("/dashboard", { replace: true });
-  //   return;
-  // }
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
 
   const images = [
     "/avatars/avatar_1.svg",
@@ -38,7 +34,7 @@ const Onboarding = () => {
     "/avatars/avatar_6.svg",
   ];
 
-  const isEnabled = user?.avatar;
+  const isEnabled = selectedAvatar;
 
   const setAvatar = async (avatar) => {
     // set user avatar to local storage
@@ -58,21 +54,22 @@ const Onboarding = () => {
             { avatar: avatar },
             { merge: true }
           );
-          setUser({
-            ...user,
-            avatar: avatar,
-          });
         }
+
+        setSelectedAvatar(avatar);
       });
 
       // console.log("Avatar updated in Firestore!");
     } catch (e) {
       toast("Error updating avatar");
     }
+  };
 
+  const proceedToDashboard = () => {
+    navigate("/dashboard", { replace: true });
     setUser({
       ...user,
-      avatar: avatar,
+      avatar: selectedAvatar,
     });
   };
 
@@ -101,7 +98,7 @@ const Onboarding = () => {
           <Avatar
             sx={{ width: 150, height: 150, bgcolor: "#dbdbdb" }}
             alt="display picture"
-            src={user?.avatar} // add the src attribute here with the image URL
+            src={selectedAvatar} // add the src attribute here with the image URL
           >
             {!user?.avatar && <WallpaperOutlinedIcon />}
           </Avatar>
@@ -117,7 +114,11 @@ const Onboarding = () => {
               onClick={() => setAvatar(image)}
             >
               <Avatar
-                sx={{ width: 70, height: 70 }}
+                sx={{
+                  width: 70,
+                  height: 70,
+                  border: selectedAvatar === image && "solid 3px #0082e8",
+                }}
                 alt="display picture"
                 src={image} // add the src attribute here with the image URL
               />
@@ -131,7 +132,7 @@ const Onboarding = () => {
           type="submit"
           className="mt-8 main_btn themed disabled:bg-gray-300 disabled:cursor-not-allowed focus:disabled:!bg-gray-300 hover:disabled:!bg-gray-300"
           disabled={!isEnabled}
-          onClick={() => navigate("/dashboard", { replace: true })}
+          onClick={() => proceedToDashboard()}
         >
           <span className="ml-3 inline-block">Proceed to Home Page</span>
           <KeyboardArrowRightIcon />
