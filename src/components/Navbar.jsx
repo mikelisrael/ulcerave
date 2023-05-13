@@ -13,6 +13,7 @@ const Navbar = () => {
   const { isLoggedIn, setIsLoggedIn, user, setUser } = useGlobalContext();
   const { pathname } = useLocation();
   const [navBarVisible, setNavBarVisible] = useState(false);
+  const [onboardingLoaded, setOnboardingLoaded] = useState(false); // new state variable
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,7 +21,7 @@ const Navbar = () => {
 
   // check if user is logged in
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUser({
           uid: user.uid,
@@ -28,16 +29,16 @@ const Navbar = () => {
 
         setIsLoggedIn(true);
 
-        // Check if the user has just signed up
-        const isNewUser =
-          user.metadata.creationTime === user.metadata.lastSignInTime;
+        // fetch user document from Firestore
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
 
-        if (isNewUser) {
-          // Navigate to onboarding page
-          navigate("/onboarding", { replace: true });
-        } else {
-          // Navigate to dashboard page
+        if (docSnap.exists() && docSnap.data().avatar) {
+          // navigate to dashboard page if user has an avatar
           navigate("/dashboard", { replace: true });
+        } else {
+          // navigate to onboarding page if user doesn't have an avatar
+          navigate("/onboarding", { replace: true });
         }
       } else {
         setIsLoggedIn(false);
@@ -57,12 +58,28 @@ const Navbar = () => {
       });
 
       // get user from users array
-      const currentUser = users.find((user) => user.uid === user.uid);
+      const currentUser = users.find(
+        (user) => user.uid === auth?.currentUser?.uid
+      );
 
       // set user
       setUser(currentUser);
     })();
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      if (!user?.avatar) {
+        if (!onboardingLoaded) {
+          // check if onboarding page has already been loaded
+          navigate("/onboarding", { replace: true });
+          setOnboardingLoaded(true); // set onboardingLoaded to true
+        }
+      } else {
+        navigate("/dashboard", { replace: true });
+      }
+    }
+  }, [isLoggedIn, user, onboardingLoaded]); // include onboardingLoaded as a dependency
 
   // sign out
   const handleSignOut = () => {
