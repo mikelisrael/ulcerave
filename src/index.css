@@ -24,7 +24,7 @@ body {
 }
 
 .universal_x {
-  @apply px-8 md:px-16 lg:px-32 xl:px-48;
+  @apply px-4 md:px-16 lg:px-32 xl:px-48;
 }
 
 .universal_x_margin {
@@ -48,4 +48,13 @@ body {
 .Toastify__toast-body {
   font-family: var(--font) !important;
   @apply !text-sm;
+}
+
+.details {
+  height: 0;
+  overflow: hidden;
+}
+
+.details.open {
+  height: auto;
 }
