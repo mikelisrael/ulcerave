@@ -5,6 +5,7 @@ const AppContext = React.createContext();
 export const AppProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [visited, setVisited] = useState(false);
+  const [user, setUser] = useState({});
 
   // on user first visit, cache visited
   useEffect(() => {
@@ -18,7 +19,9 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, visited }}>
+    <AppContext.Provider
+      value={{ isLoggedIn, setIsLoggedIn, visited, user, setUser }}
+    >
       {children}
     </AppContext.Provider>
   );
