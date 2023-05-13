@@ -205,54 +205,6 @@ const Dashboard = () => {
               </div>
             </div>
           </article>
-
-          <article className="group cursor-pointer grid place-items-center">
-            <div className="border border-gray-200 m-2 p-2">
-              <img
-                src="/images/image_1.png"
-                alt="hello image"
-                className="w-full group-hover:opacity-75 transition-all duration-300"
-              />
-              <div className="w-full">
-                <h3 className="font-bold text-xl mt-3">Gastric Ulcer 101</h3>
-                <p className="text-grey capitalize">By Bethel Ohanugo</p>
-              </div>
-            </div>
-          </article>
-
-          <article className="group cursor-pointer grid place-items-center">
-            <div className="border border-gray-200 m-2 p-2">
-              <img
-                src="/images/image_2.png"
-                alt="hospital"
-                className="w-full group-hover:opacity-75 transition-all duration-300"
-              />
-
-              <div className="w-full">
-                <h3 className="font-bold text-xl mt-3">
-                  How Gastric Ulcer is Diagnosed
-                </h3>
-                <p className="text-grey capitalize">By Bethel Ohanugo</p>
-              </div>
-            </div>
-          </article>
-
-          <article className="group cursor-pointer grid place-items-center">
-            <div className="border border-gray-200 m-2 p-2">
-              <img
-                src="/images/image_3.png"
-                alt="frown"
-                className="w-full group-hover:opacity-75 transition-all duration-300"
-              />
-
-              <div className="w-full">
-                <h3 className="font-bold text-xl mt-3">
-                  Lifestyle Modification
-                </h3>
-                <p className="text-grey capitalize">By Bethel Ohanugo</p>
-              </div>
-            </div>
-          </article>
         </Slider>
       </div>
     </div>
