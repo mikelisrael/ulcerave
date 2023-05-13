@@ -1,11 +1,144 @@
-import React from 'react'
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import React, { useEffect } from "react";
+import { useGlobalContext } from "../context";
+import { db } from "../utils/firebase";
+import Ellipse from "../assets/ellipse_1.png";
+import { Avatar } from "@mui/material";
+import WallpaperOutlinedIcon from "@mui/icons-material/WallpaperOutlined";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Onboarding = () => {
-  return (
-    <div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, nesciunt. Sequi, voluptate! Id necessitatibus earum eius officiis, ea cupiditate reprehenderit nulla exercitationem magni eligendi laudantium error tenetur! Atque ratione aut repudiandae ab sunt reiciendis. Tempore debitis asperiores possimus labore accusamus numquam ipsum iure, impedit laborum. Magnam aspernatur nesciunt alias mollitia quas iusto quae, minima asperiores at inventore similique debitis voluptas nihil pariatur ea sequi consequatur tempora assumenda perferendis libero necessitatibus facere. Suscipit enim ab voluptate repellendus! Tempora culpa numquam maxime optio dolorum eius earum suscipit eaque corrupti, similique, adipisci quo ea laborum vel deleniti recusandae, sequi consectetur magnam reprehenderit a nesciunt nihil? Voluptates quos commodi dolores nobis fugit, repellat eveniet corporis fuga sed, repellendus earum ducimus ipsa ut eum corrupti hic. Unde ex sint illum, ea adipisci ut perspiciatis exercitationem rem cumque explicabo id ipsum doloribus sunt nulla nihil deleniti excepturi fugiat accusantium voluptate porro quasi quae. Fuga esse quas deleniti laboriosam quo quidem dolorem, unde enim inventore suscipit adipisci mollitia velit doloribus asperiores nihil fugit voluptate? Alias nihil quia dolore voluptas placeat quod veniam error! Ipsa veritatis quaerat, sit numquam magnam dolore, consequatur eum, odio omnis enim in. Porro qui laudantium saepe reprehenderit veniam neque enim amet, blanditiis impedit ab ipsum illo deserunt libero placeat beatae nostrum necessitatibus. Recusandae voluptates in, voluptate tempore ab placeat autem sunt amet sequi voluptas sapiente iusto facilis sint consequatur eos repellat hic architecto. Esse eius alias aliquid tempora provident, facilis eligendi hic odio? Reiciendis enim facere voluptas, expedita sit velit id et hic esse iusto nam. Nobis, voluptatibus! Consequuntur sed porro unde tenetur quaerat asperiores iste magnam, harum id officia animi maxime quo dolores molestiae eaque nulla molestias sint itaque atque aliquid accusantium quae! Corporis fuga, laudantium id provident quae ullam voluptas quis quia deserunt nesciunt? Ducimus ratione dignissimos veniam at impedit aperiam quia qui, quae nulla reiciendis ipsam molestias fugiat facere laboriosam! Sapiente, reiciendis repudiandae? Id nobis iusto aut minima omnis. Ratione alias natus praesentium voluptates modi amet delectus veritatis deleniti exercitationem nobis, laborum aperiam ipsam sunt omnis illo dolor at ab. Harum eum recusandae pariatur placeat suscipit sequi! Tenetur est fugiat consectetur, dolores perferendis cum alias ad iusto ipsa repellat voluptatum, quod accusamus deleniti minus deserunt aut expedita officiis assumenda voluptas odit nisi perspiciatis esse libero! Saepe dicta recusandae tempora voluptatum dolor quibusdam architecto perferendis sequi laborum, facilis quas veritatis corporis magni aperiam, itaque eius. Eligendi blanditiis adipisci a voluptates aliquam.
-    </div>
-  )
-}
+  // get user
+  const { user, setUser } = useGlobalContext();
+  const navigate = useNavigate();
 
-export default Onboarding
+  // if (user?.avatar) {
+  //   navigate("/dashboard", { replace: true });
+  //   return;
+  // }
+
+  const images = [
+    "/avatars/avatar_1.svg",
+    "/avatars/avatar_2.svg",
+    "/avatars/avatar_3.svg",
+    "/avatars/avatar_4.svg",
+    "/avatars/avatar_5.svg",
+    "/avatars/avatar_7.svg",
+    "/avatars/avatar_8.svg",
+    "/avatars/avatar_9.svg",
+    "/avatars/avatar_12.svg",
+    "/avatars/avatar_11.svg",
+    "/avatars/avatar_13.svg",
+    "/avatars/avatar_14.svg",
+    "/avatars/avatar_15.svg",
+    "/avatars/avatar_16.svg",
+    "/avatars/avatar_10.svg",
+    "/avatars/avatar_6.svg",
+  ];
+
+  const isEnabled = user?.avatar;
+
+  const setAvatar = async (avatar) => {
+    // set user avatar to local storage
+
+    // push to db collection firestore
+    const docRef = collection(db, "users");
+
+    const snapshots = await getDocs(docRef);
+
+    try {
+      // set to doc
+      snapshots.forEach(async (item) => {
+        if (item?.data()?.uid === user?.uid) {
+          const docId = item.id;
+          await setDoc(
+            doc(db, "users", docId),
+            { avatar: avatar },
+            { merge: true }
+          );
+          setUser({
+            ...user,
+            avatar: avatar,
+          });
+        }
+      });
+
+      // console.log("Avatar updated in Firestore!");
+    } catch (e) {
+      toast("Error updating avatar");
+    }
+
+    setUser({
+      ...user,
+      avatar: avatar,
+    });
+  };
+
+  return (
+    <div className="universal_x pt-20 pb-24 md:pb-24" data-aos="zoom-out">
+      <div className="absolute w-full top-0 left-1/2 -translate-x-1/2 -z-10 select-none">
+        <img src={Ellipse} alt="" />
+      </div>
+      <center className="space-y-6">
+        <div>
+          <h2 className="font-bold text-2xl  md:text-3xl">
+            Welcome{" "}
+            <span className="capitalize">
+              {user?.firstName || <em className="text-xs">loading...</em>}
+            </span>
+          </h2>
+          <p className="text-grey">
+            Select an Ulcerave Avatar to complete your setup
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-bold text-base  md:text-xl mb-5">
+            Select Avatar
+          </h3>
+          <Avatar
+            sx={{ width: 150, height: 150, bgcolor: "#dbdbdb" }}
+            alt="display picture"
+            src={user?.avatar} // add the src attribute here with the image URL
+          >
+            {!user?.avatar && <WallpaperOutlinedIcon />}
+          </Avatar>
+        </div>
+      </center>
+
+      <div className="grid place-items-center grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-x-4 gap-y-6 lg:gap-y-9 mt-12">
+        {images.map((image, index) => {
+          return (
+            <button
+              className="hover:shadow-md w-max rounded-full transition-all duration-300 ease-in-out"
+              key={index}
+              onClick={() => setAvatar(image)}
+            >
+              <Avatar
+                sx={{ width: 70, height: 70 }}
+                alt="display picture"
+                src={image} // add the src attribute here with the image URL
+              />
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-5 w-full flex justify-center md:justify-end">
+        <button
+          type="submit"
+          className="mt-8 main_btn themed disabled:bg-gray-300 disabled:cursor-not-allowed focus:disabled:!bg-gray-300 hover:disabled:!bg-gray-300"
+          disabled={!isEnabled}
+          onClick={() => navigate("/dashboard", { replace: true })}
+        >
+          <span className="ml-3 inline-block">Proceed to Home Page</span>
+          <KeyboardArrowRightIcon />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Onboarding;
