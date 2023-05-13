@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import { Link } from "react-router-dom";
-import GoToDashboard from "../components/GoToDashboard";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, db, provider } from "../utils/firebase";
 import { toast } from "react-toastify";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -42,18 +41,20 @@ const SignUp = () => {
 
     createUserWithEmailAndPassword(auth, user.email, user.password)
       .then(async (userCredential) => {
-        console.log(userCredential);
+        const uid = userCredential.user.uid;
+
         const newUser = {
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
           password: user.password,
+          uid: uid,
         };
 
         // add user to Firestore
         try {
           await addDoc(collection(db, "users"), newUser);
-          toast.success("Signed up successfully");
+          // toast.success("Signed up successfully");
         } catch (e) {
           // error adding user to Firestore database
           toast.error(e.message);
@@ -72,30 +73,30 @@ const SignUp = () => {
 
   //sign up with google
   const handleGoogleSignUp = () => {
-    // sign in with google
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
+        // The signed-in user info.
         const user = result.user;
-        const newUser = {
-          firstName: user.displayName.split(" ")[0],
-          lastName: user.displayName.split(" ")[1],
-          email: user.email,
-          password: "", // since Google sign-in does not provide a password, set it to an empty string
-        };
-        // add the new user to the database
-        addDoc(collection(db, "users"), newUser)
-          .then(() => {
-            toast.success("Signed up successfully");
-          })
-          .catch((error) => {
-            // if it contains invalid-email, no error
-            if (error.code === "auth/invalid-email") {
-              return;
-            }
-            toast.error(error.message);
-          });
+
+        // check if user exists in the database
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          console.log("user exists");
+        } else {
+          // add the new user to the database
+          const newUser = {
+            uid: user.uid,
+            firstName: user.displayName.split(" ")[0],
+            lastName: user.displayName.split(" ")[1],
+            email: user.email,
+          };
+          await addDoc(collection(db, "users"), newUser);
+        }
       })
       .catch((error) => {
+        // Handle Errors here.
         toast.error(error.message);
       })
       .finally(() => {
@@ -110,7 +111,7 @@ const SignUp = () => {
         data-aos="zoom-out"
         data-aos-duration="300"
       >
-        <div className="max-w-sm md:max-w-[500px] mt-36 mb-20 mx-auto">
+        <div className="max-w-[350px] md:max-w-[500px] mt-24 md:mt-36 mb-20 mx-auto">
           <center>
             <img src="/logo.svg" className="w-40" alt="logo" />
           </center>
@@ -180,7 +181,7 @@ const SignUp = () => {
               {/* create account button */}
               <button
                 type="submit"
-                className="mt-8 main_btn themed w-full disabled:bg-gray-300 disabled:cursor-not-allowed focus:!bg-gray-300 hover:!bg-gray-300"
+                className="mt-8 main_btn themed w-full disabled:bg-gray-300 disabled:cursor-not-allowed focus:disabled:!bg-gray-300 hover:disabled:!bg-gray-300"
                 disabled={!isEnabled}
               >
                 Create Account

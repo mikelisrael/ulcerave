@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
-import GoToDashboard from "../components/GoToDashboard";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../utils/firebase";
+import { auth, db, provider } from "../utils/firebase";
 import { toast } from "react-toastify";
+import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,7 +34,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        toast.success("Signed in successfully");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -56,10 +54,27 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // The signed-in user info.
         const user = result.user;
-        toast.success("Signed in successfully");
+
+        // check if user exists in the database
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          console.log("user exists");
+          return;
+        } else {
+          // add the new user to the database
+          const newUser = {
+            uid: user.uid,
+            firstName: user.displayName.split(" ")[0],
+            lastName: user.displayName.split(" ")[1],
+            email: user.email,
+          };
+          await addDoc(collection(db, "users"), newUser);
+        }
       })
       .catch((error) => {
         // Handle Errors here.
@@ -77,7 +92,7 @@ const Login = () => {
         data-aos="zoom-out"
         data-aos-duration="300"
       >
-        <div className="max-w-sm md:max-w-[500px] mt-36 mb-20 mx-auto">
+        <div className="max-w-[350px] md:max-w-[500px] mt-24 md:mt-36 mb-20 mx-auto">
           <center>
             <img src="/logo.svg" className="w-40" alt="logo" />
           </center>
@@ -134,7 +149,7 @@ const Login = () => {
               <button
                 disabled={!isEnabled}
                 type="submit"
-                className="mt-8 main_btn themed w-full disabled:bg-gray-300 disabled:cursor-not-allowed focus:!bg-gray-300 hover:!bg-gray-300"
+                className="mt-8 main_btn themed w-full disabled:bg-gray-300 disabled:cursor-not-allowed focus:disabled:!bg-gray-300 hover:disabled:!bg-gray-300"
               >
                 Sign in
               </button>
