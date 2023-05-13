@@ -3,11 +3,14 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./css/navbar.css";
 import { useGlobalContext } from "../context";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../utils/firebase";
+import { auth, db } from "../utils/firebase";
+import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
+import { Avatar } from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { isLoggedIn, setIsLoggedIn } = useGlobalContext();
+  const { isLoggedIn, setIsLoggedIn, user, setUser } = useGlobalContext();
   const { pathname } = useLocation();
   const [navBarVisible, setNavBarVisible] = useState(false);
 
@@ -19,6 +22,10 @@ const Navbar = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+        setUser({
+          uid: user.uid,
+        });
+
         setIsLoggedIn(true);
 
         // Check if the user has just signed up
@@ -39,6 +46,24 @@ const Navbar = () => {
     return unsubscribe;
   }, []);
 
+  // get user from users collection
+  useEffect(() => {
+    (async () => {
+      let users = [];
+      const querySnapshot = await getDocs(collection(db, "users"));
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        users.push(doc.data());
+      });
+
+      // get user from users array
+      const currentUser = users.find((user) => user.uid === user.uid);
+
+      // set user
+      setUser(currentUser);
+    })();
+  }, [isLoggedIn]);
+
   // sign out
   const handleSignOut = () => {
     auth.signOut();
@@ -47,7 +72,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center py-10 px-8 md:px-16 lg:px-32 xl:px-48 absolute w-full z-10">
+    <nav
+      className={`flex justify-between items-center py-10 px-8 md:px-16 lg:px-32 xl:px-48 absolute w-full z-10 ${
+        pathname === "/onboarding" && "hidden"
+      } ${isLoggedIn && "border-b border-gray-200"}`}
+    >
       <NavLink to={isLoggedIn ? "dashboard" : "/"}>
         <img src="/logo.svg" alt="logo" />
       </NavLink>
@@ -124,12 +153,19 @@ const Navbar = () => {
         )}
       </ul>
 
-      <button
-        onClick={() => navigate("login")}
-        className="main_btn transparent"
-      >
-        Log in
-      </button>
+      {!isLoggedIn ? (
+        <button
+          onClick={() => navigate("login")}
+          className="main_btn transparent"
+        >
+          Log in
+        </button>
+      ) : (
+        <div className="flex items-center gap-2 cursor-pointer">
+          <Avatar src={user?.avatar} alt={user?.firstName} />
+          <KeyboardArrowDownIcon className="text-primaryBlue" />
+        </div>
+      )}
     </nav>
   );
 };
