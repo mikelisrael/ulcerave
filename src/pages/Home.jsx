@@ -14,7 +14,7 @@ const Home = () => {
       </div>
 
       <header
-        className="universal_x pt-56 pb-32 flex items-center justify-center flex-col"
+        className="universal_x pt-40 md:pt-56 pb-24 md:pb-32 flex items-center justify-center flex-col"
         data-aos="fade-up"
       >
         <h1 className="text-3xl lg:text-5xl font-bold text-center">
@@ -66,7 +66,7 @@ const Home = () => {
 
             {/* quote  */}
             <blockquote
-              className="bg-lightBlue absolute w-3/4 px-5 py-3 shadow-lg top-[35%] -right-[2%] rounded-3xl"
+              className="bg-lightBlue absolute w-4/5 md:w-3/4 px-5 py-3 shadow-lg top-[35%] left-0 md:left-auto md:-right-[2%] rounded-3xl"
               data-aos="fade-right"
             >
               <img src="/avatars/avatar_1.svg" className="w-14" alt="avatar" />
@@ -131,7 +131,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="my-32 universal_x_margin border-t-lightBlue border-t-4 py-14">
+      <section className="mt-32 mb-12 universal_x_margin border-t-lightBlue border-t-4 py-14">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="font-bold text-base  md:text-2xl">
