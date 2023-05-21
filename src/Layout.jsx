@@ -14,6 +14,8 @@ import { useGlobalContext } from "./context";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Onboarding from "./pages/Onboarding";
+import Reminder from "./pages/Reminder";
+import Articles from "./pages/articles";
 
 function App() {
   const { visited } = useGlobalContext();
@@ -40,6 +42,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
+            <Route path="articles" element={<Articles />} />
             <Route
               element={
                 <ProtectedRoute
@@ -52,6 +55,7 @@ function App() {
             </Route>
             <Route element={<ProtectedRoute redirectPath="/login" />}>
               <Route path="tracker" element={<Tracker />} />
+              <Route path="/reminder" element={<Reminder />} />
             </Route>
 
             {/* error page */}
