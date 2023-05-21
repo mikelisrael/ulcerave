@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { getTitle } from "../../../utils/helperFunctions";
+import CircleIcon from "@mui/icons-material/Circle";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const Articles = () => {
   getTitle("articles");
@@ -40,15 +42,43 @@ const Articles = () => {
         </div>
       </center>
 
-      <section>
-        <ul className="mt-10 border-b border-gray-300 pb-3 ">
+      <div>
+        <ul className="mt-10 border-b border-gray-300 pb-3">
           <li className="text-primaryBlue">Articles for you</li>
         </ul>
 
         <ul>
-          <li></li>
+          <li className="flex gap-5 border-b border-gray-300 py-12">
+            <img
+              src="/images/image_1.png"
+              alt="hello image"
+              className="h-64 w-64 rounded-2xl object-cover"
+            />
+
+            <div className="flex-1">
+              <h3 className="text-2xl font-semibold">Gastric Ulcer 101</h3>
+              <section className="mt-2 flex items-center gap-5">
+                <div className="flex items-center gap-1">
+                  <CircleIcon className="text-gray-300" />
+                  <h4 className="text-lg">By Bethel Ohanugo</h4>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <span className="text-gray-300">●</span>
+                  <h4 className="text-grey">28th Apr, 2023</h4>
+                </div>
+              </section>
+
+              <p className="mt-5 max-w-2xl text-grey lg:text-lg">
+                Gastric ulcer is a hole or rupture in the gut or along
+                the intestinal wall in the stomach. It often appears as sores...
+              </p>
+
+              <section></section>
+            </div>
+          </li>
         </ul>
-      </section>
+      </div>
     </div>
   );
 };
