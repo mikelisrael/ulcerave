@@ -2,37 +2,36 @@ import React from "react";
 import "./css/home.css";
 import { useNavigate } from "react-router-dom";
 import Ellipse from "../assets/ellipse_1.png";
-import GoToDashboard from "../components/GoToDashboard";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
     <>
-      <div className="absolute w-full top-0 left-1/2 -translate-x-1/2 -z-10 select-none">
+      <div className="absolute left-1/2 top-0 -z-10 w-full -translate-x-1/2 select-none">
         <img src={Ellipse} alt="" />
       </div>
 
       <header
-        className="universal_x pt-40 md:pt-56 pb-24 md:pb-32 flex items-center justify-center flex-col"
+        className="universal_x flex flex-col items-center justify-center pb-24 pt-40 md:pb-32 md:pt-56"
         data-aos="fade-up"
       >
-        <h1 className="text-3xl lg:text-5xl font-bold text-center">
+        <h1 className="text-center text-3xl font-bold lg:text-5xl">
           Manage your{" "}
-          <span className="text-orangeColor whitespace-nowrap">
+          <span className="whitespace-nowrap text-orangeColor">
             Gastric Ulcer
           </span>
           <br /> with ease
         </h1>
 
-        <p className="mt-5 text-base lg:text-xl text-grey text-center">
+        <p className="mt-5 text-center text-base text-grey lg:text-xl">
           Never miss a dose or meal with our reminders. Ulcerave also provides
           reliable symptom
           <br className="hidden xl:block" /> checker and resources
         </p>
 
         <button
-          className="main_btn themed text-lg mt-10"
+          className="main_btn themed mt-10 text-lg"
           onClick={() => navigate("login")}
         >
           Get Started for Free
@@ -40,9 +39,9 @@ const Home = () => {
       </header>
 
       <section className="universal_x intro" data-aos="fade-up">
-        <div className="space-y-10 md:grid bg-lightBlue py-12 px-8 items-center justify-center gap-20 rounded-3xl">
+        <div className="items-center justify-center gap-20 space-y-10 rounded-3xl bg-lightBlue px-8 py-12 md:grid">
           <div className="md:order-2">
-            <h2 className="font-bold text-3xl lg:text-4xl">
+            <h2 className="text-3xl font-bold lg:text-4xl">
               Never Miss a Dose or Meal
             </h2>
             <p className="mt-5">
@@ -66,11 +65,11 @@ const Home = () => {
 
             {/* quote  */}
             <blockquote
-              className="bg-lightBlue absolute w-4/5 md:w-3/4 px-5 py-3 shadow-lg top-[35%] left-0 md:left-auto md:-right-[2%] rounded-3xl"
+              className="absolute left-0 top-[35%] w-4/5 rounded-3xl bg-lightBlue px-5 py-3 shadow-lg md:-right-[2%] md:left-auto md:w-3/4"
               data-aos="fade-right"
             >
               <img src="/avatars/avatar_1.svg" className="w-14" alt="avatar" />
-              <div className="flex gap-2 mt-2 items-start">
+              <div className="mt-2 flex items-start gap-2">
                 <p>
                   You'll never get used to the pain. It is time to take your
                   medication
@@ -83,12 +82,12 @@ const Home = () => {
       </section>
 
       {/* stay informed and folders section */}
-      <section className="py-28 universal_x">
+      <section className="universal_x py-28">
         <center>
-          <h2 className="font-bold text-3xl lg:text-4xl">
+          <h2 className="text-3xl font-bold lg:text-4xl">
             Stay Informed and Empowered
           </h2>
-          <p className="mt-5 text-base lg:text-xl text-grey text-center">
+          <p className="mt-5 text-center text-base text-grey lg:text-xl">
             Access a wealth of information on Gastric Ulcer. Our resource Centre
             helps you <br className="hidden lg:block" /> make informed Decisions
           </p>
@@ -99,9 +98,9 @@ const Home = () => {
       </section>
 
       <section className="universal_x intro" data-aos="fade-up">
-        <div className="space-y-10 md:grid bg-lightBlue py-12 px-8 items-center justify-center gap-20 rounded-3xl">
+        <div className="items-center justify-center gap-20 space-y-10 rounded-3xl bg-lightBlue px-8 py-12 md:grid">
           <div className="md:order-2">
-            <h2 className="font-bold text-3xl lg:text-4xl">
+            <h2 className="text-3xl font-bold lg:text-4xl">
               Stay on top of your Symptoms
             </h2>
             <p className="mt-5">
@@ -124,24 +123,24 @@ const Home = () => {
             {/* quote  */}
             <img
               src="/images/image_5.png"
-              className="absolute md:w-3/4 px-5 py-3 -bottom-[25%] -right-[2%] rounded-3xl"
+              className="absolute -bottom-[25%] -right-[2%] rounded-3xl px-5 py-3 md:w-3/4"
               data-aos="fade-left"
             />
           </div>
         </div>
       </section>
 
-      <section className="mt-32 mb-12 universal_x_margin border-t-lightBlue border-t-4 py-14">
+      <section className="universal_x_margin mb-12 mt-32 border-t-4 border-t-lightBlue py-14">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="font-bold text-base  md:text-2xl">
+            <h2 className="text-base font-bold  md:text-2xl">
               Transforming gastric ulcer care
             </h2>
 
             <img
               src="/logo.svg"
               alt="logo"
-              className="w-[50%] md:w-[80%] -mt-2 md:-mt-5"
+              className="-mt-2 w-[50%] md:-mt-5 md:w-[80%]"
             />
           </div>
 
@@ -152,7 +151,7 @@ const Home = () => {
 
         <div className="flex flex-col gap-10 md:gap-20">
           <p
-            className="mt-10 pl-5 border-l-[6px] border-l-lightBlue md:max-w-[60%] text-grey md:self-end"
+            className="mt-10 border-l-[6px] border-l-lightBlue pl-5 text-grey md:max-w-[60%] md:self-end"
             data-aos="fade-right"
           >
             Ulcerave is a comprehensive and intuitive webapp that is designed to
@@ -162,7 +161,7 @@ const Home = () => {
             supportive resources that cater to their unique needs.
           </p>
           <p
-            className="pl-5 border-l-[6px] border-l-lightBlue md:max-w-[60%] text-grey"
+            className="border-l-[6px] border-l-lightBlue pl-5 text-grey md:max-w-[60%]"
             data-aos="fade-left"
           >
             A Ulcerave, we believe tha managing Gastric ulcer should be a

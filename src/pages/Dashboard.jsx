@@ -7,8 +7,11 @@ import Slider from "react-slick";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { getTitle } from "../../utils/helperFunctions";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
+  getTitle("home");
   const { user } = useGlobalContext();
   const [showDetails, setShowDetails] = useState(false);
   const [detailsHeight, setDetailsHeight] = useState(0);
@@ -64,27 +67,31 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="universal_x pt-28 md:pt-48 pb-24 md:pb-24">
-      <header className="bg-[100%] bg-blue-200 bg-[url('/images/status_check.svg')] bg-no-repeat py-5 md:py-10 rounded-[3.5rem] flex items-center justify-center flex-col status_check">
-        <h4 className="font-bold flex gap-1">
+    <div
+      className="universal_x pb-24 pt-28 md:pb-24 md:pt-40"
+      data-aos="fade-in"
+      data-aos-duration="300"
+    >
+      <header className="status_check flex flex-col items-center justify-center rounded-[3.5rem] bg-blue-200 bg-[url('/images/status_check.svg')] bg-[100%] bg-no-repeat py-5 md:py-10">
+        <h4 className="flex gap-1 font-bold">
           <span>Hello</span>
           <span>{user?.firstName}</span>{" "}
           <img src="/icons/hello_emoji.png" alt="hello emoji" />
         </h4>
 
-        <h2 className="mt-5 font-bold text-2xl md:text-4xl">Status Check</h2>
-        <p className="mt-1 text-base lg:text-lg text-grey text-center">
+        <h2 className="mt-5 text-2xl font-bold md:text-4xl">Status Check</h2>
+        <p className="mt-1 text-center text-base text-grey lg:text-lg">
           What's your pain level?
         </p>
 
         {/* range slide */}
-        <div className="mt-10 w-full flex justify-center">
+        <div className="mt-10 flex w-full justify-center">
           <RangeSlider />
         </div>
       </header>
 
-      <center className="space-y-1 md:space-y-3 py-12 md:py-20">
-        <p className="text-base lg:text-lg text-grey text-center capitalize">
+      <center className="space-y-1 py-12 md:space-y-3 md:py-20">
+        <p className="text-center text-base capitalize text-grey lg:text-lg">
           upcoming reminder
         </p>
 
@@ -93,26 +100,29 @@ const Dashboard = () => {
         <div
           className={`details ${showDetails ? "open" : ""}`}
           ref={detailsRef}
-          style={{ height: `${detailsHeight}px`, transition: "height 0.5s" }}
+          style={{
+            height: `${detailsHeight}px`,
+            transition: "height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275",
+          }}
         >
           <div className="space-y-4">
-            <p className="max-w-md text-base lg:text-lg text-grey capitalize">
+            <p className="max-w-md text-base capitalize text-grey lg:text-lg">
               Breakfast with Kinfe and Boms at Mcdonalds lol. This is the text
               field. I think 2/3 lines max. What do you think?{" "}
             </p>
 
-            <p className="max-w-md text-base lg:text-lg text-grey capitalize font-medium">
+            <p className="max-w-md text-base font-medium capitalize text-grey lg:text-lg">
               Monday - Thursday
             </p>
 
-            <p className="max-w-md text-base lg:text-lg text-grey capitalize">
+            <p className="max-w-md text-base capitalize text-grey lg:text-lg">
               Snooze: 10 minutes
             </p>
           </div>
         </div>
 
         <button
-          className="text-primaryBlue font-medium"
+          className="font-medium text-primaryBlue"
           onClick={() => setShowDetails(!showDetails)}
         >
           {showDetails ? (
@@ -129,16 +139,16 @@ const Dashboard = () => {
         </button>
       </center>
 
-      <div className="py-2 px-2 md:px-6 border border-gray-200 rounded-3xl flex items-center justify-between gap-2">
+      <div className="flex items-center justify-between gap-2 rounded-3xl border border-gray-200 px-2 py-2 md:px-6">
         <div className="w-16 md:w-36">
-          <img src="/icons/dancer.svg" alt="dancer" className="" />
+          <img src="/icons/dancer.svg" alt="dancer" />
         </div>
 
         <div className="flex-1">
           <h2 className="font-bold  sm:text-2xl md:text-2xl">
             Never miss a Medication or Meal{" "}
           </h2>
-          <p className="text-xs lg:text-lg text-grey capitalize">
+          <p className="text-xs capitalize text-grey lg:text-lg">
             Click to set your medication reminders
           </p>
         </div>
@@ -152,56 +162,58 @@ const Dashboard = () => {
       </div>
 
       <div className="space-y-3 py-24">
-        <div className="flex items-center justify-between gap-3 mb-8">
-          <h2 className="font-bold text-xl">Articles for you</h2>
-          <button className="text-primaryBlue font-medium">See more</button>
+        <div className="mb-8 flex items-center justify-between gap-3">
+          <h2 className="text-xl font-bold">Articles for you</h2>
+          <Link to="/articles" className="font-medium text-primaryBlue">
+            See more
+          </Link>
         </div>
 
         <Slider {...settings} className="w-full">
-          <article className="group cursor-pointer grid place-items-center">
-            <div className="border border-gray-200 m-2 p-2">
+          <article className="group grid cursor-pointer place-items-center">
+            <div className="m-2 border border-gray-200 p-2">
               <img
                 src="/images/image_1.png"
                 alt="hello image"
-                className="w-full group-hover:opacity-75 transition-all duration-300"
+                className="w-full transition-all duration-300 group-hover:opacity-75"
               />
               <div className="w-full">
-                <h3 className="font-bold text-xl mt-3">Gastric Ulcer 101</h3>
-                <p className="text-grey capitalize">By Bethel Ohanugo</p>
+                <h3 className="mt-3 text-xl font-bold">Gastric Ulcer 101</h3>
+                <p className="capitalize text-grey">By Bethel Ohanugo</p>
               </div>
             </div>
           </article>
 
-          <article className="group cursor-pointer grid place-items-center">
-            <div className="border border-gray-200 m-2 p-2">
+          <article className="group grid cursor-pointer place-items-center">
+            <div className="m-2 border border-gray-200 p-2">
               <img
                 src="/images/image_2.png"
                 alt="hospital"
-                className="w-full group-hover:opacity-75 transition-all duration-300"
+                className="w-full transition-all duration-300 group-hover:opacity-75"
               />
 
               <div className="w-full">
-                <h3 className="font-bold text-xl mt-3">
+                <h3 className="mt-3 text-xl font-bold">
                   How Gastric Ulcer is Diagnosed
                 </h3>
-                <p className="text-grey capitalize">By Bethel Ohanugo</p>
+                <p className="capitalize text-grey">By Bethel Ohanugo</p>
               </div>
             </div>
           </article>
 
-          <article className="group cursor-pointer grid place-items-center">
-            <div className="border border-gray-200 m-2 p-2">
+          <article className="group grid cursor-pointer place-items-center">
+            <div className="m-2 border border-gray-200 p-2">
               <img
                 src="/images/image_3.png"
                 alt="frown"
-                className="w-full group-hover:opacity-75 transition-all duration-300"
+                className="w-full transition-all duration-300 group-hover:opacity-75"
               />
 
               <div className="w-full">
-                <h3 className="font-bold text-xl mt-3">
+                <h3 className="mt-3 text-xl font-bold">
                   Lifestyle Modification
                 </h3>
-                <p className="text-grey capitalize">By Bethel Ohanugo</p>
+                <p className="capitalize text-grey">By Bethel Ohanugo</p>
               </div>
             </div>
           </article>

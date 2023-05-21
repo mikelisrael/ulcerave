@@ -2,8 +2,8 @@ import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { getTitle } from "../../utils/helperFunctions";
 
-const Tracker = () => {
-  getTitle("tracker");
+const Reminder = () => {
+  getTitle("reminder");
 
   return (
     <div
@@ -12,23 +12,29 @@ const Tracker = () => {
       data-aos-duration="300"
     >
       <center className="text-grey lg:text-lg">
-        <p className="mb-6 max-w-md">Log in your Gastric Ulcer symptoms</p>
+        <p className="mb-6 max-w-md">
+          Set reminders for medical schedule, and other important task related
+          to your Ulcer management
+        </p>
 
         <button className="main_btn themed flex items-center gap-1">
-          <span>Add a new entry</span> <AddIcon />
+          <span>Set a Reminder</span> <AddIcon />
         </button>
 
         <div className="mt-28 max-w-md">
-          <img src="/icons/running.svg" className="select-none" alt="" />
+          <img src="/icons/falling.svg" className="select-none" alt="" />
 
           <h2 className="mt-5 text-2xl font-medium">
-            There is no data to display yet
+            There are currently no reminders set
           </h2>
-          <p>Start documenting your progress today!</p>
+          <p>
+            Start adding reminder to stay on track with your important
+            appointment
+          </p>
         </div>
       </center>
     </div>
   );
 };
 
-export default Tracker;
+export default Reminder;

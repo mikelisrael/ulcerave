@@ -8,12 +8,14 @@ import WallpaperOutlinedIcon from "@mui/icons-material/WallpaperOutlined";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 
 const Onboarding = () => {
   // get user
   const { user, setUser } = useGlobalContext();
   const navigate = useNavigate();
   const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const images = [
     "/avatars/avatar_1.svg",
@@ -73,14 +75,27 @@ const Onboarding = () => {
     });
   };
 
+  // show loader for 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
-    <div className="universal_x pt-20 pb-24 md:pb-24" data-aos="zoom-out">
-      <div className="absolute w-full top-0 left-1/2 -translate-x-1/2 -z-10 select-none">
+    <div className="universal_x pb-24 pt-20 md:pb-24" data-aos="zoom-out">
+      <div className="absolute left-1/2 top-0 -z-10 w-full -translate-x-1/2 select-none">
         <img src={Ellipse} alt="" />
       </div>
       <center className="space-y-6">
         <div>
-          <h2 className="font-bold text-2xl  md:text-3xl">
+          <h2 className="text-2xl font-bold  md:text-3xl">
             Welcome{" "}
             <span className="capitalize">
               {user?.firstName || <em className="text-xs">loading...</em>}
@@ -92,7 +107,7 @@ const Onboarding = () => {
         </div>
 
         <div>
-          <h3 className="font-bold text-base  md:text-xl mb-5">
+          <h3 className="mb-5 text-base  font-bold md:text-xl">
             Select Avatar
           </h3>
           <Avatar
@@ -105,11 +120,11 @@ const Onboarding = () => {
         </div>
       </center>
 
-      <div className="grid place-items-center grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-x-4 gap-y-6 lg:gap-y-9 mt-12">
+      <div className="mt-12 grid grid-cols-4 place-items-center gap-x-4 gap-y-6 sm:grid-cols-6 lg:grid-cols-8 lg:gap-y-9">
         {images.map((image, index) => {
           return (
             <button
-              className="hover:shadow-md w-max rounded-full transition-all duration-300 ease-in-out"
+              className="w-max rounded-full transition-all duration-300 ease-in-out hover:shadow-md"
               key={index}
               onClick={() => setAvatar(image)}
             >
@@ -127,10 +142,10 @@ const Onboarding = () => {
         })}
       </div>
 
-      <div className="mt-5 w-full flex justify-center md:justify-end">
+      <div className="mt-5 flex w-full justify-center md:justify-end">
         <button
           type="submit"
-          className="mt-8 main_btn themed disabled:bg-gray-300 disabled:cursor-not-allowed focus:disabled:!bg-gray-300 hover:disabled:!bg-gray-300"
+          className="main_btn themed mt-8 disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:!bg-gray-300 focus:disabled:!bg-gray-300"
           disabled={!isEnabled}
           onClick={() => proceedToDashboard()}
         >

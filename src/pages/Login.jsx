@@ -6,8 +6,11 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, db, provider } from "../utils/firebase";
 import { toast } from "react-toastify";
 import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { getTitle } from "../../utils/helperFunctions";
 
 const Login = () => {
+  getTitle("login");
+
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
     email: "",
@@ -87,20 +90,20 @@ const Login = () => {
   return (
     <>
       <main
-        className=" bg-lightGrey flex flex-col justify-between"
+        className=" flex flex-col justify-between bg-lightGrey"
         data-aos="zoom-out"
         data-aos-duration="300"
       >
-        <div className="max-w-[350px] md:max-w-[500px] mt-24 md:mt-36 mb-20 mx-auto">
+        <div className="mx-auto mb-20 mt-24 max-w-[350px] md:mt-36 md:max-w-[500px]">
           <center>
             <img src="/logo.svg" className="w-40" alt="logo" />
           </center>
           <form
-            className="bg-white rounded-3xl py-7 px-4 sm:px-7 md:px-14"
+            className="rounded-3xl bg-white px-4 py-7 sm:px-7 md:px-14"
             onSubmit={handleSubmit}
           >
             <center>
-              <h2 className="font-bold text-2xl">Welcome back</h2>
+              <h2 className="text-2xl font-bold">Welcome back</h2>
               <p className="text-grey">Please enter your details to Sign in</p>
             </center>
 
@@ -108,17 +111,17 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full border border-grey rounded-md py-3 px-4 outline-none"
+                className="w-full rounded-md border border-grey px-4 py-3 outline-none"
                 name="email"
                 value={user.email}
                 onChange={handleChange}
               />
               {/* style password with eye icon */}
-              <div className="mt-6 relative">
+              <div className="relative mt-6">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  className="w-full border border-grey rounded-md py-3 px-4 outline-none"
+                  className="w-full rounded-md border border-grey px-4 py-3 outline-none"
                   name="password"
                   value={user.password}
                   onChange={handleChange}
@@ -140,7 +143,7 @@ const Login = () => {
               </div>
               <a
                 href=""
-                className="mt-2 hover:underline block text-primaryBlue font-medium w-max"
+                className="mt-2 block w-max font-medium text-primaryBlue hover:underline"
               >
                 Forgot Password?
               </a>
@@ -148,7 +151,7 @@ const Login = () => {
               <button
                 disabled={!isEnabled}
                 type="submit"
-                className="mt-8 main_btn themed w-full disabled:bg-gray-300 disabled:cursor-not-allowed focus:disabled:!bg-gray-300 hover:disabled:!bg-gray-300"
+                className="main_btn themed mt-8 w-full disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:!bg-gray-300 focus:disabled:!bg-gray-300"
               >
                 Sign in
               </button>
@@ -165,11 +168,11 @@ const Login = () => {
             </div>
 
             {/* sign in with google button */}
-            <div className="border-t-lightGrey border-t-2 pt-6">
+            <div className="border-t-2 border-t-lightGrey pt-6">
               <button
                 type="button"
                 onClick={handleGoogleLogin}
-                className="w-full border border-grey px-5 py-3 rounded-full font-semibold flex items-center justify-center gap-3"
+                className="flex w-full items-center justify-center gap-3 rounded-full border border-grey px-5 py-3 font-semibold"
                 disabled={isSubmitting}
               >
                 <img src="/icons/google.png" className="w-6" alt="google" />
@@ -180,14 +183,14 @@ const Login = () => {
                 By creating an account, I accept Ulcerave’s{" "}
                 <a
                   href=""
-                  className="mt-5 font-medium text-primaryBlue hover:underline whitespace-nowrap"
+                  className="mt-5 whitespace-nowrap font-medium text-primaryBlue hover:underline"
                 >
                   Terms of Use
                 </a>{" "}
                 and{" "}
                 <a
                   href=""
-                  className="mt-5 font-medium text-primaryBlue hover:underline whitespace-nowrap"
+                  className="mt-5 whitespace-nowrap font-medium text-primaryBlue hover:underline"
                 >
                   Privacy Policy
                 </a>
