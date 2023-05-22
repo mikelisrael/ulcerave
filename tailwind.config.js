@@ -12,6 +12,7 @@ module.exports = {
         orangeColor: "#ff8c00",
         grey: "#808080",
         lightGrey: "#f6f6f6",
+        goldColor: "#EF9645",
       },
     },
   },
