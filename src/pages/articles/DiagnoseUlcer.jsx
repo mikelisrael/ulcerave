@@ -59,7 +59,7 @@ const DiagnoseUlcer = () => {
         Image from unsplash.com
       </h4>
 
-      <div className="mx-auto mt-10 text-lg">
+      <div className="mx-auto mt-10 md:text-lg">
         <p className="mb-7">
           If your doctor suspects that you have gastric ulcer, tests would be
           carried out to determine whether the Helicobacter pylori specie exists

@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="main_container">
       <Router>
         <Navbar />
 
@@ -91,7 +91,7 @@ function App() {
         draggable
         theme="colored"
       />
-    </>
+    </div>
   );
 }
 

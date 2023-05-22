@@ -59,7 +59,7 @@ const GastricUlcer = () => {
         Image from unsplash.com
       </h4>
 
-      <div className="mx-auto mt-10 text-lg">
+      <div className="mx-auto mt-10 md:text-lg">
         <h3 className="text-xl font-semibold">What is it?</h3>
         <p className="mb-7">
           Gastric ulcer is a hole or rupture in the gut or along the intestinal

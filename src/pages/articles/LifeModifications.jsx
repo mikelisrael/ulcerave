@@ -59,7 +59,7 @@ const LifeModifications = () => {
         Image from unsplash.com
       </h4>
 
-      <div className="mx-auto mt-10 text-lg">
+      <div className="mx-auto mt-10 md:text-lg">
         <p className="mb-7">
           Once it is confirmed that you have a gastric ulcer diagnosis, certain
           lifestyle modifications form a key component of your treatment

@@ -92,8 +92,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`absolute z-10 flex w-full items-center justify-between px-8 py-10 md:px-16 lg:px-32 xl:px-48 ${
-        pathname === "/onboarding" && "hidden"
+      className={`absolute z-10 w-full items-center justify-between px-8 py-10  md:px-16 lg:px-32 xl:px-48  ${
+        pathname === "/onboarding" ? "hidden" : "hidden md:flex"
       } ${isLoggedIn && "border-b border-gray-200"}`}
     >
       <NavLink to={isLoggedIn ? "dashboard" : "/"}>
