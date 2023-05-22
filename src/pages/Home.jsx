@@ -164,7 +164,7 @@ const Home = () => {
             className="border-l-[6px] border-l-lightBlue pl-5 text-grey md:max-w-[60%]"
             data-aos="fade-left"
           >
-            A Ulcerave, we believe tha managing Gastric ulcer should be a
+            At Ulcerave, we believe tha managing Gastric ulcer should be a
             seamless and stress-free experience. That is why we are dedicated to
             providing a user-friendly interface that is easy to navigate and
             understand. Our team of experienced professionals works tirelessly
