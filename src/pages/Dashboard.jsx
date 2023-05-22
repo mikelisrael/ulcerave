@@ -170,7 +170,10 @@ const Dashboard = () => {
         </div>
 
         <Slider {...settings} className="w-full">
-          <article className="group grid cursor-pointer place-items-center">
+          <Link
+            to="/articles/gastric-ulcer-101"
+            className="group grid cursor-pointer place-items-center"
+          >
             <div className="m-2 border border-gray-200 p-2">
               <img
                 src="/images/image_1.png"
@@ -182,9 +185,12 @@ const Dashboard = () => {
                 <p className="capitalize text-grey">By Bethel Ohanugo</p>
               </div>
             </div>
-          </article>
+          </Link>
 
-          <article className="group grid cursor-pointer place-items-center">
+          <Link
+            to="/articles/how-gastric-ulcer-is-diagnosed"
+            className="group grid cursor-pointer place-items-center"
+          >
             <div className="m-2 border border-gray-200 p-2">
               <img
                 src="/images/image_2.png"
@@ -199,9 +205,12 @@ const Dashboard = () => {
                 <p className="capitalize text-grey">By Bethel Ohanugo</p>
               </div>
             </div>
-          </article>
+          </Link>
 
-          <article className="group grid cursor-pointer place-items-center">
+          <Link
+            to="/articles/life-modifications"
+            className="group grid cursor-pointer place-items-center"
+          >
             <div className="m-2 border border-gray-200 p-2">
               <img
                 src="/images/image_3.png"
@@ -216,7 +225,7 @@ const Dashboard = () => {
                 <p className="capitalize text-grey">By Bethel Ohanugo</p>
               </div>
             </div>
-          </article>
+          </Link>
         </Slider>
       </div>
     </div>
