@@ -6,7 +6,7 @@ export default function SliderSizes() {
   return (
     <Box
       sx={{
-        width: window.innerWidth < 768 ? 300 : 500,
+        width: window.innerWidth < 768 ? 230 : 500,
         height: window.innerWidth < 768 ? 40 : 48,
         backgroundColor: "#f6f6f6",
         padding: 0,
