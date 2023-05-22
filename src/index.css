@@ -24,17 +24,18 @@ body {
   @apply text-sm lg:text-base;
 }
 
-.main_container {
-  /* display: grid; */
-  /* min-height: 100vh; */
-  grid-template-rows: 1fr auto;
-  grid-template-columns: 1fr;
-  width: 100%;
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* second child of main container */
-.main_container > :nth-child(2) {
-  @apply pb-16;
+.main_container {
+  flex-grow: 1;
+}
+
+.main_container > main {
+  @apply pb-24;
 }
 
 .universal_x {
