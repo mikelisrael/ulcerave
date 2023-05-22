@@ -16,14 +16,14 @@ const DiagnoseUlcer = () => {
       data-aos-duration="300"
     >
       <div className="mx-auto w-max max-w-md">
-        <h3 className="text-center text-2xl font-semibold">
+        <h3 className="text-center text-xl font-semibold md:text-2xl">
           How Gastric Ulcer <br className="block md:hidden" /> is Diagnosed
         </h3>
 
         <section className="mt-2 flex items-center gap-5">
           <div className="flex items-center gap-1">
             <CircleIcon className="text-gray-300" />
-            <h4 className="text-lg">By Bethel Ohanugo</h4>
+            <h4 className="md:text-lg">By Bethel Ohanugo</h4>
           </div>
 
           <div className="flex items-center gap-3">
