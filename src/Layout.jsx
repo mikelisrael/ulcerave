@@ -36,46 +36,41 @@ function App() {
       <Router>
         <Navbar />
 
-        <>
-          {/* The `<Routes>` component is defining the routes for the application. The first `<Route>`
+        {/* The `<Routes>` component is defining the routes for the application. The first `<Route>`
           element is defining the path for the home page ("/") and rendering the `<Home>` component
           when the path matches. The second `<Route>` element is defining a private route and
           rendering the `<PrivateRoutes>` which will render only if user is authenticated or logged in.  */}
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="articles" element={<Articles />}>
-              <Route path="gastric-ulcer-101" element={<GastricUlcer />} />
-              <Route
-                path="life-modifications"
-                element={<LifeModifications />}
-              />
-              <Route
-                path="how-gastric-ulcer-is-diagnosed"
-                element={<DiagnoseUlcer />}
-              />
-            </Route>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="articles" element={<Articles />}>
+            <Route path="gastric-ulcer-101" element={<GastricUlcer />} />
+            <Route path="life-modifications" element={<LifeModifications />} />
             <Route
-              element={
-                <ProtectedRoute
-                  redirectPath={visited ? "/dashboard" : "/login"}
-                />
-              }
-            >
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/onboarding" element={<Onboarding />} />
-            </Route>
-            <Route element={<ProtectedRoute redirectPath="/login" />}>
-              <Route path="tracker" element={<Tracker />} />
-              <Route path="/reminder" element={<Reminder />} />
-            </Route>
+              path="how-gastric-ulcer-is-diagnosed"
+              element={<DiagnoseUlcer />}
+            />
+          </Route>
+          <Route
+            element={
+              <ProtectedRoute
+                redirectPath={visited ? "/dashboard" : "/login"}
+              />
+            }
+          >
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/onboarding" element={<Onboarding />} />
+          </Route>
+          <Route element={<ProtectedRoute redirectPath="/login" />}>
+            <Route path="tracker" element={<Tracker />} />
+            <Route path="/reminder" element={<Reminder />} />
+          </Route>
 
-            {/* error page */}
-            <Route path="*" element={<h1>404 Not Found</h1>} />
-          </Routes>
-        </>
+          {/* error page */}
+          <Route path="*" element={<h1>404 Not Found</h1>} />
+        </Routes>
       </Router>
 
       <Footer />
