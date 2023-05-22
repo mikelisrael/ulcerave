@@ -137,7 +137,7 @@ const SignUp = () => {
         data-aos="zoom-out"
         data-aos-duration="300"
       >
-        <div className="mx-auto mb-20 mt-24 max-w-[350px] md:mt-36 md:max-w-[500px]">
+        <div className="mx-auto mt-16 w-[20rem] md:mt-36 md:w-[30rem]">
           <center>
             <img src="/logo.svg" className="w-40" alt="logo" />
           </center>

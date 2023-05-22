@@ -13,7 +13,7 @@ const Home = () => {
       </div>
 
       <header
-        className="universal_x flex flex-col items-center justify-center pb-24 pt-40 md:pb-32 md:pt-56"
+        className="universal_x flex flex-col items-center justify-center pb-24 pt-32 md:pb-32 md:pt-56"
         data-aos="fade-up"
       >
         <h1 className="text-center text-3xl font-bold lg:text-5xl">
