@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./css/navbar.css";
 import { useGlobalContext } from "../context";
 import { onAuthStateChanged } from "firebase/auth";
@@ -91,101 +91,109 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={`absolute z-10 w-full items-center justify-between px-8 py-10  md:px-16 lg:px-32 xl:px-48  ${
-        pathname === "/onboarding" ? "hidden" : "hidden md:flex"
-      } ${isLoggedIn && "border-b border-gray-200"}`}
-    >
-      <NavLink to={isLoggedIn ? "dashboard" : "/"}>
-        <img src="/logo.svg" alt="logo" />
-      </NavLink>
-
-      <ul className="flex items-center gap-8 font-medium capitalize lg:gap-10">
-        {!isLoggedIn ? (
-          <>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? "text-primaryBlue" : undefined
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/">Our features</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">about us</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">contact</NavLink>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <NavLink
-                to="dashboard"
-                className={({ isActive }) =>
-                  isActive ? "text-primaryBlue" : undefined
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/reminder"
-                className={({ isActive }) =>
-                  isActive ? "text-primaryBlue" : undefined
-                }
-              >
-                Reminder
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/tracker"
-                className={({ isActive }) =>
-                  isActive ? "text-primaryBlue" : undefined
-                }
-              >
-                Tracker
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/resources"
-                className={({ isActive }) =>
-                  isActive ? "text-primaryBlue" : undefined
-                }
-              >
-                resources
-              </NavLink>
-            </li>
-            <li className="text-primaryBlue" onClick={handleSignOut}>
-              sign out
-            </li>
-          </>
-        )}
-      </ul>
-
-      {!isLoggedIn ? (
-        <button
-          onClick={() => navigate("login")}
-          className="main_btn transparent"
-        >
-          Log in
+    <>
+      <div>
+        <Link to="/login">login</Link>
+        <button className="ml-3 text-primaryBlue" onClick={handleSignOut}>
+          sign out
         </button>
-      ) : (
-        <div className="flex cursor-pointer items-center gap-2">
-          <Avatar src={user?.avatar} alt={user?.firstName} />
-          <KeyboardArrowDownIcon className="text-primaryBlue" />
-        </div>
-      )}
-    </nav>
+      </div>
+      <nav
+        className={`absolute z-10 w-full items-center justify-between px-8 py-10  md:px-16 lg:px-32 xl:px-48  ${
+          pathname === "/onboarding" ? "hidden" : "hidden md:flex"
+        } ${isLoggedIn && "border-b border-gray-200"}`}
+      >
+        <NavLink to={isLoggedIn ? "dashboard" : "/"}>
+          <img src="/logo.svg" alt="logo" />
+        </NavLink>
+
+        <ul className="flex items-center gap-8 font-medium capitalize lg:gap-10">
+          {!isLoggedIn ? (
+            <>
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "text-primaryBlue" : undefined
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/">Our features</NavLink>
+              </li>
+              <li>
+                <NavLink to="/">about us</NavLink>
+              </li>
+              <li>
+                <NavLink to="/">contact</NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink
+                  to="dashboard"
+                  className={({ isActive }) =>
+                    isActive ? "text-primaryBlue" : undefined
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/reminder"
+                  className={({ isActive }) =>
+                    isActive ? "text-primaryBlue" : undefined
+                  }
+                >
+                  Reminder
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/tracker"
+                  className={({ isActive }) =>
+                    isActive ? "text-primaryBlue" : undefined
+                  }
+                >
+                  Tracker
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/resources"
+                  className={({ isActive }) =>
+                    isActive ? "text-primaryBlue" : undefined
+                  }
+                >
+                  resources
+                </NavLink>
+              </li>
+              <li className="text-primaryBlue" onClick={handleSignOut}>
+                sign out
+              </li>
+            </>
+          )}
+        </ul>
+
+        {!isLoggedIn ? (
+          <button
+            onClick={() => navigate("login")}
+            className="main_btn transparent"
+          >
+            Log in
+          </button>
+        ) : (
+          <div className="flex cursor-pointer items-center gap-2">
+            <Avatar src={user?.avatar} alt={user?.firstName} />
+            <KeyboardArrowDownIcon className="text-primaryBlue" />
+          </div>
+        )}
+      </nav>
+    </>
   );
 };
 
