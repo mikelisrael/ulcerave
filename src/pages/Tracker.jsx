@@ -7,7 +7,7 @@ const Tracker = () => {
 
   return (
     <main
-      className="universal_x pb-24 pt-28 md:pb-24 md:pt-40"
+      className="universal_x pb-24 pt-12 md:pb-24 md:pt-40"
       data-aos="fade-in"
       data-aos-duration="300"
     >
@@ -19,9 +19,13 @@ const Tracker = () => {
         </button>
 
         <div className="mt-28 max-w-md">
-          <img src="/icons/running.svg" className="select-none" alt="" />
+          <img
+            src="/icons/running.svg"
+            className="w-3/5 select-none md:w-auto"
+            alt=""
+          />
 
-          <h2 className="mt-5 text-2xl font-medium">
+          <h2 className="mt-5 text-lg font-medium md:text-2xl">
             There is no data to display yet
           </h2>
           <p>Start documenting your progress today!</p>
