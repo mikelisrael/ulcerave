@@ -10,7 +10,7 @@ const GastricUlcer = () => {
   getTitle("Gastric Ulcer 101");
 
   return (
-    <div
+    <main
       className="universal_x mx-auto max-w-6xl pb-24 pt-12 md:pb-24 md:pt-48"
       data-aos="fade-in"
       data-aos-duration="300"
@@ -87,13 +87,13 @@ const GastricUlcer = () => {
         </p>
 
         <h3 className="text-xl font-semibold">Treatment</h3>
-        <p className="mb-7">
+        <p>
           Treatment will depend on the severity of the ulcer. Antacids,
           antibiotics, and proton pump inhibitors such as Omeprazole can be
           taken either individually or combined as directed by a medical doctor.
         </p>
       </div>
-    </div>
+    </main>
   );
 };
 

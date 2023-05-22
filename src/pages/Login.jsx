@@ -88,7 +88,6 @@ const Login = () => {
   };
 
   return (
-    <>
       <main
         className=" flex flex-col justify-between bg-lightGrey"
         data-aos="zoom-out"
@@ -199,7 +198,6 @@ const Login = () => {
           </form>
         </div>
       </main>
-    </>
   );
 };
 

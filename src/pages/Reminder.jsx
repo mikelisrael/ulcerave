@@ -6,7 +6,7 @@ const Reminder = () => {
   getTitle("reminder");
 
   return (
-    <div
+    <main
       className="universal_x pb-24 pt-28 md:pb-24 md:pt-40"
       data-aos="fade-in"
       data-aos-duration="300"
@@ -33,7 +33,7 @@ const Reminder = () => {
           </p>
         </div>
       </center>
-    </div>
+    </main>
   );
 };
 

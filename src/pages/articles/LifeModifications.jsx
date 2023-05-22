@@ -10,7 +10,7 @@ const LifeModifications = () => {
   getTitle("Life modifications");
 
   return (
-    <div
+    <main
       className="universal_x mx-auto max-w-6xl pb-24 pt-12 md:pb-24 md:pt-48"
       data-aos="fade-in"
       data-aos-duration="300"
@@ -84,7 +84,7 @@ const LifeModifications = () => {
           Here are some additional tips to make the condition more manageable:
         </p>
 
-        <ul className="mb-7 ml-10 list-disc space-y-4">
+        <ul className="ml-10 list-disc space-y-4">
           <li>
             Eating on a regular basis and in lesser servings can help to prevent
             overeating and lower gastrointestinal pressure.
@@ -101,7 +101,7 @@ const LifeModifications = () => {
           </li>
         </ul>
       </div>
-    </div>
+    </main>
   );
 };
 

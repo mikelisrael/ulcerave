@@ -6,7 +6,7 @@ const Tracker = () => {
   getTitle("tracker");
 
   return (
-    <div
+    <main
       className="universal_x pb-24 pt-28 md:pb-24 md:pt-40"
       data-aos="fade-in"
       data-aos-duration="300"
@@ -27,7 +27,7 @@ const Tracker = () => {
           <p>Start documenting your progress today!</p>
         </div>
       </center>
-    </div>
+    </main>
   );
 };
 

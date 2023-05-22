@@ -131,7 +131,6 @@ const SignUp = () => {
   };
 
   return (
-    <>
       <main
         className=" flex flex-col justify-between bg-lightGrey"
         data-aos="zoom-out"
@@ -255,7 +254,6 @@ const SignUp = () => {
           </form>
         </div>
       </main>
-    </>
   );
 };
 

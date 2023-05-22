@@ -17,8 +17,8 @@ const Articles = () => {
   return (
     <>
       {outlet || (
-        <div
-          className="universal_x pb-24 pt-12 md:pb-24 md:pt-40"
+        <main
+          className="universal_x pt-12 md:pt-40"
           data-aos="fade-in"
           data-aos-duration="300"
         >
@@ -207,7 +207,7 @@ const Articles = () => {
               </li>
             </ul>
           </section>
-        </div>
+        </main>
       )}
     </>
   );

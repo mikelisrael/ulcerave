@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <>
+    <main>
       <div className="absolute left-1/2 top-0 -z-10 w-full -translate-x-1/2 select-none">
         <img src={Ellipse} alt="" />
       </div>
@@ -173,7 +173,7 @@ const Home = () => {
           </p>
         </div>
       </section>
-    </>
+    </main>
   );
 };
 

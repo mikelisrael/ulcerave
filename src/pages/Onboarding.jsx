@@ -89,7 +89,7 @@ const Onboarding = () => {
   }
 
   return (
-    <div className="universal_x pb-24 pt-20 md:pb-24" data-aos="zoom-out">
+    <main className="universal_x pb-24 pt-20 md:pb-24" data-aos="zoom-out">
       <div className="absolute left-1/2 top-0 -z-10 w-full -translate-x-1/2 select-none">
         <img src={Ellipse} alt="" />
       </div>
@@ -153,7 +153,7 @@ const Onboarding = () => {
           <KeyboardArrowRightIcon />
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 

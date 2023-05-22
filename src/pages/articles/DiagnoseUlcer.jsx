@@ -10,7 +10,7 @@ const DiagnoseUlcer = () => {
   getTitle("How Gastric Ulcer is Diagnosed");
 
   return (
-    <div
+    <main
       className="universal_x mx-auto max-w-6xl pb-24 pt-12 md:pb-24 md:pt-48"
       data-aos="fade-in"
       data-aos-duration="300"
@@ -88,7 +88,7 @@ const DiagnoseUlcer = () => {
           </li>
         </ul>
 
-        <p className="mb-7">
+        <p>
           A much more reliable test is{" "}
           <span className="font-semibold">Gastroscopy</span> which involves
           passing a narrow pipe called an endoscope with a camera attached to it
@@ -99,7 +99,7 @@ const DiagnoseUlcer = () => {
           before taking any medication.
         </p>
       </div>
-    </div>
+    </main>
   );
 };
 

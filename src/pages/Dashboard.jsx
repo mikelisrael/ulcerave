@@ -69,21 +69,23 @@ const Dashboard = () => {
   };
 
   return (
-    <>
+    <main>
       <AppModal open={open} setOpen={setOpen} />
       <div
-        className="universal_x pt-12 md:pb-24 md:pt-48"
+        className="universal_x pt-12 md:pt-48"
         data-aos="fade-in"
         data-aos-duration="300"
       >
-        <header className="status_check flex flex-col items-center justify-center rounded-[3.5rem] bg-blue-200 bg-[url('/images/status_check.svg')] bg-[100%] bg-no-repeat py-5 md:py-10">
+        <header className="status_check flex flex-col items-center justify-center rounded-3xl bg-blue-200 bg-[url('/images/status_check.svg')] bg-[100%] bg-no-repeat py-5 md:rounded-[3.5rem] md:py-10">
           <h4 className="flex gap-1 font-bold">
             <span>Hello</span>
             <span>{user?.firstName}</span>{" "}
             <img src="/icons/hello_emoji.png" alt="hello emoji" />
           </h4>
 
-          <h2 className="mt-5 text-2xl font-bold md:text-4xl">Status Check</h2>
+          <h2 className="mt-2 text-2xl font-bold md:mt-5 md:text-4xl">
+            Status Check
+          </h2>
           <p className="mt-1 text-center text-base text-grey lg:text-lg">
             What's your pain level?
           </p>
@@ -165,7 +167,7 @@ const Dashboard = () => {
           </button>
         </div>
 
-        <div className="space-y-3 py-24">
+        <div className="space-y-3 pt-24">
           <div className="mb-1 flex items-center justify-between gap-3 lg:mb-8">
             <h2 className="text-base font-bold md:text-xl">Articles for you</h2>
             <Link to="/articles" className="font-medium text-primaryBlue">
@@ -237,7 +239,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 
