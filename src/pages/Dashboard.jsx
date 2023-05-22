@@ -34,8 +34,8 @@ const Dashboard = () => {
     slidesToShow: 3,
     slidesToScroll: 2,
     initialSlide: 0,
-    autoplay: true,
-    autoplaySpeed: 5000,
+    // autoplay: true,
+    // autoplaySpeed: 5000,
     cssEase: "linear",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -72,7 +72,7 @@ const Dashboard = () => {
     <>
       <AppModal open={open} setOpen={setOpen} />
       <div
-        className="universal_x pb-24 pt-28 md:pb-24 md:pt-40"
+        className="universal_x pt-28 md:pb-24 md:pt-40"
         data-aos="fade-in"
         data-aos-duration="300"
       >
@@ -111,19 +111,17 @@ const Dashboard = () => {
               transition: "height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275",
             }}
           >
-            <div className="space-y-4">
-              <p className="max-w-md text-base capitalize text-grey lg:text-lg">
+            <div className="space-y-4 text-grey lg:text-lg">
+              <p className="max-w-md capitalize">
                 Breakfast with Kinfe and Boms at Mcdonalds lol. This is the text
                 field. I think 2/3 lines max. What do you think?{" "}
               </p>
 
-              <p className="max-w-md text-base font-medium capitalize text-grey lg:text-lg">
+              <p className="max-w-md font-medium capitalize">
                 Monday - Thursday
               </p>
 
-              <p className="max-w-md text-base capitalize text-grey lg:text-lg">
-                Snooze: 10 minutes
-              </p>
+              <p className="max-w-md capitalize">Snooze: 10 minutes</p>
             </div>
           </div>
 
@@ -168,71 +166,75 @@ const Dashboard = () => {
         </div>
 
         <div className="space-y-3 py-24">
-          <div className="mb-8 flex items-center justify-between gap-3">
-            <h2 className="text-xl font-bold">Articles for you</h2>
+          <div className="mb-1 flex items-center justify-between gap-3 lg:mb-8">
+            <h2 className="text-base font-bold md:text-xl">Articles for you</h2>
             <Link to="/articles" className="font-medium text-primaryBlue">
               See more
             </Link>
           </div>
 
-          <Slider {...settings} className="w-full">
-            <Link
-              to="/articles/gastric-ulcer-101"
-              className="group grid cursor-pointer place-items-center"
-            >
-              <div className="m-2 border border-gray-200 p-2">
-                <img
-                  src="/images/image_1.png"
-                  alt="hello image"
-                  className="w-full transition-all duration-300 group-hover:opacity-75"
-                />
-                <div className="w-full">
-                  <h3 className="mt-3 text-xl font-bold">Gastric Ulcer 101</h3>
-                  <p className="capitalize text-grey">By Bethel Ohanugo</p>
+          <div className="mx-auto w-11/12 md:w-full lg:mx-0">
+            <Slider {...settings} className="w-full">
+              <Link
+                to="/articles/gastric-ulcer-101"
+                className="group grid cursor-pointer place-items-center"
+              >
+                <div className="m-2 border border-gray-200 p-2">
+                  <img
+                    src="/images/image_1.png"
+                    alt="hello image"
+                    className="w-full transition-all duration-300 group-hover:opacity-75"
+                  />
+                  <div className="w-full">
+                    <h3 className="mt-3 text-xl font-bold">
+                      Gastric Ulcer 101
+                    </h3>
+                    <p className="capitalize text-grey">By Bethel Ohanugo</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
 
-            <Link
-              to="/articles/how-gastric-ulcer-is-diagnosed"
-              className="group grid cursor-pointer place-items-center"
-            >
-              <div className="m-2 border border-gray-200 p-2">
-                <img
-                  src="/images/image_2.png"
-                  alt="hospital"
-                  className="w-full transition-all duration-300 group-hover:opacity-75"
-                />
+              <Link
+                to="/articles/how-gastric-ulcer-is-diagnosed"
+                className="group grid cursor-pointer place-items-center"
+              >
+                <div className="m-2 border border-gray-200 p-2">
+                  <img
+                    src="/images/image_2.png"
+                    alt="hospital"
+                    className="w-full transition-all duration-300 group-hover:opacity-75"
+                  />
 
-                <div className="w-full">
-                  <h3 className="mt-3 text-xl font-bold">
-                    How Gastric Ulcer is Diagnosed
-                  </h3>
-                  <p className="capitalize text-grey">By Bethel Ohanugo</p>
+                  <div className="w-full">
+                    <h3 className="mt-3 text-xl font-bold">
+                      How Gastric Ulcer is Diagnosed
+                    </h3>
+                    <p className="capitalize text-grey">By Bethel Ohanugo</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
 
-            <Link
-              to="/articles/life-modifications"
-              className="group grid cursor-pointer place-items-center"
-            >
-              <div className="m-2 border border-gray-200 p-2">
-                <img
-                  src="/images/image_3.png"
-                  alt="frown"
-                  className="w-full transition-all duration-300 group-hover:opacity-75"
-                />
+              <Link
+                to="/articles/life-modifications"
+                className="group grid cursor-pointer place-items-center"
+              >
+                <div className="m-2 border border-gray-200 p-2">
+                  <img
+                    src="/images/image_3.png"
+                    alt="frown"
+                    className="w-full transition-all duration-300 group-hover:opacity-75"
+                  />
 
-                <div className="w-full">
-                  <h3 className="mt-3 text-xl font-bold">
-                    Lifestyle Modification
-                  </h3>
-                  <p className="capitalize text-grey">By Bethel Ohanugo</p>
+                  <div className="w-full">
+                    <h3 className="mt-3 text-xl font-bold">
+                      Lifestyle Modification
+                    </h3>
+                    <p className="capitalize text-grey">By Bethel Ohanugo</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </Slider>
+              </Link>
+            </Slider>
+          </div>
         </div>
       </div>
     </>
