@@ -11,13 +11,13 @@ const DiagnoseUlcer = () => {
 
   return (
     <div
-      className="universal_x mx-auto max-w-6xl pb-24 pt-28 md:pb-24 md:pt-40"
+      className="universal_x mx-auto max-w-6xl pb-24 pt-12 md:pb-24 md:pt-48"
       data-aos="fade-in"
       data-aos-duration="300"
     >
       <div className="mx-auto w-max max-w-md">
         <h3 className="text-center text-2xl font-semibold">
-          How Gastric Ulcer is Diagnosed
+          How Gastric Ulcer <br className="block md:hidden" /> is Diagnosed
         </h3>
 
         <section className="mt-2 flex items-center gap-5">

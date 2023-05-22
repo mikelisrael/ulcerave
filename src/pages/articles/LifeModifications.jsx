@@ -11,7 +11,7 @@ const LifeModifications = () => {
 
   return (
     <div
-      className="universal_x mx-auto max-w-6xl pb-24 pt-28 md:pb-24 md:pt-40"
+      className="universal_x mx-auto max-w-6xl pb-24 pt-12 md:pb-24 md:pt-48"
       data-aos="fade-in"
       data-aos-duration="300"
     >
