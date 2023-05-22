@@ -114,10 +114,7 @@ const Dashboard = () => {
             }}
           >
             <div className="space-y-4 text-grey lg:text-lg">
-              <p className="max-w-md capitalize">
-                Breakfast with Kinfe and Boms at Mcdonalds lol. This is the text
-                field. I think 2/3 lines max. What do you think?{" "}
-              </p>
+              <p className="max-w-md capitalize">Have Breakfast</p>
 
               <p className="max-w-md font-medium capitalize">
                 Monday - Thursday
