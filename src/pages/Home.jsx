@@ -97,7 +97,10 @@ const Home = () => {
         </center>
       </section>
 
-      <section className="universal_x intro" data-aos="fade-up">
+      <section
+        className="universal_x intro overflow-x-hidden"
+        data-aos="fade-up"
+      >
         <div className="items-center justify-center gap-20 space-y-10 rounded-3xl bg-lightBlue px-8 py-12 md:grid">
           <div className="md:order-2">
             <h2 className="text-3xl font-bold lg:text-4xl">
@@ -130,7 +133,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="universal_x_margin mb-12 mt-32 border-t-4 border-t-lightBlue py-14">
+      <section className="universal_x_margin mb-12 mt-32 overflow-x-hidden border-t-4 border-t-lightBlue py-14">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-base font-bold  md:text-2xl">
