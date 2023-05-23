@@ -155,7 +155,7 @@ const Dashboard = () => {
           </div>
 
           <div className="flex-1">
-            <h2 className="font-bold  sm:text-2xl md:text-2xl">
+            <h2 className="whitespace-nowrap  font-bold sm:text-2xl md:text-2xl">
               Never miss a Medication or Meal{" "}
             </h2>
             <p className="text-xs capitalize text-grey lg:text-lg">
