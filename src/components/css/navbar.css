@@ -6,3 +6,12 @@ nav ul li {
   @apply hover:text-dark;
 }
 
+.nav_popout {
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav_popout.open {
+  transform: scale(1);
+}
