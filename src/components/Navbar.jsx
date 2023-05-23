@@ -262,7 +262,7 @@ const Navbar = () => {
                   }`}
                 >
                   <button
-                    className="space-x-1 rounded bg-pink-100 p-2 text-red-500"
+                    className="space-x-1 rounded bg-[#FCEDED] p-2 text-red-500"
                     onClick={handleSignOut}
                   >
                     <LogoutIcon fontSize="small" className="-scale-x-100" />{" "}
@@ -348,7 +348,7 @@ const Navbar = () => {
 
         {isLoggedIn && (
           <button
-            className="mt-32 w-full space-x-1 rounded-xl bg-pink-100 p-2 text-base text-red-500"
+            className="mt-32 w-full space-x-1 rounded-xl bg-[#FCEDED] p-2 text-base text-red-500"
             onClick={() => {
               handleSignOut();
               closeMobileNav();
