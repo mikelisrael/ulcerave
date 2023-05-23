@@ -18,7 +18,7 @@ const Articles = () => {
     <>
       {outlet || (
         <main
-          className="universal_x pt-12 md:pt-40"
+          className="universal_x pt-28 md:pt-40"
           data-aos="fade-in"
           data-aos-duration="300"
         >

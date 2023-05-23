@@ -68,11 +68,18 @@ const Dashboard = () => {
     ],
   };
 
+  const handleSliderChange = (event, newValue) => {
+    // Handle the slider value change here
+    if (newValue > 0) {
+      setOpen(true);
+    }
+  };
+
   return (
     <main>
       <AppModal open={open} setOpen={setOpen} />
       <div
-        className="universal_x pt-12 md:pt-48"
+        className="universal_x pt-28 md:pt-48"
         data-aos="fade-in"
         data-aos-duration="300"
       >
@@ -92,7 +99,7 @@ const Dashboard = () => {
 
           {/* range slide */}
           <div className="mt-10 flex w-full justify-center">
-            <RangeSlider />
+            <RangeSlider handleSliderChange={handleSliderChange} />
           </div>
         </header>
 

@@ -7,7 +7,7 @@ const Reminder = () => {
 
   return (
     <main
-      className="universal_x pb-24 pt-12 md:pb-24 md:pt-40"
+      className="universal_x pb-24 pt-28 md:pb-24 md:pt-40"
       data-aos="fade-in"
       data-aos-duration="300"
     >
