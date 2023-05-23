@@ -26,9 +26,13 @@ body {
 }
 
 #root {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* display: flex; */
+  grid-template-rows: 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  /* flex-direction: column; */
   min-height: 100vh;
+  /* overflow: hidden; */
 }
 
 .main_container {
@@ -94,4 +98,19 @@ body {
 
 .float {
   animation: float 3s ease-in-out infinite;
+}
+
+/* Hide horizontal scrollbar */
+.scroll_container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll_container {
+  scroll-padding-left: 10px;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.scroll_container > div > * {
+  scroll-snap-align: start;
 }

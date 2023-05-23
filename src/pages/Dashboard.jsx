@@ -50,21 +50,21 @@ const Dashboard = () => {
           dots: true,
         },
       },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
+      // {
+      //   breakpoint: 600,
+      //   settings: {
+      //     slidesToShow: 2,
+      //     slidesToScroll: 2,
+      //     initialSlide: 2,
+      //   },
+      // },
+      // {
+      //   breakpoint: 480,
+      //   settings: {
+      //     slidesToShow: 1,
+      //     slidesToScroll: 1,
+      //   },
+      // },
     ],
   };
 
@@ -171,76 +171,68 @@ const Dashboard = () => {
           </button>
         </div>
 
-        <div className="space-y-3 pt-24">
-          <div className="mb-1 flex items-center justify-between gap-3 lg:mb-8">
+        <div className="relative pt-24">
+          <div className="mb-5 flex items-center justify-between gap-3 lg:mb-8">
             <h2 className="text-base font-bold md:text-xl">Articles for you</h2>
             <Link to="/articles" className="font-medium text-primaryBlue">
               See more
             </Link>
           </div>
 
-          <div className="mx-auto w-11/12 md:w-full lg:mx-0">
-            <Slider {...settings} className="w-full">
+          <section className="scroll_container overflow-x-auto">
+            <div className="flex items-stretch gap-3">
               <Link
                 to="/articles/gastric-ulcer-101"
-                className="group grid cursor-pointer place-items-center"
+                className="group w-full min-w-[300px] cursor-pointer place-items-center border border-gray-200 p-2"
               >
-                <div className="m-2 border border-gray-200 p-2">
-                  <img
-                    src="/images/image_1.png"
-                    alt="hello image"
-                    className="w-full transition-all duration-300 group-hover:opacity-75"
-                  />
-                  <div className="w-full">
-                    <h3 className="mt-3 text-xl font-bold">
-                      Gastric Ulcer 101
-                    </h3>
-                    <p className="capitalize text-grey">By Bethel Ohanugo</p>
-                  </div>
+                <img
+                  src="/images/image_1.png"
+                  alt="hello image"
+                  className="w-full transition-all duration-300 group-hover:opacity-75"
+                />
+                <div className="w-full">
+                  <h3 className="mt-3 text-xl font-bold">Gastric Ulcer 101</h3>
+                  <p className="capitalize text-grey">By Bethel Ohanugo</p>
                 </div>
               </Link>
 
               <Link
                 to="/articles/how-gastric-ulcer-is-diagnosed"
-                className="group grid cursor-pointer place-items-center"
+                className="group w-full min-w-[300px] cursor-pointer place-items-center border border-gray-200 p-2"
               >
-                <div className="m-2 border border-gray-200 p-2">
-                  <img
-                    src="/images/image_2.png"
-                    alt="hospital"
-                    className="w-full transition-all duration-300 group-hover:opacity-75"
-                  />
+                <img
+                  src="/images/image_2.png"
+                  alt="hospital"
+                  className="w-full transition-all duration-300 group-hover:opacity-75"
+                />
 
-                  <div className="w-full">
-                    <h3 className="mt-3 text-xl font-bold">
-                      How Gastric Ulcer is Diagnosed
-                    </h3>
-                    <p className="capitalize text-grey">By Bethel Ohanugo</p>
-                  </div>
+                <div className="w-full">
+                  <h3 className="mt-3 text-xl font-bold">
+                    How Gastric Ulcer is Diagnosed
+                  </h3>
+                  <p className="capitalize text-grey">By Bethel Ohanugo</p>
                 </div>
               </Link>
 
               <Link
                 to="/articles/life-modifications"
-                className="group grid cursor-pointer place-items-center"
+                className="group w-full min-w-[300px] cursor-pointer place-items-center border border-gray-200 p-2"
               >
-                <div className="m-2 border border-gray-200 p-2">
-                  <img
-                    src="/images/image_3.png"
-                    alt="frown"
-                    className="w-full transition-all duration-300 group-hover:opacity-75"
-                  />
+                <img
+                  src="/images/image_3.png"
+                  alt="frown"
+                  className="w-full transition-all duration-300 group-hover:opacity-75"
+                />
 
-                  <div className="w-full">
-                    <h3 className="mt-3 text-xl font-bold">
-                      Lifestyle Modification
-                    </h3>
-                    <p className="capitalize text-grey">By Bethel Ohanugo</p>
-                  </div>
+                <div className="w-full">
+                  <h3 className="mt-3 text-xl font-bold">
+                    Lifestyle Modification
+                  </h3>
+                  <p className="capitalize text-grey">By Bethel Ohanugo</p>
                 </div>
               </Link>
-            </Slider>
-          </div>
+            </div>
+          </section>
         </div>
       </div>
     </main>
