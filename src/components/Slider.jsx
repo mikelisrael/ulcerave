@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 
-export default function SliderSizes() {
+export default function SliderSizes({ handleSliderChange }) {
   return (
     <Box
       sx={{
@@ -38,6 +38,7 @@ export default function SliderSizes() {
         defaultValue={0}
         aria-label="Small"
         valueLabelDisplay="on"
+        onChangeCommitted={handleSliderChange}
       />
     </Box>
   );
