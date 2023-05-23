@@ -27,19 +27,12 @@ body {
 
 #root {
   display: grid;
-  /* display: flex; */
   grid-template-rows: 1fr auto;
   grid-template-columns: minmax(0, 1fr);
-  /* flex-direction: column; */
   min-height: 100vh;
-  /* overflow: hidden; */
 }
 
-.main_container {
-  flex-grow: 1;
-}
-
-.main_container > main {
+#root > main {
   @apply pb-24;
 }
 
