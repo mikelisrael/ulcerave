@@ -21,7 +21,7 @@ const Tracker = () => {
         <div className="mt-28 max-w-md">
           <img
             src="/icons/running.svg"
-            className="w-3/5 select-none md:w-auto"
+            className="float w-3/5 select-none md:w-auto"
             alt=""
           />
 
