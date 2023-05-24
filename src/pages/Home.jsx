@@ -98,7 +98,7 @@ const Home = () => {
       </section>
 
       <section
-        className="universal_x intro overflow-x-hidden"
+        className="universal_x intro overflow-x-hidden overflow-y-hidden pb-12"
         data-aos="fade-up"
       >
         <div className="items-center justify-center gap-20 space-y-10 rounded-3xl bg-lightBlue px-8 py-12 md:grid">
