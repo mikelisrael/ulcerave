@@ -15,7 +15,10 @@ const AppModal = ({ open, setOpen }) => {
           className="relative w-11/12 rounded-xl bg-white p-4 shadow-md md:w-1/2 md:p-6 lg:w-1/3 lg:p-8"
           data-aos="zoom-out"
         >
-          <button className="absolute right-5 top-5">
+          <button
+            className="absolute right-5 top-5"
+            onClick={() => setOpen(false)}
+          >
             <CloseOutlinedIcon />
           </button>
           <h2 className="text-center text-xl font-medium md:text-2xl">
