@@ -24,7 +24,7 @@ const AppModalLayout = ({ open, setOpen, closeFunc, children }) => {
             <CloseOutlinedIcon fontSize="small" />
           </button>
 
-          <div className="px-9 py-10">{children}</div>
+          <div className="p-5 md:px-9 md:py-10">{children}</div>
         </div>
       </div>
     </Modal>
