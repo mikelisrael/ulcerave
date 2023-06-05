@@ -31,7 +31,7 @@ const AppModal = ({ open, setOpen }) => {
             hydrated.
           </p>
 
-          <p className="mt-5 flex items-center justify-center gap-2 text-xs text-grey md:text-inherit">
+          <p className="mt-5 flex items-center justify-center gap-2 text-xs text-grey md:text-sm">
             <ErrorIcon />
             This recommendation is based on general knowledge and should no be
             substituted for professional medical advice.
