@@ -3,13 +3,10 @@ import { useGlobalContext } from "../context";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import RangeSlider from "../components/Slider";
-import Slider from "react-slick";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { getTitle } from "../../utils/helperFunctions";
 import { Link } from "react-router-dom";
-import AppModal from "../components/Modal";
+import AppModal from "../components/RecommendationModal";
 
 const Dashboard = () => {
   getTitle("home");
