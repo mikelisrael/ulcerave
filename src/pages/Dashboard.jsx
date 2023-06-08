@@ -80,7 +80,7 @@ const Dashboard = () => {
         data-aos="fade-in"
         data-aos-duration="300"
       >
-        <header className="status_check flex flex-col items-center justify-center rounded-3xl bg-blue-200 bg-[url('/images/status_check.svg')] bg-[100%] bg-no-repeat py-5 md:rounded-[3.5rem] md:py-10">
+        <header className="status_check flex flex-col items-center justify-center rounded-3xl bg-blue-200 bg-[url('/images/status_check.svg')] bg-cover bg-no-repeat py-5 md:rounded-[3.5rem] md:py-10">
           <h4 className="flex gap-1 font-bold">
             <span>Hello</span>
             <span>{user?.firstName}</span>{" "}
