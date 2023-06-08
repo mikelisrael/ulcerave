@@ -222,220 +222,218 @@ const AddNewReminder = () => {
   };
 
   return (
-    <>
-      <div className="space-y-5">
-        <section className="mb-5 text-center">
-          <h1 className="text-center text-lg font-bold md:text-2xl">
-            New Reminder
-          </h1>
-          <h3 className="text-grey">{formattedDate}</h3>
-        </section>
+    <div className="space-y-5">
+      <section className="mb-5 text-center">
+        <h1 className="text-center text-lg font-bold md:text-2xl">
+          New Reminder
+        </h1>
+        <h3 className="text-grey">{formattedDate}</h3>
+      </section>
 
-        <section>
-          <div
-            className="flex select-none rounded-md border px-4 py-2"
-            onClick={toggleDatePicker}
-          >
-            <div className="relative isolate flex-grow md:text-lg">
-              {!selectedDate ? (
-                <span className="text-grey">Select a date</span>
-              ) : (
-                <span>{moment(selectedDate).format("Do MMM, YYYY")}</span>
-              )}
-            </div>
-            <KeyboardArrowDownOutlinedIcon fontSize="small" />
-          </div>
-        </section>
-
-        {showDatePicker && (
-          <section className="flex gap-3 md:gap-5">
-            <div>
-              <span className="mb-2 block text-grey">Day</span>
-              <input
-                type="text"
-                inputMode="numeric"
-                className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
-                defaultValue={selectedDate ? selectedDate.getDate() : ""}
-                onBlur={handleDayChange}
-                ref={dayInputRef}
-                onKeyDown={handleKeyPress}
-                maxLength={2}
-              />
-            </div>
-
-            {/* set month */}
-            <div>
-              <span className="mb-2 block text-grey">Month</span>
-              <select
-                className="bg-gray-100 p-3 capitalize md:text-lg"
-                onChange={handleMonthChange}
-                defaultValue={selectedDate ? selectedDate.getMonth() : ""}
-              >
-                <option value={0}>January</option>
-                <option value={1}>February</option>
-                <option value={2}>March</option>
-                <option value={3}>April</option>
-                <option value={4}>May</option>
-                <option value={5}>June</option>
-                <option value={6}>July</option>
-                <option value={7}>August</option>
-                <option value={8}>September</option>
-                <option value={9}>October</option>
-                <option value={10}>November</option>
-                <option value={11}>December</option>
-              </select>
-            </div>
-
-            <div>
-              <span className="mb-2 block text-grey">Year</span>
-              {/* handle year change */}
-              <input
-                type="text"
-                inputMode="numeric"
-                className="w-16 bg-gray-100 p-3 text-center md:w-20 md:text-lg"
-                defaultValue={selectedDate ? selectedDate.getFullYear() : ""}
-                onBlur={handleYearChange}
-                onKeyDown={handleKeyPress}
-                ref={yearInputRef}
-                maxLength={4}
-              />
-            </div>
-          </section>
-        )}
-
-        <select
-          className="w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
+      <section>
+        <div
+          className="flex select-none rounded-md border px-4 py-2"
+          onClick={toggleDatePicker}
         >
-          <option value="" hidden disabled="disabled">
-            Select Category
-          </option>
-          <option value="medication">Medication</option>
-          <option value="food">Food</option>
-        </select>
-
-        {/* enter time  */}
-        <section className="flex justify-between">
-          <div>
-            <span className="mb-2 block text-grey">Type in time</span>
-
-            <div className="flex gap-1 md:gap-3">
-              <input
-                type="text"
-                inputMode="numeric"
-                className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
-                defaultValue={"00"}
-                onBlur={handleHourChange}
-                ref={hourInputRef}
-                onKeyDown={handleKeyPress}
-                maxLength={2}
-              />
-
-              <span className="self-center text-3xl text-grey">:</span>
-
-              <input
-                type="text"
-                inputMode="numeric"
-                className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
-                defaultValue={"00"}
-                onBlur={handleMinuteChange}
-                ref={minuteInputRef}
-                onKeyDown={handleKeyPress}
-                maxLength={2}
-              />
-
-              <select
-                className="bg-gray-100 p-3 capitalize md:text-lg"
-                defaultValue={selectedMeridiem} // Set default value from state
-                onChange={handleMeridiemChange} // Handle meridiem change
-              >
-                <option value="am">AM</option>
-                <option value="pm">PM</option>
-              </select>
-            </div>
+          <div className="relative isolate flex-grow md:text-lg">
+            {!selectedDate ? (
+              <span className="text-grey">Select a date</span>
+            ) : (
+              <span>{moment(selectedDate).format("Do MMM, YYYY")}</span>
+            )}
           </div>
+          <KeyboardArrowDownOutlinedIcon fontSize="small" />
+        </div>
+      </section>
 
+      {showDatePicker && (
+        <section className="flex gap-3 md:gap-5">
           <div>
-            <span className="mb-2 block text-grey">Type in Snooze</span>
-
-            <div className="flex gap-1 md:gap-3">
-              <input
-                type="text"
-                inputMode="numeric"
-                className="w-14 bg-gray-100 p-3 text-center md:text-lg"
-                defaultValue="00"
-                maxLength={2}
-              />
-
-              <span className="self-center text-grey">mins</span>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <label className="repeat_check flex select-none items-center gap-2">
+            <span className="mb-2 block text-grey">Day</span>
             <input
-              type="checkbox"
-              checked={isRepeat}
-              onChange={(e) => handleRepeatCheckboxChange(e.target.checked)}
-              className="hidden"
+              type="text"
+              inputMode="numeric"
+              className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
+              defaultValue={selectedDate ? selectedDate.getDate() : ""}
+              onBlur={handleDayChange}
+              ref={dayInputRef}
+              onKeyDown={handleKeyPress}
+              maxLength={2}
             />
-            <div className="checkmark flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 bg-white">
-              {/* checkmark */}
-              <div className={`checkmark-icon ${isRepeat ? "" : "hidden"}`}>
-                <CheckCircleIcon
-                  fontSize="small"
-                  className="-translate-y-[0.12rem] text-primaryBlue"
-                />
-              </div>
-            </div>
-            <span>Repeat</span>
-          </label>
+          </div>
 
-          <div
-            className={`repeat_days mt-5 flex items-center justify-center gap-3 sm:gap-5 md:gap-10 ${
-              !isRepeat && "pointer-events-none opacity-30"
-            }`}
-          >
-            {["S", "M", "T", "W", "T", "F", "S"].map((day, index) => (
-              <label key={index}>
-                <input
-                  type="checkbox"
-                  checked={isRepeat && allDaysChecked[index]}
-                  onChange={(e) =>
-                    handleDayCheckboxChange(index, e.target.checked)
-                  }
-                  className="hidden"
-                />
-                <div className="single_day flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-gray-100 font-bold uppercase text-grey">
-                  {day}
-                </div>
-              </label>
-            ))}
+          {/* set month */}
+          <div>
+            <span className="mb-2 block text-grey">Month</span>
+            <select
+              className="bg-gray-100 p-3 capitalize md:text-lg"
+              onChange={handleMonthChange}
+              defaultValue={selectedDate ? selectedDate.getMonth() : ""}
+            >
+              <option value={0}>January</option>
+              <option value={1}>February</option>
+              <option value={2}>March</option>
+              <option value={3}>April</option>
+              <option value={4}>May</option>
+              <option value={5}>June</option>
+              <option value={6}>July</option>
+              <option value={7}>August</option>
+              <option value={8}>September</option>
+              <option value={9}>October</option>
+              <option value={10}>November</option>
+              <option value={11}>December</option>
+            </select>
+          </div>
+
+          <div>
+            <span className="mb-2 block text-grey">Year</span>
+            {/* handle year change */}
+            <input
+              type="text"
+              inputMode="numeric"
+              className="w-16 bg-gray-100 p-3 text-center md:w-20 md:text-lg"
+              defaultValue={selectedDate ? selectedDate.getFullYear() : ""}
+              onBlur={handleYearChange}
+              onKeyDown={handleKeyPress}
+              ref={yearInputRef}
+              maxLength={4}
+            />
           </div>
         </section>
+      )}
 
-        <section className="!mt-7">
-          {selectedCategory === "medication" && (
-            <textarea
-              className="w-full resize-none rounded-md bg-gray-100 px-4 py-2 md:text-sm"
-              placeholder="Write a little note about dosage"
-              rows={5}
-            ></textarea>
-          )}
-        </section>
+      <select
+        className="w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
+        value={selectedCategory}
+        onChange={(e) => setSelectedCategory(e.target.value)}
+      >
+        <option value="" hidden disabled="disabled">
+          Select Category
+        </option>
+        <option value="medication">Medication</option>
+        <option value="food">Food</option>
+      </select>
 
-        <center>
-          <button
-            className="main_btn themed mt-8 w-full disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:!bg-gray-300 focus:disabled:!bg-gray-300"
-            disabled={true}
-          >
-            Set Reminder
-          </button>
-        </center>
-      </div>
-    </>
+      {/* enter time  */}
+      <section className="flex justify-between">
+        <div>
+          <span className="mb-2 block text-grey">Type in time</span>
+
+          <div className="flex gap-1 md:gap-3">
+            <input
+              type="text"
+              inputMode="numeric"
+              className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
+              defaultValue={"00"}
+              onBlur={handleHourChange}
+              ref={hourInputRef}
+              onKeyDown={handleKeyPress}
+              maxLength={2}
+            />
+
+            <span className="self-center text-3xl text-grey">:</span>
+
+            <input
+              type="text"
+              inputMode="numeric"
+              className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
+              defaultValue={"00"}
+              onBlur={handleMinuteChange}
+              ref={minuteInputRef}
+              onKeyDown={handleKeyPress}
+              maxLength={2}
+            />
+
+            <select
+              className="bg-gray-100 p-3 capitalize md:text-lg"
+              defaultValue={selectedMeridiem} // Set default value from state
+              onChange={handleMeridiemChange} // Handle meridiem change
+            >
+              <option value="am">AM</option>
+              <option value="pm">PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <span className="mb-2 block text-grey">Type in Snooze</span>
+
+          <div className="flex gap-1 md:gap-3">
+            <input
+              type="text"
+              inputMode="numeric"
+              className="w-14 bg-gray-100 p-3 text-center md:text-lg"
+              defaultValue="00"
+              maxLength={2}
+            />
+
+            <span className="self-center text-grey">mins</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <label className="repeat_check flex select-none items-center gap-2">
+          <input
+            type="checkbox"
+            checked={isRepeat}
+            onChange={(e) => handleRepeatCheckboxChange(e.target.checked)}
+            className="hidden"
+          />
+          <div className="checkmark flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 bg-white">
+            {/* checkmark */}
+            <div className={`checkmark-icon ${isRepeat ? "" : "hidden"}`}>
+              <CheckCircleIcon
+                fontSize="small"
+                className="-translate-y-[0.12rem] text-primaryBlue"
+              />
+            </div>
+          </div>
+          <span>Repeat</span>
+        </label>
+
+        <div
+          className={`repeat_days mt-5 flex items-center justify-center gap-3 sm:gap-5 md:gap-10 ${
+            !isRepeat && "pointer-events-none opacity-30"
+          }`}
+        >
+          {["S", "M", "T", "W", "T", "F", "S"].map((day, index) => (
+            <label key={index}>
+              <input
+                type="checkbox"
+                checked={isRepeat && allDaysChecked[index]}
+                onChange={(e) =>
+                  handleDayCheckboxChange(index, e.target.checked)
+                }
+                className="hidden"
+              />
+              <div className="single_day flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-gray-100 font-bold uppercase text-grey">
+                {day}
+              </div>
+            </label>
+          ))}
+        </div>
+      </section>
+
+      <section className="!mt-7">
+        {selectedCategory === "medication" && (
+          <textarea
+            className="w-full resize-none rounded-md bg-gray-100 px-4 py-2 md:text-sm"
+            placeholder="Write a little note about dosage"
+            rows={5}
+          ></textarea>
+        )}
+      </section>
+
+      <center>
+        <button
+          className="main_btn themed mt-8 w-full disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:!bg-gray-300 focus:disabled:!bg-gray-300"
+          disabled={true}
+        >
+          Set Reminder
+        </button>
+      </center>
+    </div>
   );
 };
 
