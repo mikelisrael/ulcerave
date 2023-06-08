@@ -5,7 +5,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import RangeSlider from "../components/Slider";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { getTitle } from "../../utils/helperFunctions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AppModal from "../components/RecommendationModal";
 
 const Dashboard = () => {
@@ -15,6 +15,7 @@ const Dashboard = () => {
   const [detailsHeight, setDetailsHeight] = useState(0);
   const detailsRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (showDetails) {
@@ -80,7 +81,7 @@ const Dashboard = () => {
         data-aos="fade-in"
         data-aos-duration="300"
       >
-        <header className="status_check flex flex-col items-center justify-center rounded-3xl bg-blue-200 bg-[url('/images/status_check.svg')] bg-cover bg-no-repeat py-5 md:rounded-[3.5rem] md:py-10">
+        <header className="status_check flex flex-col items-center justify-center rounded-3xl bg-blue-200 bg-[url('/images/status_check.svg')] bg-cover bg-center bg-no-repeat py-5 md:rounded-[3.5rem] md:py-10">
           <h4 className="flex gap-1 font-bold">
             <span>Hello</span>
             <span>{user?.firstName}</span>{" "}
@@ -152,7 +153,7 @@ const Dashboard = () => {
           </div>
 
           <div className="flex-1">
-            <h2 className="whitespace-nowrap  font-bold sm:text-2xl md:text-2xl">
+            <h2 className="whitespace-nowrap text-xs font-bold sm:text-2xl md:text-2xl">
               Never miss a Medication or Meal{" "}
             </h2>
             <p className="text-xs capitalize text-grey lg:text-lg">
@@ -160,7 +161,7 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <button>
+          <button onClick={() => navigate("/reminder")}>
             <AddCircleIcon
               className="text-primaryBlue"
               fontSize={window.innerWidth < 768 ? "small" : "large"}
@@ -179,7 +180,7 @@ const Dashboard = () => {
           <section className="scroll_container overflow-x-auto">
             <div className="flex items-stretch gap-3">
               <Link
-                to="/articles/gastric-ulcer-101"
+                to="/resources/gastric-ulcer-101"
                 className="group w-full min-w-[300px] cursor-pointer place-items-center border border-gray-200 p-2"
               >
                 <img
@@ -194,7 +195,7 @@ const Dashboard = () => {
               </Link>
 
               <Link
-                to="/articles/how-gastric-ulcer-is-diagnosed"
+                to="/resources/how-gastric-ulcer-is-diagnosed"
                 className="group w-full min-w-[300px] cursor-pointer place-items-center border border-gray-200 p-2"
               >
                 <img
@@ -212,7 +213,7 @@ const Dashboard = () => {
               </Link>
 
               <Link
-                to="/articles/life-modifications"
+                to="/resources/life-modifications"
                 className="group w-full min-w-[300px] cursor-pointer place-items-center border border-gray-200 p-2"
               >
                 <img
