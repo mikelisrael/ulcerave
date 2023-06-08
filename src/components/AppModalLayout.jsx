@@ -5,6 +5,8 @@ import { Modal } from "@mui/material";
 const AppModalLayout = ({ open, setOpen, closeFunc, children }) => {
   closeFunc = closeFunc || (() => setOpen(false));
 
+  // TODO: uncomment animation
+
   return (
     <Modal
       open={open}
