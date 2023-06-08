@@ -188,13 +188,28 @@ const Articles = () => {
                   </Link>
                   <Link
                     to="how-gastric-ulcer-is-diagnosed"
-                    className="stacked isolate h-72 min-w-[250px] overflow-hidden rounded-2xl"
+                    className="stacked relative isolate h-72 min-w-[250px] overflow-hidden rounded-2xl"
                   >
                     <img
                       src="/images/image_2.png"
                       alt="hospital"
-                      className="h-full w-full object-cover"
+                      className="z-[-2] h-full w-full object-cover"
                     />
+                    <div className="absolute inset-0 z-[-1] bg-gradient-to-b from-transparent to-black/30"></div>
+                    <div className="space-y-1 px-4 py-2 text-white">
+                      <h3 className="text-base font-semibold">
+                        How Gastric Ulcer is Diagnosed
+                      </h3>
+                      <h4>By Bethel Ohanugo</h4>
+                      <div className="flex items-center gap-2">
+                        <AccessTimeIcon
+                          sx={{
+                            fontSize: "1rem",
+                          }}
+                        />
+                        <span className="text-xs">16 mins read</span>
+                      </div>
+                    </div>
                   </Link>
                 </div>
               </li>
