@@ -15,11 +15,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Onboarding from "./pages/Onboarding";
 import Reminder from "./pages/Reminder";
-import Articles from "./pages/articles";
-import SingleArticle from "./pages/articles/GastricUlcer";
-import GastricUlcer from "./pages/articles/GastricUlcer";
-import DiagnoseUlcer from "./pages/articles/DiagnoseUlcer";
-import LifeModifications from "./pages/articles/LifeModifications";
+import Articles from "./pages/resources";
+import SingleArticle from "./pages/resources/GastricUlcer";
+import GastricUlcer from "./pages/resources/GastricUlcer";
+import DiagnoseUlcer from "./pages/resources/DiagnoseUlcer";
+import LifeModifications from "./pages/resources/LifeModifications";
 
 function App() {
   const { visited } = useGlobalContext();
@@ -45,7 +45,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="articles" element={<Articles />}>
+          <Route path="resources" element={<Articles />}>
             <Route path="gastric-ulcer-101" element={<GastricUlcer />} />
             <Route path="life-modifications" element={<LifeModifications />} />
             <Route

@@ -24,6 +24,9 @@ const Articles = () => {
         >
           <center className="text-grey lg:text-lg">
             <div className="max-w-lg">
+              <h1 className="text-center text-xl font-semibold text-black md:text-3xl">
+                Resources
+              </h1>
               Get credible information and resources about Gastric ulcer
               <div className="relative mt-7">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -51,14 +54,13 @@ const Articles = () => {
               </div>
             </div>
           </center>
-
           <section>
             <ul className="mt-10 border-b border-gray-300 pb-3">
               <li className="font-medium text-primaryBlue">Articles for you</li>
             </ul>
 
             <ul>
-              <li className="flex gap-5 border-b border-gray-300 py-12">
+              <li className="hidden gap-5 border-b border-gray-300 py-12 md:flex">
                 <Link to="gastric-ulcer-101">
                   <img
                     src="/images/image_1.png"
@@ -105,7 +107,7 @@ const Articles = () => {
                 </div>
               </li>
 
-              <li className="flex gap-5 border-b border-gray-300 py-12">
+              <li className="hidden gap-5 border-b border-gray-300 py-12 md:flex">
                 <Link to="how-gastric-ulcer-is-diagnosed">
                   <img
                     src="/images/image_2.png"
@@ -157,20 +159,68 @@ const Articles = () => {
                 </div>
               </li>
 
-              <li className="flex gap-5  py-12">
+              <li className="scroll_container overflow-x-auto pt-5">
+                <div className="flex items-stretch gap-3">
+                  <Link
+                    to="gastric-ulcer-101"
+                    className="stacked relative isolate h-72 min-w-[250px] overflow-hidden rounded-2xl"
+                  >
+                    <img
+                      src="/images/image_1.png"
+                      alt="hello image"
+                      className="z-[-2] h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 z-[-1] bg-gradient-to-b from-transparent to-black/30"></div>
+                    <div className="space-y-1 px-4 py-2 text-white">
+                      <h3 className="text-base font-semibold">
+                        Gastric Ulcer 101
+                      </h3>
+                      <h4>By Bethel Ohanugo</h4>
+                      <div className="flex items-center gap-2">
+                        <AccessTimeIcon
+                          sx={{
+                            fontSize: "1rem",
+                          }}
+                        />
+                        <span className="text-xs">16 mins read</span>
+                      </div>
+                    </div>
+                  </Link>
+                  <Link
+                    to="how-gastric-ulcer-is-diagnosed"
+                    className="stacked isolate h-72 min-w-[250px] overflow-hidden rounded-2xl"
+                  >
+                    <img
+                      src="/images/image_2.png"
+                      alt="hospital"
+                      className="h-full w-full object-cover"
+                    />
+                  </Link>
+                </div>
+              </li>
+
+              <li className="mb-2 mt-10 pb-1 text-base md:hidden">
+                More articles
+              </li>
+
+              <li className="flex items-center gap-5 rounded-xl border px-3 py-3 md:items-start md:border-none md:px-0 md:py-12">
                 <Link to="life-modifications">
                   <img
                     src="/images/image_3.png"
                     alt="frown"
-                    className="h-64 w-64 rounded-2xl object-cover transition-all duration-300 hover:opacity-80 focus:opacity-80"
+                    className="h-16 w-16 rounded-lg object-cover transition-all duration-300 hover:opacity-80 focus:opacity-80 md:h-64 md:w-64 md:rounded-2xl"
                   />
                 </Link>
 
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold">
+                  <h3 className="text-sm font-medium md:text-2xl md:font-semibold">
                     Lifestyle Modifications
                   </h3>
-                  <section className="mt-2 flex items-center gap-5">
+                  <h4 className="text-xs text-grey md:hidden">
+                    By Bethel Ohanugo
+                  </h4>
+
+                  <section className="mt-2 hidden items-center gap-5 md:flex">
                     <div className="flex items-center gap-1">
                       <CircleIcon className="text-gray-300" />
                       <h4 className="text-lg">By Bethel Ohanugo</h4>
@@ -182,13 +232,13 @@ const Articles = () => {
                     </div>
                   </section>
 
-                  <p className="mt-5 max-w-2xl text-grey lg:text-lg">
+                  <p className="mt-5 hidden max-w-2xl text-grey md:block lg:text-lg">
                     Once it is confirmed that you have a gastric ulcer
                     diagnosis, certain lifestyle modifications form a key
                     component of your treatment strategy...
                   </p>
 
-                  <section className="mt-16 flex max-w-2xl items-center justify-between">
+                  <section className="mt-16 hidden max-w-2xl items-center justify-between md:flex">
                     <div className="flex items-center gap-2">
                       <AccessTimeIcon fontSize="small" />
                       <span>16 mins read</span>
