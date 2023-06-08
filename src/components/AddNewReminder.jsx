@@ -227,7 +227,7 @@ const AddNewReminder = () => {
         <h1 className="text-center text-lg font-bold md:text-2xl">
           New Reminder
         </h1>
-        <h3 className="text-grey">{formattedDate}</h3>
+        <h3 className="text-grey">{moment().format("Do, MMM YYYY")}</h3>
       </section>
 
       <section>
