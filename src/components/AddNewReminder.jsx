@@ -272,7 +272,7 @@ const AddNewReminder = () => {
               <input
                 type="text"
                 inputMode="numeric"
-                className="w-20 bg-gray-100 p-3 text-center md:text-lg"
+                className="w-16 md:w-20 bg-gray-100 p-3 text-center md:text-lg"
                 defaultValue={selectedDate ? selectedDate.getFullYear() : ""}
                 onBlur={handleYearChange}
                 onKeyDown={handleKeyPress}
