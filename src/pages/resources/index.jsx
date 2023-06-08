@@ -159,7 +159,7 @@ const Articles = () => {
                 </div>
               </li>
 
-              <li className="scroll_container overflow-x-auto pt-5">
+              <li className="scroll_container md:hidden overflow-x-auto pt-5">
                 <div className="flex items-stretch gap-3">
                   <Link
                     to="gastric-ulcer-101"
