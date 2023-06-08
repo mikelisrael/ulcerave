@@ -1,0 +1,14 @@
+/* Styling for checked checkbox */
+.repeat_check input[type="checkbox"]:checked + .checkmark {
+  background-color: #ffffff; /* Customize the checked background color */
+  border: none;
+}
+
+/* Styling for checkmark icon */
+.repeat_check input[type="checkbox"]:checked + .checkmark .checkmark-icon {
+  display: block;
+}
+
+.repeat_days input[type="checkbox"]:checked + .single_day {
+  @apply bg-primaryBlue text-white;
+}
