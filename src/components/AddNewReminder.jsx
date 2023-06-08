@@ -228,13 +228,13 @@ const AddNewReminder = () => {
         </section>
 
         {showDatePicker && (
-          <section className="flex gap-5">
+          <section className="flex gap-3 md:gap-5">
             <div>
               <span className="mb-2 block text-grey">Day</span>
               <input
                 type="text"
                 inputMode="numeric"
-                className="w-12 bg-gray-100 py-3 text-center md:text-lg"
+                className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
                 defaultValue={selectedDate ? selectedDate.getDate() : ""}
                 onBlur={handleDayChange}
                 ref={dayInputRef}
@@ -299,11 +299,11 @@ const AddNewReminder = () => {
           <div>
             <span className="mb-2 block text-grey">Type in time</span>
 
-            <div className="flex gap-3">
+            <div className="flex gap-1 md:gap-3">
               <input
                 type="text"
                 inputMode="numeric"
-                className="w-12 bg-gray-100 py-3 text-center md:text-lg"
+                className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
                 defaultValue={"00"}
                 onBlur={handleHourChange}
                 ref={hourInputRef}
@@ -316,7 +316,7 @@ const AddNewReminder = () => {
               <input
                 type="text"
                 inputMode="numeric"
-                className="w-12 bg-gray-100 py-3 text-center md:text-lg"
+                className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
                 defaultValue={"00"}
                 onBlur={handleMinuteChange}
                 ref={minuteInputRef}
@@ -338,7 +338,7 @@ const AddNewReminder = () => {
           <div>
             <span className="mb-2 block text-grey">Type in Snooze</span>
 
-            <div className="flex gap-3">
+            <div className="flex gap-1 md:gap-3">
               <input
                 type="text"
                 inputMode="numeric"
