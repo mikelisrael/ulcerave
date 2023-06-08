@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import moment from "moment/moment";
+import "./css/checkbox.css";
 
 const AddNewReminder = () => {
   const hourInputRef = useRef(null);
@@ -9,20 +11,23 @@ const AddNewReminder = () => {
   const yearInputRef = useRef(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedMeridiem, setSelectedMeridiem] = useState(
     selectedDate.getHours() >= 12 ? "pm" : "am"
   );
+  const [isRepeat, setIsRepeat] = useState(false);
+  const [allDaysChecked, setAllDaysChecked] = useState(Array(7).fill(false));
 
-  //   useEffect(() => {
-  //     // check if selected date is afternoon or morning and console it
-  //     if (selectedDate.getHours() >= 12) {
-  //       console.log("afternoon");
-  //     } else {
-  //       console.log("morning");
-  //     }
+  // useEffect(() => {
+  //   // check if selected date is afternoon or morning and console it
+  //   if (selectedDate.getHours() >= 12) {
+  //     console.log("afternoon");
+  //   } else {
+  //     console.log("morning");
+  //   }
 
-  //     console.log(selectedDate);
-  //   }, [selectedDate]);
+  //   console.log(selectedDate);
+  // }, [selectedDate]);
 
   const toggleDatePicker = () => {
     setShowDatePicker(!showDatePicker);
@@ -201,6 +206,21 @@ const AddNewReminder = () => {
     }
   };
 
+  // Function to handle checkbox changes for individual days
+  const handleDayCheckboxChange = (index, checked) => {
+    const updatedDaysChecked = [...allDaysChecked];
+    updatedDaysChecked[index] = checked;
+    setAllDaysChecked(updatedDaysChecked);
+  };
+
+  // Function to handle "Repeat" checkbox change
+  const handleRepeatCheckboxChange = (checked) => {
+    setIsRepeat(checked);
+    if (!checked) {
+      setAllDaysChecked(Array(7).fill(false));
+    }
+  };
+
   return (
     <>
       <div className="space-y-5">
@@ -213,7 +233,7 @@ const AddNewReminder = () => {
 
         <section>
           <div
-            className="flex rounded-md border px-4 py-2"
+            className="flex select-none rounded-md border px-4 py-2"
             onClick={toggleDatePicker}
           >
             <div className="relative isolate flex-grow md:text-lg">
@@ -272,7 +292,7 @@ const AddNewReminder = () => {
               <input
                 type="text"
                 inputMode="numeric"
-                className="w-16 md:w-20 bg-gray-100 p-3 text-center md:text-lg"
+                className="w-16 bg-gray-100 p-3 text-center md:w-20 md:text-lg"
                 defaultValue={selectedDate ? selectedDate.getFullYear() : ""}
                 onBlur={handleYearChange}
                 onKeyDown={handleKeyPress}
@@ -285,7 +305,8 @@ const AddNewReminder = () => {
 
         <select
           className="w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
-          defaultValue=""
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
         >
           <option value="" hidden disabled="disabled">
             Select Category
@@ -351,6 +372,68 @@ const AddNewReminder = () => {
             </div>
           </div>
         </section>
+
+        <section>
+          <label className="repeat_check flex select-none items-center gap-2">
+            <input
+              type="checkbox"
+              checked={isRepeat}
+              onChange={(e) => handleRepeatCheckboxChange(e.target.checked)}
+              className="hidden"
+            />
+            <div className="checkmark flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 bg-white">
+              {/* checkmark */}
+              <div className={`checkmark-icon ${isRepeat ? "" : "hidden"}`}>
+                <CheckCircleIcon
+                  fontSize="small"
+                  className="-translate-y-[0.12rem] text-primaryBlue"
+                />
+              </div>
+            </div>
+            <span>Repeat</span>
+          </label>
+
+          <div
+            className={`repeat_days mt-5 flex items-center justify-center gap-3 sm:gap-5 md:gap-10 ${
+              !isRepeat && "pointer-events-none opacity-30"
+            }`}
+          >
+            {["S", "M", "T", "W", "T", "F", "S"].map((day, index) => (
+              <label key={index}>
+                <input
+                  type="checkbox"
+                  checked={isRepeat && allDaysChecked[index]}
+                  onChange={(e) =>
+                    handleDayCheckboxChange(index, e.target.checked)
+                  }
+                  className="hidden"
+                />
+                <div className="single_day flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-gray-100 font-bold uppercase text-grey">
+                  {day}
+                </div>
+              </label>
+            ))}
+          </div>
+        </section>
+
+        <section className="!mt-7">
+          {selectedCategory === "medication" && (
+            <textarea
+              className="w-full resize-none rounded-md bg-gray-100 px-4 py-2 md:text-sm"
+              placeholder="Write a little note about dosage"
+              rows={5}
+            ></textarea>
+          )}
+        </section>
+
+        <center>
+          <button
+            className="main_btn themed mt-8 w-full disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:!bg-gray-300 focus:disabled:!bg-gray-300"
+            disabled={true}
+          >
+            Set Reminder
+          </button>
+        </center>
       </div>
     </>
   );
