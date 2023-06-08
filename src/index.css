@@ -107,3 +107,13 @@ body {
 .scroll_container > div > * {
   scroll-snap-align: start;
 }
+
+.stacked {
+  display: grid;
+  align-items: end;
+}
+
+.stacked > * {
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+}
