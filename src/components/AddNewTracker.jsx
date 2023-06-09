@@ -46,8 +46,9 @@ const AddNewTracker = () => {
           <option value="" hidden disabled="disabled">
             Pain Level
           </option>
-          <option value="medication">Medication</option>
-          <option value="food">Food</option>
+          <option value="mild">Mild</option>
+          <option value="severe">Severe</option>
+          <option value="worst">Worst</option>
         </select>
 
         <div>
