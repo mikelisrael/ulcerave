@@ -104,7 +104,7 @@ const AddNewTracker = () => {
         </div>
 
         <div>
-          <h4 className="text-grey mb-2">Description</h4>
+          <h4 className="mb-2 text-grey">Description</h4>
           <textarea
             placeholder="Description"
             className="w-full resize-none rounded-md bg-gray-100 px-4 py-3 md:text-lg"
@@ -113,6 +113,15 @@ const AddNewTracker = () => {
           ></textarea>
         </div>
       </section>
+
+      <center>
+        <button
+          className="main_btn themed mt-8 w-full disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:!bg-gray-300 focus:disabled:!bg-gray-300"
+          disabled={true}
+        >
+          Save
+        </button>
+      </center>
     </div>
   );
 };
