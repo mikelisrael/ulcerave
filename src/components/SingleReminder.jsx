@@ -3,7 +3,7 @@ import moment from "moment";
 
 const SingleReminder = ({reminder}) => {
   return (
-    <div className="flex items-center gap-2 rounded-lg border-2 py-2 px-4 md:py-4">
+    <div className="flex items-center gap-2 rounded-lg border-2 px-4 py-2 focus-within:bg-lightBlue md:py-4 focus-within:border-primaryBlue">
       <div className="flex-grow space-y-1">
         <h3 className="font-medium capitalize text-black md:text-lg">
           {reminder?.category}
