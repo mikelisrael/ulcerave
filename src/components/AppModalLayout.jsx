@@ -15,7 +15,7 @@ const AppModalLayout = ({ open, setOpen, closeFunc, children }) => {
     >
       <div className="bg-mainBg flex h-full w-full items-start justify-center">
         <div
-          className="relative mt-16 w-[90%] rounded-xl bg-white shadow-md md:w-[60%] lg:w-[50%] xl:w-1/3"
+          className="relative mt-9 max-h-[80vh] w-[90%] overflow-y-auto rounded-xl bg-white shadow-md md:mt-16 md:w-[60%] lg:w-[50%] xl:w-1/3"
           // data-aos="zoom-out"
           // data-aos-duration="500"
         >
