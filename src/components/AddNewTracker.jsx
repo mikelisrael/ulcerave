@@ -106,8 +106,8 @@ const AddNewTracker = () => {
         <div>
           <h4 className="mb-2 text-grey">Description</h4>
           <textarea
-            placeholder="Description"
-            className="w-full resize-none rounded-md bg-gray-100 px-4 py-3 md:text-lg"
+            placeholder="Describe the process that led you to your experience."
+            className="w-full resize-none rounded-md bg-gray-100 px-4 py-2"
             cols={30}
             rows={5}
           ></textarea>

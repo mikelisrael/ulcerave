@@ -418,7 +418,7 @@ const AddNewReminder = () => {
       <section className="!mt-7">
         {selectedCategory === "medication" && (
           <textarea
-            className="w-full resize-none rounded-md bg-gray-100 px-4 py-2 md:text-sm"
+            className="w-full resize-none rounded-md bg-gray-100 px-4 py-2"
             placeholder="Write a little note about dosage"
             rows={5}
           ></textarea>
