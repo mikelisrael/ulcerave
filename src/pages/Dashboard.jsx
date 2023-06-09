@@ -153,7 +153,7 @@ const Dashboard = () => {
           </div>
 
           <div className="flex-1">
-            <h2 className="whitespace-nowrap text-xs font-bold sm:text-2xl md:text-2xl">
+            <h2 className="whitespace-nowrap text-base font-bold sm:text-lg md:text-2xl">
               Never miss a Medication or Meal{" "}
             </h2>
             <p className="text-xs capitalize text-grey lg:text-lg">
@@ -172,7 +172,7 @@ const Dashboard = () => {
         <div className="relative pt-24">
           <div className="mb-5 flex items-center justify-between gap-3 lg:mb-8">
             <h2 className="text-base font-bold md:text-xl">Articles for you</h2>
-            <Link to="/articles" className="font-medium text-primaryBlue">
+            <Link to="/resources" className="font-medium text-primaryBlue">
               See more
             </Link>
           </div>
@@ -189,7 +189,9 @@ const Dashboard = () => {
                   className="w-full transition-all duration-300 group-hover:opacity-75"
                 />
                 <div className="w-full">
-                  <h3 className="mt-3 text-xl font-bold">Gastric Ulcer 101</h3>
+                  <h3 className="mt-3 text-base font-bold md:text-xl">
+                    Gastric Ulcer 101
+                  </h3>
                   <p className="capitalize text-grey">By Bethel Ohanugo</p>
                 </div>
               </Link>
@@ -205,7 +207,7 @@ const Dashboard = () => {
                 />
 
                 <div className="w-full">
-                  <h3 className="mt-3 text-xl font-bold">
+                  <h3 className="mt-3 text-base font-bold md:text-xl">
                     How Gastric Ulcer is Diagnosed
                   </h3>
                   <p className="capitalize text-grey">By Bethel Ohanugo</p>
@@ -223,7 +225,7 @@ const Dashboard = () => {
                 />
 
                 <div className="w-full">
-                  <h3 className="mt-3 text-xl font-bold">
+                  <h3 className="mt-3 text-base font-bold md:text-xl">
                     Lifestyle Modification
                   </h3>
                   <p className="capitalize text-grey">By Bethel Ohanugo</p>

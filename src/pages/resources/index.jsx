@@ -37,7 +37,7 @@ const Articles = () => {
                 </div>
                 <input
                   type="text"
-                  className="block w-full rounded-full border border-gray-300 p-3 pl-12 text-base focus:outline-none"
+                  className="block w-full rounded-full border border-gray-300 p-3 pl-12 md:text-base focus:outline-none"
                   placeholder="Search"
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
