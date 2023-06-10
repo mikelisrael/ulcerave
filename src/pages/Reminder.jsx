@@ -104,7 +104,7 @@ const Reminder = () => {
               remindersForDate.length > 0 && (
                 <div
                   key={date}
-                  className="mt-14 max-w-lg space-y-2 text-left md:space-y-4"
+                  className="mt-7 max-w-lg space-y-2 text-left md:mt-14 md:space-y-4"
                 >
                   <h3>{date}</h3>
                   {remindersForDate.map((reminder) => (
@@ -115,7 +115,7 @@ const Reminder = () => {
             );
           })
         ) : (
-          <div className="mt-28 max-w-md">
+          <div className="mt-20 max-w-md md:mt-28">
             <img
               src="/icons/falling.svg"
               className="float w-3/5 select-none md:w-auto"
