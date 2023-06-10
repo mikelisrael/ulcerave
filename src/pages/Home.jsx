@@ -122,13 +122,6 @@ const Home = () => {
 
           <div className="relative">
             <img src="/images/image_6.png" alt="man with phone" />
-
-            {/* quote  */}
-            <img
-              src="/images/image_5.png"
-              className="absolute -bottom-[25%] -right-[2%] rounded-3xl px-5 py-3 md:w-3/4"
-              data-aos="fade-left"
-            />
           </div>
         </div>
       </section>
@@ -159,20 +152,18 @@ const Home = () => {
           >
             Ulcerave is a comprehensive and intuitive webapp that is designed to
             help Gastric Ulcer patients manage their symptoms and improve their
-            quality of life. Our Mission is to empower patients to take control
-            of their health by providing personalized tools, insights and
+            quality of life. The goal is to empower patients to take control of
+            their health by providing personalized tools, insights and
             supportive resources that cater to their unique needs.
           </p>
           <p
             className="border-l-[6px] border-l-lightBlue pl-5 text-grey md:max-w-[60%]"
             data-aos="fade-left"
           >
-            At Ulcerave, we believe tha managing Gastric ulcer should be a
-            seamless and stress-free experience. That is why we are dedicated to
-            providing a user-friendly interface that is easy to navigate and
-            understand. Our team of experienced professionals works tirelessly
-            to ensure that our app is always up-to-date and optimized for the
-            best possible user experience.
+            With Ulcerave, managing Gastric ulcer would be seamless and
+            stress-free. With a user-friendly interface that is easy to navigate
+            and understand, it is optimized for the best possible user
+            experience.
           </p>
         </div>
       </section>
