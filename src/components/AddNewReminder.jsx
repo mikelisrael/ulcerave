@@ -263,6 +263,7 @@ const AddNewReminder = () => {
           </div>
 
           {/* set month */}
+          {/* BUG: select button not displaying properly on iPhone */}
           <div>
             <span className="mb-2 block text-grey">Month</span>
             <select
@@ -344,6 +345,7 @@ const AddNewReminder = () => {
               maxLength={2}
             />
 
+            {/* BUG: select button not displaying properly on iPhone */}
             <select
               className="bg-gray-100 p-3 capitalize md:text-lg"
               defaultValue={selectedMeridiem} // Set default value from state
