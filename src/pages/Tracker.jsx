@@ -77,7 +77,7 @@ const Tracker = () => {
             {trackers.length > 1 ? "entries" : "entry"}
           </h2>
 
-          <div className="mx-auto mt-7 max-w-xl text-grey md:mt-10 lg:text-lg">
+          <div className="mx-auto mt-7 max-w-2xl text-grey md:mt-10 lg:text-lg">
             <section className="flex items-center gap-4">
               <button
                 className="main_btn transparent flex h-12 w-12 items-center gap-1 !px-3 md:h-auto md:w-auto md:!px-5"
