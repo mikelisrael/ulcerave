@@ -20,7 +20,7 @@ const AppModal = ({ open, setOpen }) => {
             className="absolute right-5 top-5"
             onClick={() => setOpen(false)}
           >
-            <CloseOutlinedIcon />
+            <CloseOutlinedIcon fontSize="small" />
           </button>
           <h2 className="text-center text-xl font-medium md:text-2xl">
             Recommendation
