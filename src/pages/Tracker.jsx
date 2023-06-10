@@ -72,12 +72,12 @@ const Tracker = () => {
     >
       {sortedDates.length > 0 ? (
         <>
-          <h1 className="text-center font-medium text-grey lg:text-lg">
+          <h2 className="text-center font-medium text-black lg:text-lg">
             You have made {trackers.length}{" "}
             {trackers.length > 1 ? "entries" : "entry"}
-          </h1>
+          </h2>
 
-          <div className="mx-auto mt-7 max-w-xl text-grey md:mt-14 lg:text-lg">
+          <div className="mx-auto mt-7 max-w-xl text-grey md:mt-10 lg:text-lg">
             <section className="flex items-center gap-4">
               <button
                 className="main_btn transparent flex h-12 w-12 items-center gap-1 !px-3 md:h-auto md:w-auto md:!px-5"
