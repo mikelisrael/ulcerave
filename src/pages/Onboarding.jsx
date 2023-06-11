@@ -39,8 +39,6 @@ const Onboarding = () => {
   const isEnabled = selectedAvatar;
 
   const setAvatar = async (avatar) => {
-    // set user avatar to local storage
-
     // push to db collection firestore
     const docRef = collection(db, "users");
 
