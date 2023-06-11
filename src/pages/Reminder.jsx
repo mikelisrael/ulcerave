@@ -42,7 +42,15 @@ const Reminder = () => {
           return doc.data()?.reminder || [];
         });
 
-        setReminders(remindersData.flat());
+        const filterFutureReminders = remindersData
+          .flat()
+          .filter((reminder) => {
+            return moment(reminder.date).isSameOrAfter(moment().startOf("day"));
+          });
+
+        // console.log(filterFutureReminders);
+
+        setReminders(filterFutureReminders);
       } catch (error) {
         toast.error("Error fetching reminders:", error);
       }
