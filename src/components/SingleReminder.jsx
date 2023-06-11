@@ -53,7 +53,7 @@ const SingleReminder = ({ reminder }) => {
                 <h3 className="font-medium capitalize text-black md:text-lg">
                   {reminder?.category}
                 </h3>
-                <h2 className="mt-1 font-medium text-black md:text-2xl">
+                <h2 className="mt-1 text-lg font-medium text-black md:text-2xl">
                   {moment(reminder?.date).format("hh:mm A")}
                 </h2>
               </div>
