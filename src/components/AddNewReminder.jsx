@@ -3,8 +3,13 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import moment from "moment/moment";
 import "./css/checkbox.css";
+import { useGlobalContext } from "../context";
+import { toast } from "react-toastify";
+import { db } from "../utils/firebase";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 
-const AddNewReminder = () => {
+const AddNewReminder = ({ setOpen, setRefetchCount }) => {
   const hourInputRef = useRef(null);
   const minuteInputRef = useRef(null);
   const dayInputRef = useRef(null);
@@ -17,25 +22,90 @@ const AddNewReminder = () => {
   );
   const [isRepeat, setIsRepeat] = useState(false);
   const [allDaysChecked, setAllDaysChecked] = useState(Array(7).fill(false));
+  const [snoozeValue, setSnoozeValue] = useState("00");
+  const descriptionRef = useRef(null);
+  const { user } = useGlobalContext();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // useEffect(() => {
-  //   // check if selected date is afternoon or morning and console it
-  //   if (selectedDate.getHours() >= 12) {
-  //     console.log("afternoon");
-  //   } else {
-  //     console.log("morning");
-  //   }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  //   console.log(selectedDate);
-  // }, [selectedDate]);
+    // check if current date is greater than selected date
+    if (selectedDate < new Date()) {
+      toast.error("Please select a valid date/time");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // if there is no category selected
+    if (!selectedCategory) {
+      toast.error("Please select a category");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // get repeat days array
+    const repeatDays = [];
+    allDaysChecked.forEach((day, index) => {
+      if (day) {
+        repeatDays.push(index);
+      }
+    });
+
+    //  function to wrap date in string
+    const convertDateToString = (date) => {
+      return date.toISOString();
+    };
+
+    const reminder = {
+      category: selectedCategory,
+      date: convertDateToString(selectedDate),
+      repeat: repeatDays,
+      snooze: parseInt(snoozeValue || 0),
+      description: descriptionRef?.current?.value || "",
+      createdAt: convertDateToString(new Date()),
+      id: uuidv4(),
+    };
+
+    // Update the user's reminder list
+    const docRef = collection(db, "users");
+
+    try {
+      const snapshots = await getDocs(docRef);
+      snapshots.forEach(async (item) => {
+        if (item?.data()?.uid === user?.uid) {
+          const docId = item.id;
+          const userRef = doc(db, "users", docId);
+
+          // Fetch the latest user document data
+          const docSnapshot = await getDoc(userRef);
+          const userData = docSnapshot.data();
+
+          // Update the reminder list
+          const updatedReminderList = [...(userData.reminder || []), reminder];
+
+          // Set the updated document data with the new reminder list
+          await setDoc(userRef, {
+            ...userData,
+            reminder: updatedReminderList,
+          }).then(() => {
+            toast.success("Reminder added successfully!");
+            setOpen(false);
+            setRefetchCount((prev) => prev + 1);
+          });
+        }
+      });
+    } catch (error) {
+      toast.error("Error adding reminder: " + error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const toggleDatePicker = () => {
     setShowDatePicker(!showDatePicker);
   };
-
-  const formattedDate = selectedDate
-    ? moment(selectedDate).format("Do MMM, YYYY")
-    : "Select a date";
 
   // handle day change
   const handleDayChange = () => {
@@ -221,8 +291,26 @@ const AddNewReminder = () => {
     }
   };
 
+  //  handle snooze input
+  const handleSnooze = () => {
+    // Check if the input value is empty or already has two digits
+    if (snoozeValue.length === 0 || snoozeValue.length === 2) {
+      return;
+    }
+
+    // Check if the input value is "0"
+    if (snoozeValue === "0") {
+      setSnoozeValue("00");
+    } else {
+      // Pad the input value with a leading zero if it has only one digit
+      setSnoozeValue(snoozeValue.padStart(2, "0"));
+    }
+  };
+
+  const isEnabled = !isSubmitting && selectedCategory;
+
   return (
-    <div className="space-y-5">
+    <form className="space-y-5" onSubmit={handleSubmit}>
       <section className="mb-5 text-center">
         <h1 className="text-center text-lg font-bold md:text-2xl">
           New Reminder
@@ -325,7 +413,11 @@ const AddNewReminder = () => {
               type="text"
               inputMode="numeric"
               className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
-              defaultValue={"00"}
+              defaultValue={
+                selectedDate
+                  ? selectedDate.getHours().toString().padStart(2, "0")
+                  : "00"
+              }
               onBlur={handleHourChange}
               ref={hourInputRef}
               onKeyDown={handleKeyPress}
@@ -338,7 +430,11 @@ const AddNewReminder = () => {
               type="text"
               inputMode="numeric"
               className="w-8 bg-gray-100 py-3 text-center md:w-12 md:text-lg"
-              defaultValue={"00"}
+              defaultValue={
+                selectedDate
+                  ? selectedDate.getMinutes().toString().padStart(2, "0")
+                  : "00"
+              }
               onBlur={handleMinuteChange}
               ref={minuteInputRef}
               onKeyDown={handleKeyPress}
@@ -365,8 +461,15 @@ const AddNewReminder = () => {
               type="text"
               inputMode="numeric"
               className="w-14 bg-gray-100 p-3 text-center md:text-lg"
-              defaultValue="00"
               maxLength={2}
+              value={snoozeValue}
+              onChange={(e) => {
+                setSnoozeValue(e.target.value);
+                if (e.target.value >= "60") {
+                  setSnoozeValue("59");
+                }
+              }}
+              onBlur={handleSnooze}
             />
 
             <span className="self-center text-grey">mins</span>
@@ -423,6 +526,7 @@ const AddNewReminder = () => {
             className="w-full resize-none rounded-md bg-gray-100 px-4 py-2"
             placeholder="Write a little note about dosage"
             rows={5}
+            ref={descriptionRef}
           ></textarea>
         )}
       </section>
@@ -430,12 +534,12 @@ const AddNewReminder = () => {
       <center>
         <button
           className="main_btn themed mt-8 w-full disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:!bg-gray-300 focus:disabled:!bg-gray-300"
-          disabled={true}
+          disabled={!isEnabled}
         >
           Set Reminder
         </button>
       </center>
-    </div>
+    </form>
   );
 };
 
