@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { Modal } from "@mui/material";
-import ErrorIcon from "@mui/icons-material/Error";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 const SingleReminder = ({ reminder }) => {
@@ -46,10 +45,31 @@ const SingleReminder = ({ reminder }) => {
             >
               <CloseOutlinedIcon fontSize="small" />
             </button>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-            quaerat eius accusantium saepe odio aperiam aliquid velit dolore
-            voluptatum consectetur ipsum quae laudantium amet debitis, ipsa
-            mollitia. Accusamus, totam laudantium!
+            <h3 className="mb-5 text-center text-grey md:text-lg">
+              {moment().format("Do, MMM YYYY")}
+            </h3>
+            <section className="flex items-center">
+              <div className="flex-grow">
+                <h3 className="font-medium capitalize text-black md:text-lg">
+                  {reminder?.category}
+                </h3>
+                <h2 className="mt-1 font-medium text-black md:text-2xl">
+                  {moment(reminder?.date).format("hh:mm A")}
+                </h2>
+              </div>
+
+              <span className="text-xs text-grey md:text-sm">
+                Monday - Thursday
+              </span>
+            </section>
+
+            <p className="mt-1 text-sm">{reminder?.description}</p>
+
+            <center>
+              <button className="main_btn themed mt-8 w-full disabled:cursor-not-allowed">
+                Edit
+              </button>
+            </center>
           </div>
         </div>
       </Modal>
