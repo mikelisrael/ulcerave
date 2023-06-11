@@ -53,20 +53,33 @@ const SingleReminder = ({ reminder }) => {
                 <h3 className="font-medium capitalize text-black md:text-lg">
                   {reminder?.category}
                 </h3>
-                <h2 className="mt-1 text-lg font-medium text-black md:text-2xl">
-                  {moment(reminder?.date).format("hh:mm A")}
-                </h2>
+
+                <div>
+                  <h2 className="mt-1 text-lg font-medium text-black md:text-2xl">
+                    {moment(reminder?.date).format("hh:mm A")}
+                  </h2>
+
+                  {reminder?.snooze > 0 && (
+                    <small className="text-xs text-grey">
+                      Snooze: {reminder?.snooze}{" "}
+                      {reminder?.snooze > 1 ? "minutes" : "minute"}
+                    </small>
+                  )}
+                </div>
               </div>
 
-              <span className="text-xs text-grey md:text-sm">
-                Monday - Thursday
+              <span className="w-[40%] text-right text-xs text-grey md:text-sm lg:w-[35%]">
+                {repeatParser(reminder?.repeat)}
               </span>
             </section>
 
-            <p className="mt-1 text-sm">{reminder?.description}</p>
+            <p className="mt-1">{reminder?.description}</p>
 
             <center>
-              <button className="main_btn themed mt-8 w-full disabled:cursor-not-allowed">
+              <button
+                className="main_btn themed mt-8 w-full disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:!bg-gray-300 focus:disabled:!bg-gray-300"
+                disabled={true}
+              >
                 Edit
               </button>
             </center>
@@ -78,3 +91,52 @@ const SingleReminder = ({ reminder }) => {
 };
 
 export default SingleReminder;
+
+function repeatParser(repeat) {
+  if (!repeat || repeat.length === 0) {
+    return "";
+  }
+
+  const weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const sortedRepeat = [...repeat].sort();
+
+  let parsedDays = [];
+  let startDay = sortedRepeat[0];
+  let endDay = sortedRepeat[0];
+
+  for (let i = 1; i < sortedRepeat.length; i++) {
+    if (sortedRepeat[i] === sortedRepeat[i - 1] + 1) {
+      endDay = sortedRepeat[i];
+    } else {
+      if (startDay === endDay) {
+        parsedDays.push(weekdays[startDay]);
+      } else if (endDay - startDay === 1) {
+        parsedDays.push(weekdays[startDay]);
+        parsedDays.push(weekdays[endDay]);
+      } else {
+        parsedDays.push(`${weekdays[startDay]}-${weekdays[endDay]}`);
+      }
+      startDay = sortedRepeat[i];
+      endDay = sortedRepeat[i];
+    }
+  }
+
+  if (startDay === endDay) {
+    parsedDays.push(weekdays[startDay]);
+  } else if (endDay - startDay === 1) {
+    parsedDays.push(weekdays[startDay]);
+    parsedDays.push(weekdays[endDay]);
+  } else {
+    parsedDays.push(`${weekdays[startDay]}-${weekdays[endDay]}`);
+  }
+
+  return parsedDays.join(", ");
+}
