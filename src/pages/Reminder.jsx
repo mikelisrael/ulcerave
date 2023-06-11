@@ -15,11 +15,13 @@ const Reminder = () => {
       category: "medication",
       description: "Take two tablets of your prescribed medication",
       date: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 2,
       category: "food",
       date: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 3,
@@ -27,17 +29,20 @@ const Reminder = () => {
       description:
         "Remember to take your prescribed ulcer medication. Avoid spicy and acidic foods to reduce ulcer symptoms.",
       date: new Date(new Date().setDate(new Date().getDate() + 5)),
+      createdAt: new Date(),
     },
     {
       id: 4,
       category: "food",
       date: new Date(new Date().setDate(new Date().getDate() + 3)),
+      createdAt: new Date(),
     },
     {
       id: 5,
       category: "medication",
       description: "Take the medication after meals for better absorption.",
       date: new Date(new Date().setDate(new Date().getDate() + 1)),
+      createdAt: new Date(),
     },
   ]);
 
