@@ -1,50 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { getTitle } from "../../utils/helperFunctions";
 import AppModalLayout from "../components/AppModalLayout";
 import AddNewReminder from "../components/AddNewReminder";
 import SingleReminder from "../components/SingleReminder";
 import moment from "moment";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import { db } from "../utils/firebase";
+import { useGlobalContext } from "../context";
+import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 
 const Reminder = () => {
   getTitle("reminder");
+  const { user } = useGlobalContext();
   const [open, setOpen] = useState(false);
-  const [reminders, setReminders] = useState([
-    {
-      id: 1,
-      category: "medication",
-      description: "Take two tablets of your prescribed medication",
-      date: new Date(),
-      createdAt: new Date(),
-    },
-    {
-      id: 2,
-      category: "food",
-      date: new Date(),
-      createdAt: new Date(),
-    },
-    {
-      id: 3,
-      category: "medication",
-      description:
-        "Remember to take your prescribed ulcer medication. Avoid spicy and acidic foods to reduce ulcer symptoms.",
-      date: new Date(new Date().setDate(new Date().getDate() + 5)),
-      createdAt: new Date(),
-    },
-    {
-      id: 4,
-      category: "food",
-      date: new Date(new Date().setDate(new Date().getDate() + 3)),
-      createdAt: new Date(),
-    },
-    {
-      id: 5,
-      category: "medication",
-      description: "Take the medication after meals for better absorption.",
-      date: new Date(new Date().setDate(new Date().getDate() + 1)),
-      createdAt: new Date(),
-    },
-  ]);
+  const [reminders, setReminders] = useState([]);
+  const [refetchCount, setRefetchCount] = useState(0);
+
+  useEffect(() => {
+    const fetchReminders = async () => {
+      try {
+        // Create a query to get the user's reminders based on the UID
+        const remindersQuery = query(
+          collection(db, "users"),
+          where("uid", "==", user.uid)
+        );
+
+        // Fetch the reminders documents
+        const querySnapshot = await getDocs(remindersQuery);
+
+        // Extract the reminders data from the documents
+        const remindersData = querySnapshot.docs.map((doc) => {
+          return doc.data()?.reminder || [];
+        });
+
+        setReminders(remindersData.flat());
+      } catch (error) {
+        toast.error("Error fetching reminders:", error);
+      }
+    };
+
+    fetchReminders();
+  }, [user.uid, refetchCount]);
 
   const groupRemindersByDate = () => {
     const groupedReminders = {};
@@ -108,7 +113,7 @@ const Reminder = () => {
             return (
               remindersForDate.length > 0 && (
                 <div
-                  key={date}
+                  key={uuidv4()}
                   className="mt-7 max-w-lg space-y-2 text-left md:mt-14 md:space-y-4"
                 >
                   <h3>{date}</h3>
@@ -139,7 +144,7 @@ const Reminder = () => {
       </center>
 
       <AppModalLayout open={open} setOpen={setOpen}>
-        <AddNewReminder />
+        <AddNewReminder setOpen={setOpen} setRefetchCount={setRefetchCount} />
       </AppModalLayout>
     </main>
   );
