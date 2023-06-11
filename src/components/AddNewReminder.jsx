@@ -91,14 +91,14 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
             reminder: updatedReminderList,
           }).then(() => {
             toast.success("Reminder added successfully!");
-            setOpen(false);
             setRefetchCount((prev) => prev + 1);
+            setOpen(false);
+            setIsSubmitting(false);
           });
         }
       });
     } catch (error) {
       toast.error("Error adding reminder: " + error);
-    } finally {
       setIsSubmitting(false);
     }
   };
