@@ -46,7 +46,7 @@ const SingleReminder = ({ reminder }) => {
               <CloseOutlinedIcon fontSize="small" />
             </button>
             <h3 className="mb-5 text-center text-grey md:text-lg">
-              {moment().format("Do, MMM YYYY")}
+              {moment(reminder?.createdAt).format("Do, MMM YYYY")}
             </h3>
             <section className="flex items-center">
               <div className="flex-grow">
