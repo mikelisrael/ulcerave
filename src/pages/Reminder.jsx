@@ -42,15 +42,28 @@ const Reminder = () => {
           return doc.data()?.reminder || [];
         });
 
-        const filterFutureReminders = remindersData
-          .flat()
-          .filter((reminder) => {
-            return moment(reminder.date).isSameOrAfter(moment().startOf("day"));
+        const getFutureReminders = (reminders) => {
+          const currentDateTime = moment();
+
+          const futureReminders = reminders.filter((reminder) => {
+            const reminderDateTime = moment(reminder.date);
+            const isSameDate = reminderDateTime.isSameOrAfter(
+              currentDateTime,
+              "day"
+            );
+            const isSameTime = reminderDateTime.isSameOrAfter(
+              currentDateTime,
+              "minute"
+            );
+
+            return isSameDate && isSameTime;
           });
 
-        // console.log(filterFutureReminders);
+          return futureReminders;
+        };
 
-        setReminders(filterFutureReminders);
+        const futureReminders = getFutureReminders(remindersData.flat());
+        setReminders(futureReminders);
       } catch (error) {
         toast.error("Error fetching reminders:", error);
       }
