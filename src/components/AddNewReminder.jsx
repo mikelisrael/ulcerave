@@ -410,7 +410,7 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
       )}
 
       <select
-        className="w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
+        className="force_arrow w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
         value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
       >

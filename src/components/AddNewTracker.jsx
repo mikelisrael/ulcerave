@@ -116,7 +116,7 @@ const AddNewTracker = ({ setOpen, setRefetchCount }) => {
         />
 
         <select
-          className="w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
+          className="force_arrow w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
           value={selectedPainLevel}
           onChange={(e) => setSelectedPainLevel(e.target.value)}
         >
@@ -130,7 +130,7 @@ const AddNewTracker = ({ setOpen, setRefetchCount }) => {
 
         <div>
           <select
-            className="w-full rounded-md border bg-transparent px-4 py-2 capitalize md:text-lg"
+            className="force_arrow w-full rounded-md border bg-transparent px-4 py-2 capitalize md:text-lg"
             value={
               selectedSymptoms.length > 0
                 ? selectedSymptoms[selectedSymptoms.length - 1]
@@ -159,16 +159,14 @@ const AddNewTracker = ({ setOpen, setRefetchCount }) => {
                 <li
                   key={symptom}
                   className="rounded-md border px-3 py-1 text-xs capitalize text-grey md:text-sm"
+                  onClick={() => {
+                    setSelectedSymptoms(
+                      selectedSymptoms.filter((item) => item !== symptom)
+                    );
+                  }}
                 >
                   {symptom}
-                  <button
-                    className="ml-1"
-                    onClick={() => {
-                      setSelectedSymptoms(
-                        selectedSymptoms.filter((item) => item !== symptom)
-                      );
-                    }}
-                  >
+                  <button className="ml-1">
                     <CloseOutlinedIcon
                       sx={{
                         fontSize: "0.8rem",
