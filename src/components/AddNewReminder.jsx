@@ -372,7 +372,7 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
             <span className="mb-2 block text-grey">Month</span>
             <div>
               <select
-                className="h-full !rounded-none bg-gray-100 p-3 capitalize md:text-lg"
+                className="full_height_select h-full !rounded-none bg-gray-100 p-3 capitalize md:text-lg"
                 onChange={handleMonthChange}
                 defaultValue={selectedDate ? selectedDate.getMonth() : ""}
               >

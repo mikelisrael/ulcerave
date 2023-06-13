@@ -64,6 +64,11 @@ body {
   @apply bg-gray-300 text-black;
 }
 
+.full_height_select {
+  -webkit-appearance: inherit;
+  appearance: inherit;
+}
+
 /* style react toastify */
 .Toastify__toast-body {
   font-family: var(--font) !important;
