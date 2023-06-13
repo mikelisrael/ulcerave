@@ -64,10 +64,12 @@ body {
   @apply bg-gray-300 text-black;
 }
 
-select {
-  /* make arrow down show */
-  -webkit-appearance: menulist-button !important;
-  height: auto !important;
+/* Media query for iPhones */
+@media only screen and (max-device-width: 414px) and (-webkit-min-device-pixel-ratio: 2) {
+  select {
+    -webkit-appearance: inherit !important;
+    appearance: inherit !important;
+  }
 }
 
 /* style react toastify */
