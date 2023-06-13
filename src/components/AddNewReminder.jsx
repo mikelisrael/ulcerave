@@ -14,6 +14,13 @@ export const convertDateToString = (date) => {
   return date.toISOString();
 };
 
+/* The code below is a React component that handles the form submission for adding a reminder. It
+  uses various state variables and refs to manage the selected date, category, repeat days, snooze
+  value, and description. It also includes functions to handle changes in the date and time inputs,
+  as well as checkbox changes for repeat days. The handleSubmit function updates the user's reminder
+  list in the Firestore database and displays success or error messages using the toast library. The
+  isEnabled variable is used to disable the submit button while the form is being submitted or if no
+  category is selected. */
 const AddNewReminder = ({ setOpen, setRefetchCount }) => {
   const hourInputRef = useRef(null);
   const minuteInputRef = useRef(null);
@@ -313,6 +320,11 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
 
   const isEnabled = !isSubmitting && selectedCategory;
 
+  /* The code below is rendering a form component in JavaScript React. The form allows the user to
+ create a new reminder by selecting a date, category, time, and snooze duration. The user can also
+ choose to repeat the reminder on specific days of the week. If the category selected is
+ "medication", the user can also add a note about the dosage. The form includes validation to ensure
+ that all required fields are filled out before the user can submit the form. */
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>
       <section className="mb-5 text-center">
