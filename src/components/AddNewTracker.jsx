@@ -1,9 +1,20 @@
 import moment from "moment";
 import React, { useState } from "react";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { toast } from "react-toastify";
+import { db } from "../utils/firebase";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import { useGlobalContext } from "../context";
+import { convertDateToString } from "./AddNewReminder";
+import { v4 as uuidv4 } from "uuid";
 
-const AddNewTracker = () => {
+const AddNewTracker = ({ setOpen, setRefetchCount }) => {
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
+  const [selectedPainLevel, setSelectedPainLevel] = useState("");
+  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { user } = useGlobalContext();
   const ulcerSymptoms = [
     "bloating",
     "nausea",
@@ -23,8 +34,66 @@ const AddNewTracker = () => {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const tracker = {
+      symptoms: selectedSymptoms,
+      painLevel: selectedPainLevel,
+      description,
+      title,
+      createdAt: convertDateToString(new Date()),
+      id: uuidv4(),
+    };
+
+    // Update the user's tracker list
+    const docRef = collection(db, "users");
+
+    try {
+      const snapshots = await getDocs(docRef);
+      snapshots.forEach(async (item) => {
+        if (item?.data()?.uid === user?.uid) {
+          const docId = item.id;
+          const userRef = doc(db, "users", docId);
+
+          // Fetch the latest user document data
+          const docSnapshot = await getDoc(userRef);
+          const userData = docSnapshot.data();
+
+          // Update the tracker list
+          const updatedtrackerList = [...(userData.tracker || []), tracker];
+
+          // Set the updated document data with the new tracker list
+          await setDoc(userRef, {
+            ...userData,
+            tracker: updatedtrackerList,
+          }).then(() => {
+            toast.success("tracker added successfully!", {
+              toastId: "add-tracker",
+            });
+            setRefetchCount((prev) => prev + 1);
+            setOpen(false);
+            setIsSubmitting(false);
+          });
+        }
+      });
+    } catch (error) {
+      toast.error("Error adding tracker: " + error, {
+        toastId: "add-tracker",
+      });
+      setIsSubmitting(false);
+    }
+  };
+
+  const isEnabled =
+    selectedSymptoms.length > 0 &&
+    selectedPainLevel !== "" &&
+    description !== "" &&
+    title !== "" &&
+    !isSubmitting;
+
   return (
-    <div className="space-y-5">
+    <form className="space-y-5" onSubmit={handleSubmit}>
       <section className="mb-5 text-center">
         <h1 className="text-center text-lg font-bold md:text-2xl">
           New Symptom
@@ -37,11 +106,14 @@ const AddNewTracker = () => {
           type="text"
           placeholder="Title"
           className="w-full rounded-md bg-gray-100 px-4 py-3 md:text-lg"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
 
         <select
           className="w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
-          defaultValue=""
+          value={selectedPainLevel}
+          onChange={(e) => setSelectedPainLevel(e.target.value)}
         >
           <option value="" hidden disabled="disabled">
             Pain Level
@@ -81,7 +153,7 @@ const AddNewTracker = () => {
               {selectedSymptoms.map((symptom) => (
                 <li
                   key={symptom}
-                  className="rounded-md border px-3 py-1 text-sm capitalize text-grey"
+                  className="rounded-md border px-3 py-1 text-xs capitalize text-grey md:text-sm"
                 >
                   {symptom}
                   <button
@@ -111,6 +183,8 @@ const AddNewTracker = () => {
             className="w-full resize-none rounded-md bg-gray-100 px-4 py-2"
             cols={30}
             rows={5}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           ></textarea>
         </div>
       </section>
@@ -118,12 +192,12 @@ const AddNewTracker = () => {
       <center>
         <button
           className="main_btn themed mt-8 w-full disabled:cursor-not-allowed disabled:bg-gray-300 hover:disabled:!bg-gray-300 focus:disabled:!bg-gray-300"
-          disabled={true}
+          disabled={!isEnabled}
         >
           Save
         </button>
       </center>
-    </div>
+    </form>
   );
 };
 
