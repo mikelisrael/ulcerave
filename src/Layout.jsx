@@ -24,6 +24,7 @@ import Articles from "./pages/resources";
 import GastricUlcer from "./pages/resources/GastricUlcer";
 import DiagnoseUlcer from "./pages/resources/DiagnoseUlcer";
 import LifeModifications from "./pages/resources/LifeModifications";
+import Error404 from "./pages/Error404";
 
 function App() {
   const { visited } = useGlobalContext();
@@ -73,7 +74,7 @@ function App() {
           </Route>
 
           {/* error page */}
-          <Route path="*" element={<h1>404 Not Found</h1>} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </Router>
 
