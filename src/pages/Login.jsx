@@ -59,36 +59,34 @@ const Login = () => {
       });
   };
 
-  const handleGoogleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then(async (result) => {
-        // The signed-in user info.
-        const user = result.user;
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
 
-        // check if user exists in the database
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
+      // Check if user exists in the database
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
 
-        if (docSnap.exists()) {
-          // console.log("user exists");
-        } else {
-          // add the new user to the database
-          const newUser = {
-            uid: user.uid,
-            firstName: user.displayName.split(" ")[0],
-            lastName: user.displayName.split(" ")[1],
-            email: user.email,
-          };
-          await addDoc(collection(db, "users"), newUser);
-        }
+      if (docSnap.exists()) {
+        // User already exists in the database
+        toast.success("Welcome back!");
+      } else {
+        // Add the new user to the database
+        const newUser = {
+          uid: user.uid,
+          firstName: user.displayName.split(" ")[0],
+          lastName: user.displayName.split(" ")[1],
+          email: user.email,
+        };
+        await setDoc(doc(db, "users", user.uid), newUser);
+      }
 
-        setIsSubmitting(false);
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        toast.error(error.message);
-        setIsSubmitting(false);
-      });
+      setIsSubmitting(false);
+    } catch (error) {
+      toast.error(error.message);
+      setIsSubmitting(false);
+    }
   };
 
   return (
