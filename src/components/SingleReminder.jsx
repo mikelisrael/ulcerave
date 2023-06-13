@@ -92,7 +92,7 @@ const SingleReminder = ({ reminder }) => {
 
 export default SingleReminder;
 
-function repeatParser(repeat) {
+export function repeatParser(repeat) {
   if (!repeat || repeat.length === 0) {
     return "";
   }
@@ -122,7 +122,7 @@ function repeatParser(repeat) {
         parsedDays.push(weekdays[startDay]);
         parsedDays.push(weekdays[endDay]);
       } else {
-        parsedDays.push(`${weekdays[startDay]}-${weekdays[endDay]}`);
+        parsedDays.push(`${weekdays[startDay]} - ${weekdays[endDay]}`);
       }
       startDay = sortedRepeat[i];
       endDay = sortedRepeat[i];
@@ -135,7 +135,7 @@ function repeatParser(repeat) {
     parsedDays.push(weekdays[startDay]);
     parsedDays.push(weekdays[endDay]);
   } else {
-    parsedDays.push(`${weekdays[startDay]}-${weekdays[endDay]}`);
+    parsedDays.push(`${weekdays[startDay]} - ${weekdays[endDay]}`);
   }
 
   return parsedDays.join(", ");
