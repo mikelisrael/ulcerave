@@ -73,7 +73,7 @@ const AddNewTracker = ({ setOpen, setRefetchCount }) => {
             ...userData,
             tracker: updatedtrackerList,
           }).then(() => {
-            toast.success("tracker added successfully!", {
+            toast.success("Tracker added successfully!", {
               toastId: "add-tracker",
             });
             setRefetchCount((prev) => prev + 1);
