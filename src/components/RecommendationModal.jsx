@@ -21,7 +21,7 @@ const AppModal = ({ open, setOpen }) => {
         <div
           className="relative w-11/12 rounded-xl bg-white p-4 shadow-md md:w-1/2 md:p-6 lg:w-1/3 lg:p-8"
           data-aos="zoom-out"
-          data-aos-duration="300"
+          data-aos-duration="500"
         >
           <button
             className="absolute right-5 top-5"
