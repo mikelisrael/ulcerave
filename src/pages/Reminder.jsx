@@ -155,10 +155,7 @@ const Reminder = () => {
             <h2 className="mt-5 text-lg font-medium md:text-2xl">
               There are currently no reminders set
             </h2>
-            <p>
-              Start adding reminders to stay on track with your important
-              appointments.
-            </p>
+            <p>Start adding reminders to stay on track</p>
           </div>
         )}
       </center>
