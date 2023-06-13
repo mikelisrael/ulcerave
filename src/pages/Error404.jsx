@@ -11,7 +11,6 @@ const Error404 = () => {
         <img
           src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
           alt="error"
-          className=""
         />
 
         <div className="-translate-y-24 text-center">
