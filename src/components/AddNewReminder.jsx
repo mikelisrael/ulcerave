@@ -358,24 +358,26 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
           {/* BUG: select button not displaying properly on iPhone */}
           <div>
             <span className="mb-2 block text-grey">Month</span>
-            <select
-              className="bg-gray-100 p-3 capitalize md:text-lg"
-              onChange={handleMonthChange}
-              defaultValue={selectedDate ? selectedDate.getMonth() : ""}
-            >
-              <option value={0}>January</option>
-              <option value={1}>February</option>
-              <option value={2}>March</option>
-              <option value={3}>April</option>
-              <option value={4}>May</option>
-              <option value={5}>June</option>
-              <option value={6}>July</option>
-              <option value={7}>August</option>
-              <option value={8}>September</option>
-              <option value={9}>October</option>
-              <option value={10}>November</option>
-              <option value={11}>December</option>
-            </select>
+            <div>
+              <select
+                className="!h-full !rounded-none bg-gray-100 p-3 capitalize md:text-lg"
+                onChange={handleMonthChange}
+                defaultValue={selectedDate ? selectedDate.getMonth() : ""}
+              >
+                <option value={0}>January</option>
+                <option value={1}>February</option>
+                <option value={2}>March</option>
+                <option value={3}>April</option>
+                <option value={4}>May</option>
+                <option value={5}>June</option>
+                <option value={6}>July</option>
+                <option value={7}>August</option>
+                <option value={8}>September</option>
+                <option value={9}>October</option>
+                <option value={10}>November</option>
+                <option value={11}>December</option>
+              </select>
+            </div>
           </div>
 
           <div>
@@ -446,14 +448,16 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
             />
 
             {/* BUG: select button not displaying properly on iPhone */}
-            <select
-              className="bg-gray-100 p-3 capitalize md:text-lg"
-              defaultValue={selectedMeridiem} // Set default value from state
-              onChange={handleMeridiemChange} // Handle meridiem change
-            >
-              <option value="am">AM</option>
-              <option value="pm">PM</option>
-            </select>
+            <div>
+              <select
+                className="!h-full !rounded-none bg-gray-100 p-3 capitalize md:text-lg"
+                defaultValue={selectedMeridiem} // Set default value from state
+                onChange={handleMeridiemChange} // Handle meridiem change
+              >
+                <option value="am">AM</option>
+                <option value="pm">PM</option>
+              </select>
+            </div>
           </div>
         </div>
 
