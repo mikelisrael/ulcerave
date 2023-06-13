@@ -1,3 +1,10 @@
+/* The code below is a React component for a sign-up page. It allows users to create an account by
+filling out a form with their first name, last name, email, and password. The component uses
+Firebase authentication to create a new user account and Firestore to store user data. It also
+includes a sign-up with Google option. The component uses state to manage form input and submission,
+and it uses React Router to navigate to different pages based on the user's authentication status.
+The component also includes some UI elements such as an eye icon to show/hide the password and a
+button to submit the form */
 import React, { useState } from "react";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";

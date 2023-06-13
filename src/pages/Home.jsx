@@ -1,3 +1,9 @@
+/* The code below is a React component for the Home page of a web application called Ulcerave. It
+includes HTML and CSS code to display the page layout and content, as well as JavaScript code to
+handle user interactions and navigation using the React Router library. The component includes
+several sections, such as a header with a call-to-action button, an introduction section with a
+reminder feature, a resource center section, a symptom tracker section, and a footer section with
+information about the web app. */
 import React from "react";
 import "./css/home.css";
 import { useNavigate } from "react-router-dom";

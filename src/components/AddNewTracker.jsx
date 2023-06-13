@@ -1,3 +1,8 @@
+/* The code below is a React component that renders a form for adding a new symptom tracker. It allows
+the user to select symptoms, pain level, add a description, and a title for the tracker. When the
+user submits the form, the component updates the user's tracker list in the Firebase database and
+displays a success message using the react-toastify library. The component also uses moment.js
+library to display the current date and uuidv4 library to generate a unique id for the new tracker. */
 import moment from "moment";
 import React, { useState } from "react";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";

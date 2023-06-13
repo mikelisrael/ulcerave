@@ -1,3 +1,11 @@
+/* This is a React component called `UpcomingReminder` that displays the next upcoming reminder for a
+user. It uses various hooks such as `useState`, `useRef`, and `useEffect` to manage the component's
+state and lifecycle. It also imports various dependencies such as `moment` and `react-toastify` for
+date/time formatting and displaying error messages respectively. The component fetches the user's
+reminders from Firebase Firestore and finds the next upcoming reminder based on the current date and
+time. It then displays the reminder's date/time and additional details such as description, repeat,
+and snooze time (if applicable). The component also allows the user to toggle the display of the
+additional details by clicking on a button. */
 import React, { useEffect, useRef, useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";

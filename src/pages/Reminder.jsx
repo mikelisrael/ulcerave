@@ -1,3 +1,9 @@
+/* This is a React component called `Reminder` that displays a list of reminders fetched from a
+Firebase database. It uses various React hooks such as `useState`, `useEffect`, and
+`useGlobalContext` to manage state and fetch data. It also uses external libraries such as `moment`
+for date formatting and `react-toastify` for displaying error messages. The component renders a
+button to add new reminders and groups the fetched reminders by date, displaying them in separate
+sections. It also includes a modal component for adding new reminders. */
 import React, { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { getTitle } from "../../utils/helperFunctions";

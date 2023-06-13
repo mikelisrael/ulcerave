@@ -1,3 +1,10 @@
+/**
+ * This is a React component that renders a modal with a recommendation and a button to track symptoms.
+ * @returns A React component called AppModal is being returned. It renders a Modal component from the
+ * MUI library with some custom content inside. The Modal is conditionally rendered based on the value
+ * of the "open" prop passed to it. The component also uses the useNavigate hook from the
+ * react-router-dom library to navigate to a different page when a button is clicked.
+ */
 import React from "react";
 import { Modal } from "@mui/material";
 import ErrorIcon from "@mui/icons-material/Error";

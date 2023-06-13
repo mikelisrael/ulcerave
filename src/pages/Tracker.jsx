@@ -1,3 +1,8 @@
+/* The code below is a React component that displays a user's gastric ulcer symptoms entries. It
+fetches the user's entries from Firebase Firestore and groups them by date. It also allows the user
+to add new entries and search for specific entries. The component uses various other components such
+as AppModalLayout, AddNewTracker, and SingleTracker to display the entries and handle user
+interactions. */
 import React, { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { getTitle } from "../../utils/helperFunctions";

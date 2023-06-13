@@ -1,3 +1,7 @@
+/* The code below is a React component that renders a page for displaying articles related to gastric
+ulcer. It includes a search bar for filtering articles, a list of articles with their titles,
+authors, dates, and brief descriptions, and options to save or share articles. The component also
+includes responsive design for mobile devices. */
 import React, { useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
@@ -37,7 +41,7 @@ const Articles = () => {
                 </div>
                 <input
                   type="text"
-                  className="block w-full rounded-full border border-gray-300 p-3 pl-12 md:text-base focus:outline-none"
+                  className="block w-full rounded-full border border-gray-300 p-3 pl-12 focus:outline-none md:text-base"
                   placeholder="Search"
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
@@ -159,7 +163,7 @@ const Articles = () => {
                 </div>
               </li>
 
-              <li className="scroll_container md:hidden overflow-x-auto pt-5">
+              <li className="scroll_container overflow-x-auto pt-5 md:hidden">
                 <div className="flex items-stretch gap-3">
                   <Link
                     to="gastric-ulcer-101"

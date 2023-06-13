@@ -1,3 +1,7 @@
+/* This is a React component that handles the onboarding process for a user. It allows the user to
+select an avatar from a list of pre-defined images, and then updates the user's avatar in a Firebase
+Firestore database. Once the user has selected an avatar, they can proceed to the dashboard page.
+The component also includes a loader that is displayed for 5 seconds while the page is loading. */
 import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../context";

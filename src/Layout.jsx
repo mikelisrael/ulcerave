@@ -1,3 +1,8 @@
+/* This is the main App component of a React application. It imports various components and pages, sets
+up routes using the `react-router-dom` library, and renders the appropriate components based on the
+current route. It also initializes the `Aos` library for animating page transitions and uses the
+`useGlobalContext` hook to access global state. Finally, it renders a `ToastContainer` component
+from the `react-toastify` library for displaying notifications. */
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
@@ -16,7 +21,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Onboarding from "./pages/Onboarding";
 import Reminder from "./pages/Reminder";
 import Articles from "./pages/resources";
-import SingleArticle from "./pages/resources/GastricUlcer";
 import GastricUlcer from "./pages/resources/GastricUlcer";
 import DiagnoseUlcer from "./pages/resources/DiagnoseUlcer";
 import LifeModifications from "./pages/resources/LifeModifications";

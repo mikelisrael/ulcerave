@@ -1,3 +1,7 @@
+/* The code below is a React component that renders a navigation bar. It includes conditional rendering
+based on whether the user is logged in or not, and displays different links accordingly. It also
+includes a mobile navigation menu that can be toggled open and closed. The component also handles
+user authentication using Firebase authentication and Firestore. */
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./css/navbar.css";

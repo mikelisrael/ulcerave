@@ -1,3 +1,8 @@
+/**
+ * The SingleTracker function is a React component that displays a summary of a pain tracker and allows
+ * the user to view more details in a modal.
+ * @returns The SingleTracker component is being returned.
+ */
 import React, { useState } from "react";
 import moment from "moment";
 import { Modal } from "@mui/material";

@@ -1,3 +1,7 @@
+/**
+ * This is a React component that renders a modal with a close button and customizable content.
+ * @returns The AppModalLayout component is being returned.
+ */
 import React from "react";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { Modal } from "@mui/material";

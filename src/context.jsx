@@ -1,3 +1,5 @@
+/* This code is creating a React context called `AppContext` and exporting a provider component called
+`AppProvider` and a custom hook called `useGlobalContext`. */
 import React, { useContext, useEffect, useState } from "react";
 
 const AppContext = React.createContext();

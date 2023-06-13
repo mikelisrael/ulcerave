@@ -1,3 +1,7 @@
+/* The code below is a React component for a login page. It allows users to sign in with their email
+and password or with their Google account. The component uses Firebase authentication and Firestore
+to handle user authentication and database storage. The component also includes form validation and
+error handling using the react-toastify library. */
 import React, { useState } from "react";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";

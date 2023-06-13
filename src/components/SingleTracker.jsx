@@ -1,3 +1,9 @@
+/* The code defines a React component called `SingleReminder` that displays a summary of a reminder and
+allows the user to view more details in a modal. The component takes a `reminder` object as a prop
+and uses it to display the reminder's category, date, and description. When the user clicks on the
+"See Details" button, a modal opens up displaying more information about the reminder, including its
+creation date, time, and repeat schedule. The `repeatParser` function is also defined to parse the
+repeat schedule and display it in a human-readable format. */
 import React, { useState } from "react";
 import moment from "moment";
 import { Modal } from "@mui/material";

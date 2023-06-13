@@ -1,3 +1,8 @@
+/* This CSS code is targeting a `div` element that is a direct child of an element with the class
+`intro`. It is setting the grid template columns for that `div` element to be 1 fraction unit wide
+for the first column and 0.8 fraction units wide for the second column. This means that the `div`
+element will be divided into two columns, with the first column taking up 1/2 of the available space
+and the second column taking up 0.8/2 = 0.4 of the available space. */
 .intro > div {
   grid-template-columns: 1fr 0.8fr;
 }

@@ -1,3 +1,8 @@
+/**
+ * The DiagnoseUlcer function returns a React component that displays information on how gastric ulcers
+ * are diagnosed, including various tests and procedures.
+ * @returns A React component called DiagnoseUlcer.
+ */
 import React from "react";
 import CircleIcon from "@mui/icons-material/Circle";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";

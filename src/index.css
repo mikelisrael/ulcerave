@@ -1,3 +1,6 @@
+/* This is a CSS code that defines various styles for a web page. It imports the DM Sans font from
+Google Fonts and sets it as the default font for the page. It also sets some global styles for all
+elements, such as removing margins and padding, and hiding the outline and tap highlight color. */
 /* import dm sans google font */
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 

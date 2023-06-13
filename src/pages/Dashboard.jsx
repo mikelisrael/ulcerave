@@ -1,4 +1,8 @@
-import React, { useState} from "react";
+/* This is a React component called `Dashboard` that renders the main content of a web page. It imports
+various components and functions from other files and libraries, such as `useState` and
+`useGlobalContext` from React, `RangeSlider`, `AddCircleIcon`, `Link`, and `useNavigate` from
+different files in the project, and `getTitle` from a utility function. */
+import React, { useState } from "react";
 import { useGlobalContext } from "../context";
 import RangeSlider from "../components/Slider";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -12,47 +16,6 @@ const Dashboard = () => {
   const { user } = useGlobalContext();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-
-  var settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 2,
-    initialSlide: 0,
-    // autoplay: true,
-    // autoplaySpeed: 5000,
-    cssEase: "linear",
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    // show arrows
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      // {
-      //   breakpoint: 600,
-      //   settings: {
-      //     slidesToShow: 2,
-      //     slidesToScroll: 2,
-      //     initialSlide: 2,
-      //   },
-      // },
-      // {
-      //   breakpoint: 480,
-      //   settings: {
-      //     slidesToShow: 1,
-      //     slidesToScroll: 1,
-      //   },
-      // },
-    ],
-  };
 
   const handleSliderChange = (event, newValue) => {
     // Handle the slider value change here
@@ -184,46 +147,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{
-        ...style,
-        display: "block",
-        background: "#d1d1d1",
-        borderRadius: "50%",
-        padding: "20px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: "10",
-        color: "black",
-      }}
-      onClick={onClick}
-    />
-  );
-}
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{
-        ...style,
-        display: "block",
-        background: "#d1d1d1",
-        borderRadius: "50%",
-        padding: "20px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: "10",
-        color: "black",
-      }}
-      onClick={onClick}
-    />
-  );
-}

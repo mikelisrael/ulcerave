@@ -1,3 +1,8 @@
+/* This is a React component that renders a blog post about life modifications for individuals with
+gastric ulcers. It imports several icons from the Material UI library and a helper function from a
+custom utility file. The component returns a JSX structure that includes the blog post title,
+author, date, reading time, and social media sharing buttons. It also includes an image and a list
+of tips for managing the condition. */
 import React from "react";
 import CircleIcon from "@mui/icons-material/Circle";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
