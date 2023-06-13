@@ -5,14 +5,7 @@ import AppModalLayout from "../components/AppModalLayout";
 import AddNewReminder from "../components/AddNewReminder";
 import SingleReminder from "../components/SingleReminder";
 import moment from "moment";
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { useGlobalContext } from "../context";
 import { v4 as uuidv4 } from "uuid";
