@@ -1,29 +1,17 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState} from "react";
 import { useGlobalContext } from "../context";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import RangeSlider from "../components/Slider";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { getTitle } from "../../utils/helperFunctions";
 import { Link, useNavigate } from "react-router-dom";
 import AppModal from "../components/RecommendationModal";
+import UpcomingReminder from "../components/UpcomingReminder";
 
 const Dashboard = () => {
   getTitle("home");
   const { user } = useGlobalContext();
-  const [showDetails, setShowDetails] = useState(false);
-  const [detailsHeight, setDetailsHeight] = useState(0);
-  const detailsRef = useRef(null);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (showDetails) {
-      setDetailsHeight(detailsRef.current.scrollHeight);
-    } else {
-      setDetailsHeight(0);
-    }
-  }, [showDetails, detailsRef]);
 
   var settings = {
     dots: true,
@@ -101,51 +89,7 @@ const Dashboard = () => {
           </div>
         </header>
 
-        <center className="space-y-1 py-12 md:space-y-3 md:py-20">
-          <p className="text-center text-base capitalize text-grey lg:text-lg">
-            upcoming reminder
-          </p>
-
-          <h1 className="text-3xl font-bold md:text-4xl lg:text-5xl">
-            8 : 00 AM
-          </h1>
-
-          <div
-            className={`details ${showDetails ? "open" : ""}`}
-            ref={detailsRef}
-            style={{
-              height: `${detailsHeight}px`,
-              transition: "height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275",
-            }}
-          >
-            <div className="space-y-4 text-grey lg:text-lg">
-              <p className="max-w-md capitalize">Have Breakfast</p>
-
-              <p className="max-w-md font-medium capitalize">
-                Monday - Thursday
-              </p>
-
-              <p className="max-w-md capitalize">Snooze: 10 minutes</p>
-            </div>
-          </div>
-
-          <button
-            className="font-medium text-primaryBlue"
-            onClick={() => setShowDetails(!showDetails)}
-          >
-            {showDetails ? (
-              <>
-                <span>Collapse</span>
-                <KeyboardArrowUpIcon />
-              </>
-            ) : (
-              <>
-                <span>See Details</span>
-                <KeyboardArrowDownIcon />
-              </>
-            )}
-          </button>
-        </center>
+        <UpcomingReminder />
 
         <div className="flex items-center justify-between gap-2 rounded-3xl border border-gray-200 px-2 py-2 md:px-6">
           <div className="w-16 md:w-36">
