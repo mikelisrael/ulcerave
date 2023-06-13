@@ -12,6 +12,7 @@ import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { useGlobalContext } from "../context";
 import { convertDateToString } from "./AddNewReminder";
 import { v4 as uuidv4 } from "uuid";
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 
 const AddNewTracker = ({ setOpen, setRefetchCount }) => {
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
@@ -115,22 +116,32 @@ const AddNewTracker = ({ setOpen, setRefetchCount }) => {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <select
-          className="force_arrow w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
-          value={selectedPainLevel}
-          onChange={(e) => setSelectedPainLevel(e.target.value)}
-        >
-          <option value="" hidden disabled="disabled">
-            Pain Level
-          </option>
-          <option value="mild">Mild</option>
-          <option value="severe">Severe</option>
-          <option value="worst">Worst</option>
-        </select>
-
-        <div>
+        <div className="relative">
           <select
-            className="force_arrow w-full rounded-md border bg-transparent px-4 py-2 capitalize md:text-lg"
+            className="w-full appearance-none rounded-md border bg-transparent px-4 py-2 md:text-lg"
+            value={selectedPainLevel}
+            onChange={(e) => setSelectedPainLevel(e.target.value)}
+          >
+            <option value="" hidden disabled="disabled">
+              Pain Level
+            </option>
+            <option value="mild">Mild</option>
+            <option value="severe">Severe</option>
+            <option value="worst">Worst</option>
+          </select>
+          <KeyboardArrowDownOutlinedIcon
+            className="absolute right-5 top-3"
+            fontSize="small"
+          />
+        </div>
+
+        <div className="relative">
+          <KeyboardArrowDownOutlinedIcon
+            className="absolute right-5 top-3"
+            fontSize="small"
+          />
+          <select
+            className="w-full appearance-none rounded-md border bg-transparent px-4 py-2 capitalize md:text-lg"
             value={
               selectedSymptoms.length > 0
                 ? selectedSymptoms[selectedSymptoms.length - 1]

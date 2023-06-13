@@ -367,12 +367,12 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
           </div>
 
           {/* set month */}
-          {/* BUG: select button not displaying properly on iPhone */}
+
           <div>
             <span className="mb-2 block text-grey">Month</span>
             <div>
               <select
-                className="!h-full !rounded-none bg-gray-100 p-3 capitalize md:text-lg"
+                className="h-full !rounded-none bg-gray-100 p-3 capitalize md:text-lg"
                 onChange={handleMonthChange}
                 defaultValue={selectedDate ? selectedDate.getMonth() : ""}
               >
@@ -409,17 +409,24 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
         </section>
       )}
 
-      <select
-        className="force_arrow w-full rounded-md border bg-transparent px-4 py-2 md:text-lg"
-        value={selectedCategory}
-        onChange={(e) => setSelectedCategory(e.target.value)}
-      >
-        <option value="" hidden disabled="disabled">
-          Select Category
-        </option>
-        <option value="medication">Medication</option>
-        <option value="food">Food</option>
-      </select>
+      <div className="relative">
+        {" "}
+        <KeyboardArrowDownOutlinedIcon
+          className="absolute right-5 top-3"
+          fontSize="small"
+        />
+        <select
+          className="w-full appearance-none rounded-md border bg-transparent px-4 py-2 md:text-lg"
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="" hidden disabled="disabled">
+            Select Category
+          </option>
+          <option value="medication">Medication</option>
+          <option value="food">Food</option>
+        </select>
+      </div>
 
       {/* enter time  */}
       <section className="flex justify-between">
@@ -459,7 +466,6 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
               maxLength={2}
             />
 
-            {/* BUG: select button not displaying properly on iPhone */}
             <div>
               <select
                 className="!h-full !rounded-none bg-gray-100 p-3 capitalize md:text-lg"
