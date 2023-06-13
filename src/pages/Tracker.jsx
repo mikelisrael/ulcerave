@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { getTitle } from "../../utils/helperFunctions";
 import AppModalLayout from "../components/AppModalLayout";
@@ -7,28 +7,44 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import SingleTracker from "../components/SingleTracker";
 import moment from "moment";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { useGlobalContext } from "../context";
+import { toast } from "react-toastify";
+import { db } from "../utils/firebase";
 
 const Tracker = () => {
   getTitle("tracker");
   const [open, setOpen] = useState(false);
   const [inputText, setInputText] = useState("");
-  const [trackers, setTrackers] = useState([
-    {
-      title: "Took a new medication",
-      painLevel: "mild",
-      createdAt: new Date(),
-    },
-    {
-      title: "I was triggered after taking avocado",
-      painLevel: "mild",
-      createdAt: new Date(),
-    },
-    {
-      title: "Fried Plantain and eggs",
-      painLevel: "severe",
-      createdAt: new Date(new Date().setDate(new Date().getDate() - 3)), //NOTE: the day before yesterday
-    },
-  ]);
+  const [refetchCount, setRefetchCount] = useState(0);
+  const { user } = useGlobalContext();
+  const [trackers, setTrackers] = useState([]);
+
+  useEffect(() => {
+    const fetchTrackers = async () => {
+      try {
+        // Create a query to get the user's trackers based on the UID
+        const trackersQuery = query(
+          collection(db, "users"),
+          where("uid", "==", user.uid)
+        );
+
+        // Fetch the trackers documents
+        const querySnapshot = await getDocs(trackersQuery);
+
+        // // Extract the trackers data from the documents
+        const trackersData = querySnapshot.docs.map((doc) => {
+          return doc.data()?.tracker || [];
+        });
+
+        setTrackers(trackersData.flat());
+      } catch (error) {
+        toast.error("Error fetching trackers:", error);
+      }
+    };
+
+    fetchTrackers();
+  }, [user.uid, refetchCount]);
 
   const groupTrackersByDate = () => {
     const groupedTrackers = {};
@@ -158,7 +174,7 @@ const Tracker = () => {
       )}
 
       <AppModalLayout open={open} setOpen={setOpen}>
-        <AddNewTracker />
+        <AddNewTracker setOpen={setOpen} setRefetchCount={setRefetchCount} />
       </AppModalLayout>
     </main>
   );
