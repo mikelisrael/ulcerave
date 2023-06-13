@@ -49,6 +49,9 @@ const SingleTracker = ({ tracker }) => {
                 <h2 className="mt-1 text-base font-medium text-black md:text-xl">
                   {tracker?.title}
                 </h2>
+                <span className="block text-sm text-grey first-letter:uppercase">
+                  {tracker?.painLevel} pain
+                </span>
               </div>
             </section>
 
