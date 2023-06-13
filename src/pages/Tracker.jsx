@@ -132,13 +132,26 @@ const Tracker = () => {
             <section className="mt-7 text-left md:mt-14">
               {sortedDates.map((date) => {
                 const trackersForDate = groupedTrackers[date];
+
+                const filteredTrackersForDate = trackersForDate.filter(
+                  (tracker) =>
+                    tracker.title
+                      .toLowerCase()
+                      .includes(inputText.toLowerCase()) ||
+                    tracker.painLevel.toString().includes(inputText)
+                );
+
+                if (filteredTrackersForDate.length === 0) {
+                  return null;
+                }
+
                 return (
                   <div
                     className="mt-7 space-y-2 md:mt-14 md:space-y-4"
                     key={date}
                   >
                     <h3>{date}</h3>
-                    {trackersForDate.map((tracker, index) => (
+                    {filteredTrackersForDate.map((tracker, index) => (
                       <SingleTracker key={index} tracker={tracker} />
                     ))}
                   </div>
