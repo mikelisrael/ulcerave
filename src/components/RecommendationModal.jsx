@@ -33,7 +33,7 @@ const AppModal = ({ open, setOpen }) => {
 
           <p className="mt-5 flex items-center justify-center gap-2 text-xs text-grey md:text-sm">
             <ErrorIcon />
-            This recommendation is based on general knowledge and should no be
+            This recommendation is based on general knowledge and should not be
             substituted for professional medical advice.
           </p>
 
