@@ -9,6 +9,11 @@ import { db } from "../utils/firebase";
 import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
+//  function to wrap date in string
+export const convertDateToString = (date) => {
+  return date.toISOString();
+};
+
 const AddNewReminder = ({ setOpen, setRefetchCount }) => {
   const hourInputRef = useRef(null);
   const minuteInputRef = useRef(null);
@@ -53,11 +58,6 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
       }
     });
 
-    //  function to wrap date in string
-    const convertDateToString = (date) => {
-      return date.toISOString();
-    };
-
     const reminder = {
       category: selectedCategory,
       date: convertDateToString(selectedDate),
@@ -90,7 +90,9 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
             ...userData,
             reminder: updatedReminderList,
           }).then(() => {
-            toast.success("Reminder added successfully!");
+            toast.success("Reminder added successfully!", {
+              toastId: "reminder_added",
+            });
             setRefetchCount((prev) => prev + 1);
             setOpen(false);
             setIsSubmitting(false);
@@ -98,7 +100,9 @@ const AddNewReminder = ({ setOpen, setRefetchCount }) => {
         }
       });
     } catch (error) {
-      toast.error("Error adding reminder: " + error);
+      toast.error("Error adding reminder: " + error, {
+        toastId: "reminder_added",
+      });
       setIsSubmitting(false);
     }
   };
