@@ -64,6 +64,12 @@ body {
   @apply bg-gray-300 text-black;
 }
 
+select {
+  /* make arrow down show */
+  -webkit-appearance: menulist-button !important;
+  height: auto !important;
+}
+
 /* style react toastify */
 .Toastify__toast-body {
   font-family: var(--font) !important;
