@@ -138,7 +138,7 @@ const Reminder = () => {
                 >
                   <h3>{date}</h3>
                   {remindersForDate.map((reminder) => (
-                    <SingleReminder key={reminder.id} reminder={reminder} />
+                    <SingleReminder key={uuidv4()} reminder={reminder} />
                   ))}
                 </div>
               )
