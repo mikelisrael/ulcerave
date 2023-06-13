@@ -5,7 +5,7 @@ error handling using the react-toastify library. */
 import React, { useState } from "react";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, db, provider } from "../utils/firebase";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ import { getTitle } from "../../utils/helperFunctions";
 
 const Login = () => {
   getTitle("login");
-
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({
     email: "",
@@ -70,7 +70,14 @@ const Login = () => {
 
       if (docSnap.exists()) {
         // User already exists in the database
-        toast.success("Welcome back!");
+        const userData = docSnap.data();
+        if (userData.avatar) {
+          // navigate to dashboard if user has an avatar
+          navigate("/dashboard", { replace: true });
+        } else {
+          // navigate to onboarding if user doesn't have an avatar
+          navigate("/onboarding", { replace: true });
+        }
       } else {
         // Add the new user to the database
         const newUser = {
