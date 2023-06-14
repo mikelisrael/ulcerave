@@ -252,43 +252,29 @@ const Navbar = () => {
               Log in
             </button>
           ) : (
-            <>
-              {/* <OutsideClickHandler onOutsideClick={() => setShowPopUP(false)}>
-        <div
-          className="relative flex cursor-pointer items-center gap-2"
-          onClick={() => setShowPopUP(!showPopUP)}
-        >
-          <Avatar src={user?.avatar} alt={user?.firstName} />
-          <KeyboardArrowDownIcon className="text-primaryBlue" />
-
-          <div
-            className={`nav_popout absolute right-2/4 top-full mt-1 w-max rounded-md bg-white shadow-sm ${
-              showPopUP && "open"
-            }`}
-          >
-            <button
-              className="space-x-1 rounded bg-[#FCEDED] p-2 text-red-500"
-              onClick={handleSignOut}
-            >
-              <LogoutIcon fontSize="small" className="-scale-x-100" />{" "}
-              <span>Sign out</span>
-            </button>
-          </div>
-        </div>
-      </OutsideClickHandler> */}
-
-              <div className="relative flex cursor-pointer items-center gap-2">
-                {" "}
+            <OutsideClickHandler onOutsideClick={() => setShowPopUP(false)}>
+              <div
+                className="relative flex cursor-pointer items-center gap-2"
+                onClick={() => setShowPopUP(!showPopUP)}
+              >
                 <Avatar src={user?.avatar} alt={user?.firstName} />
-                <button
-                  className="space-x-1 rounded bg-[#FCEDED] p-2 text-red-500"
-                  onClick={handleSignOut}
+                <KeyboardArrowDownIcon className="text-primaryBlue" />
+
+                <div
+                  className={`nav_popout absolute right-2/4 top-full mt-1 w-max rounded-md bg-white shadow-sm ${
+                    showPopUP && "open"
+                  }`}
                 >
-                  <LogoutIcon fontSize="small" className="-scale-x-100" />{" "}
-                  <span>Sign out</span>
-                </button>
+                  <button
+                    className="space-x-1 rounded bg-[#FCEDED] p-2 text-red-500"
+                    onClick={handleSignOut}
+                  >
+                    <LogoutIcon fontSize="small" className="-scale-x-100" />{" "}
+                    <span>Sign out</span>
+                  </button>
+                </div>
               </div>
-            </>
+            </OutsideClickHandler>
           )}
         </div>
 
