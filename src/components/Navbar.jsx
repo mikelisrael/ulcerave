@@ -127,7 +127,7 @@ const Navbar = () => {
       >
         {!isLoggedIn ? (
           <>
-            <li>
+            {/* <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -152,7 +152,7 @@ const Navbar = () => {
               <NavLink to="/" onClick={closeMobileNav}>
                 contact
               </NavLink>
-            </li>
+            </li> */}
           </>
         ) : (
           <>
